@@ -1,0 +1,110 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171648",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "promocion",
+  "fields": [
+    {
+      "fieldName": "tipPromocion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "val1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "val2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "val3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "val4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "val5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "maxProm",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fecIniVig",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecFinVig",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "comentarios",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Promocion",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "autorizacion",
+      "ownerSide": true,
+      "relationshipName": "autorizacion",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

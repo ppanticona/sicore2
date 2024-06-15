@@ -1,0 +1,93 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171644",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "orden",
+  "fields": [
+    {
+      "fieldName": "numOrden",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "observacion",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "fecIngreso",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "fecSalida",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "codCanal",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tipOrden",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Orden",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "regVenta",
+      "otherEntityRelationshipName": "orden",
+      "relationshipName": "regVenta",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

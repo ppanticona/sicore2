@@ -1,0 +1,39 @@
+{
+  "sicore2App": {
+    "detalleOrden": {
+      "home": {
+        "title": "Detalle Ordens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Detalle Orden",
+        "createOrEditLabel": "Create or edit a Detalle Orden",
+        "notFound": "No Detalle Ordens found"
+      },
+      "created": "A new Detalle Orden is created with identifier {{ param }}",
+      "updated": "A Detalle Orden is updated with identifier {{ param }}",
+      "deleted": "A Detalle Orden is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Detalle Orden {{ id }}?"
+      },
+      "detail": {
+        "title": "Detalle Orden"
+      },
+      "id": "ID",
+      "observacion": "Observacion",
+      "monto": "Monto",
+      "indPagado": "Ind Pagado",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "orden": "Orden",
+      "promocion": "Promocion",
+      "autorizacion": "Autorizacion",
+      "producto": "Producto"
+    }
+  }
+}

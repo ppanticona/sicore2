@@ -1,0 +1,218 @@
+<div>
+  <h2 id="page-heading" data-cy="AutorizacionHeading">
+    <span jhiTranslate="sicore2App.autorizacion.home.title">Autorizacions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.autorizacion.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-autorizacion"
+        [routerLink]="['/autorizacion/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.autorizacion.home.createLabel"> Crear nuevo Autorizacion </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="autorizacions?.length === 0">
+    <span jhiTranslate="sicore2App.autorizacion.home.notFound">Ningún Autorizacions encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="autorizacions && autorizacions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipAutorizacion">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.tipAutorizacion">Tip Autorizacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="subTipAutorizacion">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.subTipAutorizacion">Sub Tip Autorizacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="concepto">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.concepto">Concepto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="comentario">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.comentario">Comentario</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="monto">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.monto">Monto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="moneda">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.moneda">Moneda</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="token">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.token">Token</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecIniVig">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.fecIniVig">Fec Ini Vig</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecFinVig">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.fecFinVig">Fec Fin Vig</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="producto.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.autorizacion.producto">Producto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let autorizacion of autorizacions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/autorizacion', autorizacion.id, 'view']">{{ autorizacion.id }}</a>
+          </td>
+          <td>{{ autorizacion.tipAutorizacion }}</td>
+          <td>{{ autorizacion.subTipAutorizacion }}</td>
+          <td>{{ autorizacion.concepto }}</td>
+          <td>{{ autorizacion.comentario }}</td>
+          <td>{{ autorizacion.monto }}</td>
+          <td>{{ autorizacion.moneda }}</td>
+          <td>{{ autorizacion.token }}</td>
+          <td>{{ autorizacion.fecIniVig | formatMediumDatetime }}</td>
+          <td>{{ autorizacion.fecFinVig | formatMediumDatetime }}</td>
+          <td>{{ autorizacion.estado }}</td>
+          <td>{{ autorizacion.version }}</td>
+          <td>{{ autorizacion.indDel }}</td>
+          <td>{{ autorizacion.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ autorizacion.usuCrea }}</td>
+          <td>{{ autorizacion.ipCrea }}</td>
+          <td>{{ autorizacion.fecModif | formatMediumDatetime }}</td>
+          <td>{{ autorizacion.usuModif }}</td>
+          <td>{{ autorizacion.ipModif }}</td>
+          <td>
+            <div *ngIf="autorizacion.producto">
+              <a [routerLink]="['/producto', autorizacion.producto.id, 'view']">{{ autorizacion.producto.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/autorizacion', autorizacion.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/autorizacion', autorizacion.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(autorizacion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

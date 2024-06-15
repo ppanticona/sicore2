@@ -1,0 +1,115 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171633",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "proveedores",
+  "fields": [
+    {
+      "fieldName": "tipDoc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nroDoc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nombres",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "apellidos",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "categoria",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tel1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tel2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "correo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "refDirecc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "distrito",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fecNac",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Proveedores",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

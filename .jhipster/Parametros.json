@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171647",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "parametros",
+  "fields": [
+    {
+      "fieldName": "codParam",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "detParam",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "primParam",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "segParam",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tercParam",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cuarParam",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sequence",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Parametros",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

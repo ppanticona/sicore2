@@ -1,0 +1,124 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="empleados">
+      <h2 data-cy="empleadosDetailsHeading"><span jhiTranslate="sicore2App.empleados.detail.title">Empleados</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ empleados.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.tipDoc">Tip Doc</span></dt>
+        <dd>
+          <span>{{ empleados.tipDoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.nroDoc">Nro Doc</span></dt>
+        <dd>
+          <span>{{ empleados.nroDoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.nombres">Nombres</span></dt>
+        <dd>
+          <span>{{ empleados.nombres }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.apellidos">Apellidos</span></dt>
+        <dd>
+          <span>{{ empleados.apellidos }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.categoria">Categoria</span></dt>
+        <dd>
+          <span>{{ empleados.categoria }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.tel1">Tel 1</span></dt>
+        <dd>
+          <span>{{ empleados.tel1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.tel2">Tel 2</span></dt>
+        <dd>
+          <span>{{ empleados.tel2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.correo">Correo</span></dt>
+        <dd>
+          <span>{{ empleados.correo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.direccion">Direccion</span></dt>
+        <dd>
+          <span>{{ empleados.direccion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.refDirecc">Ref Direcc</span></dt>
+        <dd>
+          <span>{{ empleados.refDirecc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.distrito">Distrito</span></dt>
+        <dd>
+          <span>{{ empleados.distrito }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.fecIngreso">Fec Ingreso</span></dt>
+        <dd>
+          <span>{{ empleados.fecIngreso | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.fecNac">Fec Nac</span></dt>
+        <dd>
+          <span>{{ empleados.fecNac | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.imagen">Imagen</span></dt>
+        <dd>
+          <span>{{ empleados.imagen }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.userId">User Id</span></dt>
+        <dd>
+          <span>{{ empleados.userId }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.estado">Estado</span></dt>
+        <dd>
+          <span>{{ empleados.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.version">Version</span></dt>
+        <dd>
+          <span>{{ empleados.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ empleados.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ empleados.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ empleados.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ empleados.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ empleados.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ empleados.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ empleados.ipModif }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/empleados', empleados.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

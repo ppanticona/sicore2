@@ -1,0 +1,209 @@
+<div>
+  <h2 id="page-heading" data-cy="DetalleOrdenHeading">
+    <span jhiTranslate="sicore2App.detalleOrden.home.title">Detalle Ordens</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.detalleOrden.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-detalle-orden"
+        [routerLink]="['/detalle-orden/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.detalleOrden.home.createLabel"> Crear nuevo Detalle Orden </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="detalleOrdens?.length === 0">
+    <span jhiTranslate="sicore2App.detalleOrden.home.notFound">Ningún Detalle Ordens encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="detalleOrdens && detalleOrdens.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="observacion">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.observacion">Observacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="monto">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.monto">Monto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indPagado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.indPagado">Ind Pagado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orden.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.orden">Orden</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="promocion.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.promocion">Promocion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autorizacion.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.autorizacion">Autorizacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="producto.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detalleOrden.producto">Producto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detalleOrden of detalleOrdens; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/detalle-orden', detalleOrden.id, 'view']">{{ detalleOrden.id }}</a>
+          </td>
+          <td>{{ detalleOrden.observacion }}</td>
+          <td>{{ detalleOrden.monto }}</td>
+          <td>{{ detalleOrden.indPagado }}</td>
+          <td>{{ detalleOrden.estado }}</td>
+          <td>{{ detalleOrden.version }}</td>
+          <td>{{ detalleOrden.indDel }}</td>
+          <td>{{ detalleOrden.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ detalleOrden.usuCrea }}</td>
+          <td>{{ detalleOrden.ipCrea }}</td>
+          <td>{{ detalleOrden.fecModif | formatMediumDatetime }}</td>
+          <td>{{ detalleOrden.usuModif }}</td>
+          <td>{{ detalleOrden.ipModif }}</td>
+          <td>
+            <div *ngIf="detalleOrden.orden">
+              <a [routerLink]="['/orden', detalleOrden.orden.id, 'view']">{{ detalleOrden.orden.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detalleOrden.promocion">
+              <a [routerLink]="['/promocion', detalleOrden.promocion.id, 'view']">{{ detalleOrden.promocion.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detalleOrden.autorizacion">
+              <a [routerLink]="['/autorizacion', detalleOrden.autorizacion.id, 'view']">{{ detalleOrden.autorizacion.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detalleOrden.producto">
+              <a [routerLink]="['/producto', detalleOrden.producto.id, 'view']">{{ detalleOrden.producto.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/detalle-orden', detalleOrden.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/detalle-orden', detalleOrden.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(detalleOrden)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

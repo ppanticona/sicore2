@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="autorizacion">
+      <h2 data-cy="autorizacionDetailsHeading"><span jhiTranslate="sicore2App.autorizacion.detail.title">Autorizacion</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ autorizacion.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.tipAutorizacion">Tip Autorizacion</span></dt>
+        <dd>
+          <span>{{ autorizacion.tipAutorizacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.subTipAutorizacion">Sub Tip Autorizacion</span></dt>
+        <dd>
+          <span>{{ autorizacion.subTipAutorizacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.concepto">Concepto</span></dt>
+        <dd>
+          <span>{{ autorizacion.concepto }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.comentario">Comentario</span></dt>
+        <dd>
+          <span>{{ autorizacion.comentario }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.monto">Monto</span></dt>
+        <dd>
+          <span>{{ autorizacion.monto }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.moneda">Moneda</span></dt>
+        <dd>
+          <span>{{ autorizacion.moneda }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.token">Token</span></dt>
+        <dd>
+          <span>{{ autorizacion.token }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.fecIniVig">Fec Ini Vig</span></dt>
+        <dd>
+          <span>{{ autorizacion.fecIniVig | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.fecFinVig">Fec Fin Vig</span></dt>
+        <dd>
+          <span>{{ autorizacion.fecFinVig | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.estado">Estado</span></dt>
+        <dd>
+          <span>{{ autorizacion.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.version">Version</span></dt>
+        <dd>
+          <span>{{ autorizacion.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ autorizacion.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ autorizacion.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ autorizacion.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ autorizacion.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ autorizacion.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ autorizacion.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ autorizacion.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.autorizacion.producto">Producto</span></dt>
+        <dd>
+          <div *ngIf="autorizacion.producto">
+            <a [routerLink]="['/producto', autorizacion.producto.id, 'view']">{{ autorizacion.producto.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/autorizacion', autorizacion.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

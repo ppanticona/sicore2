@@ -1,0 +1,101 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613174831",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "sede",
+  "fields": [
+    {
+      "fieldName": "codSede",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "categoria",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tel1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tel2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "correo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "refDirecc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "distrito",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fecAper",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Sede",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

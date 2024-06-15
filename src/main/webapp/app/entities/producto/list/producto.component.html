@@ -1,0 +1,242 @@
+<div>
+  <h2 id="page-heading" data-cy="ProductoHeading">
+    <span jhiTranslate="sicore2App.producto.home.title">Productos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.producto.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-producto"
+        [routerLink]="['/producto/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.producto.home.createLabel"> Crear nuevo Producto </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="productos?.length === 0">
+    <span jhiTranslate="sicore2App.producto.home.notFound">Ningún Productos encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="productos && productos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="codProducto">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.codProducto">Cod Producto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipProducto">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.tipProducto">Tip Producto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="codQr">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.codQr">Cod Qr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="codBarra">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.codBarra">Cod Barra</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="descripcion">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.descripcion">Descripcion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="detalleDesc">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.detalleDesc">Detalle Desc</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="valor">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.valor">Valor</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="categoria">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.categoria">Categoria</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="subCategoria">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.subCategoria">Sub Categoria</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="categoriaMenu">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.categoriaMenu">Categoria Menu</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="urlImage">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.urlImage">Url Image</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecIniVig">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.fecIniVig">Fec Ini Vig</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecFinVig">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.fecFinVig">Fec Fin Vig</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="costoProd">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.costoProd">Costo Prod</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.producto.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/producto', producto.id, 'view']">{{ producto.id }}</a>
+          </td>
+          <td>{{ producto.codProducto }}</td>
+          <td>{{ producto.tipProducto }}</td>
+          <td>{{ producto.codQr }}</td>
+          <td>{{ producto.codBarra }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.detalleDesc }}</td>
+          <td>{{ producto.valor }}</td>
+          <td>{{ producto.categoria }}</td>
+          <td>{{ producto.subCategoria }}</td>
+          <td>{{ producto.categoriaMenu }}</td>
+          <td>{{ producto.urlImage }}</td>
+          <td>{{ producto.fecIniVig | formatMediumDatetime }}</td>
+          <td>{{ producto.fecFinVig | formatMediumDatetime }}</td>
+          <td>{{ producto.costoProd }}</td>
+          <td>{{ producto.estado }}</td>
+          <td>{{ producto.version }}</td>
+          <td>{{ producto.indDel }}</td>
+          <td>{{ producto.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ producto.usuCrea }}</td>
+          <td>{{ producto.ipCrea }}</td>
+          <td>{{ producto.fecModif | formatMediumDatetime }}</td>
+          <td>{{ producto.usuModif }}</td>
+          <td>{{ producto.ipModif }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/producto', producto.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/producto', producto.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(producto)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

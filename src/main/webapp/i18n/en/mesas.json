@@ -1,0 +1,41 @@
+{
+  "sicore2App": {
+    "mesas": {
+      "home": {
+        "title": "Mesas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mesas",
+        "createOrEditLabel": "Create or edit a Mesas",
+        "notFound": "No Mesas found"
+      },
+      "created": "A new Mesas is created with identifier {{ param }}",
+      "updated": "A Mesas is updated with identifier {{ param }}",
+      "deleted": "A Mesas is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mesas {{ id }}?"
+      },
+      "detail": {
+        "title": "Mesas"
+      },
+      "id": "ID",
+      "seqMesa": "Seq Mesa",
+      "nroMesa": "Nro Mesa",
+      "codGrupo": "Cod Grupo",
+      "categoria": "Categoria",
+      "capacidad": "Capacidad",
+      "indMesaJunta": "Ind Mesa Junta",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "orden": "Orden",
+      "sede": "Sede",
+      "empleado": "Empleado"
+    }
+  }
+}

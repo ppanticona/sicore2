@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="movimientoCaja">
+      <h2 data-cy="movimientoCajaDetailsHeading"><span jhiTranslate="sicore2App.movimientoCaja.detail.title">Movimiento Caja</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.tipMovimiento">Tip Movimiento</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.tipMovimiento }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.concepto">Concepto</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.concepto }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.monto">Monto</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.monto }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.tipMoneda">Tip Moneda</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.tipMoneda }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.formPago">Form Pago</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.formPago }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.comprobante">Comprobante</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.comprobante }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.fecMovimiento">Fec Movimiento</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.fecMovimiento | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.version">Version</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ movimientoCaja.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.asignacionCaja">Asignacion Caja</span></dt>
+        <dd>
+          <div *ngIf="movimientoCaja.asignacionCaja">
+            <a [routerLink]="['/asignacion-caja', movimientoCaja.asignacionCaja.id, 'view']">{{ movimientoCaja.asignacionCaja.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.movimientoCaja.autorizacion">Autorizacion</span></dt>
+        <dd>
+          <div *ngIf="movimientoCaja.autorizacion">
+            <a [routerLink]="['/autorizacion', movimientoCaja.autorizacion.id, 'view']">{{ movimientoCaja.autorizacion.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/movimiento-caja', movimientoCaja.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

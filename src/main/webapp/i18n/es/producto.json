@@ -1,0 +1,46 @@
+{
+  "sicore2App": {
+    "producto": {
+      "home": {
+        "title": "Productos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Producto",
+        "createOrEditLabel": "Crear o editar Producto",
+        "notFound": "Ningún Productos encontrado"
+      },
+      "created": "Un nuevo Producto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Producto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Producto ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Producto {{ id }}?"
+      },
+      "detail": {
+        "title": "Producto"
+      },
+      "id": "ID",
+      "codProducto": "Cod Producto",
+      "tipProducto": "Tip Producto",
+      "codQr": "Cod Qr",
+      "codBarra": "Cod Barra",
+      "descripcion": "Descripcion",
+      "detalleDesc": "Detalle Desc",
+      "valor": "Valor",
+      "categoria": "Categoria",
+      "subCategoria": "Sub Categoria",
+      "categoriaMenu": "Categoria Menu",
+      "urlImage": "Url Image",
+      "fecIniVig": "Fec Ini Vig",
+      "fecFinVig": "Fec Fin Vig",
+      "costoProd": "Costo Prod",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif"
+    }
+  }
+}

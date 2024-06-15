@@ -1,0 +1,115 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171641",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "producto",
+  "fields": [
+    {
+      "fieldName": "codProducto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipProducto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codQr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codBarra",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "detalleDesc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "categoria",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subCategoria",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "categoriaMenu",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlImage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fecIniVig",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "fecFinVig",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "costoProd",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Producto",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

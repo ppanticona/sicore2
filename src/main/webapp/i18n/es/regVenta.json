@@ -1,0 +1,68 @@
+{
+  "sicore2App": {
+    "regVenta": {
+      "home": {
+        "title": "Reg Ventas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Reg Venta",
+        "createOrEditLabel": "Crear o editar Reg Venta",
+        "notFound": "Ningún Reg Ventas encontrado"
+      },
+      "created": "Un nuevo Reg Venta ha sido creado con el identificador {{ param }}",
+      "updated": "Un Reg Venta ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Reg Venta ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Reg Venta {{ id }}?"
+      },
+      "detail": {
+        "title": "Reg Venta"
+      },
+      "id": "ID",
+      "periodo": "Periodo",
+      "cuo": "Cuo",
+      "asientContab": "Asient Contab",
+      "fecEmiComp": "Fec Emi Comp",
+      "fecVencComp": "Fec Venc Comp",
+      "tipComp": "Tip Comp",
+      "nroSerieComp": "Nro Serie Comp",
+      "nroComp": "Nro Comp",
+      "consoDia": "Conso Dia",
+      "tipDocCli": "Tip Doc Cli",
+      "nroDocCli": "Nro Doc Cli",
+      "apeRazSocCli": "Ape Raz Soc Cli",
+      "valFacExpor": "Val Fac Expor",
+      "baseImpOperGrav": "Base Imp Oper Grav",
+      "dsctoBaseImp": "Dscto Base Imp",
+      "igvIpm": "Igv Ipm",
+      "dsctoIgvIpm": "Dscto Igv Ipm",
+      "impOpeExo": "Imp Ope Exo",
+      "impTotOpeInafec": "Imp Tot Ope Inafec",
+      "impSecCons": "Imp Sec Cons",
+      "baseImpArroz": "Base Imp Arroz",
+      "impVentArroz": "Imp Vent Arroz",
+      "otrosNoBaseImp": "Otros No Base Imp",
+      "importeTotalComp": "Importe Total Comp",
+      "codMoneda": "Cod Moneda",
+      "tipCambio": "Tip Cambio",
+      "fecEmiModif": "Fec Emi Modif",
+      "tipCompModif": "Tip Comp Modif",
+      "nroSerieCompModif": "Nro Serie Comp Modif",
+      "nroCompModif": "Nro Comp Modif",
+      "identContrato": "Ident Contrato",
+      "errTipUno": "Err Tip Uno",
+      "indCompVancMp": "Ind Comp Vanc Mp",
+      "estadoOperaCancMp": "Estado Opera Canc Mp",
+      "campoLibre": "Campo Libre",
+      "formPago": "Form Pago",
+      "moneda": "Moneda",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "orden": "Orden"
+    }
+  }
+}

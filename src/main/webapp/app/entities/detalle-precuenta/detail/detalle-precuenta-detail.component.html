@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="detallePrecuenta">
+      <h2 data-cy="detallePrecuentaDetailsHeading">
+        <span jhiTranslate="sicore2App.detallePrecuenta.detail.title">Detalle Precuenta</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.correlativo">Correlativo</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.correlativo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.estado">Estado</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.version">Version</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ detallePrecuenta.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.orden">Orden</span></dt>
+        <dd>
+          <div *ngIf="detallePrecuenta.orden">
+            <a [routerLink]="['/orden', detallePrecuenta.orden.id, 'view']">{{ detallePrecuenta.orden.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.autorizacion">Autorizacion</span></dt>
+        <dd>
+          <div *ngIf="detallePrecuenta.autorizacion">
+            <a [routerLink]="['/autorizacion', detallePrecuenta.autorizacion.id, 'view']">{{ detallePrecuenta.autorizacion.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.regVenta">Reg Venta</span></dt>
+        <dd>
+          <div *ngIf="detallePrecuenta.regVenta">
+            <a [routerLink]="['/reg-venta', detallePrecuenta.regVenta.id, 'view']">{{ detallePrecuenta.regVenta.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.precuenta">Precuenta</span></dt>
+        <dd>
+          <div *ngIf="detallePrecuenta.precuenta">
+            <a [routerLink]="['/precuenta', detallePrecuenta.precuenta.id, 'view']">{{ detallePrecuenta.precuenta.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detallePrecuenta.detalleOrden">Detalle Orden</span></dt>
+        <dd>
+          <div *ngIf="detallePrecuenta.detalleOrden">
+            <a [routerLink]="['/detalle-orden', detallePrecuenta.detalleOrden.id, 'view']">{{ detallePrecuenta.detalleOrden.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/detalle-precuenta', detallePrecuenta.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

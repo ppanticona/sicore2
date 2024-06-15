@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="asistencia">
+      <h2 data-cy="asistenciaDetailsHeading"><span jhiTranslate="sicore2App.asistencia.detail.title">Asistencia</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ asistencia.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.tipAsistente">Tip Asistente</span></dt>
+        <dd>
+          <span>{{ asistencia.tipAsistente }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.resultado">Resultado</span></dt>
+        <dd>
+          <span>{{ asistencia.resultado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.anoAsistencia">Ano Asistencia</span></dt>
+        <dd>
+          <span>{{ asistencia.anoAsistencia }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.mesAsistencia">Mes Asistencia</span></dt>
+        <dd>
+          <span>{{ asistencia.mesAsistencia }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.diaAsistencia">Dia Asistencia</span></dt>
+        <dd>
+          <span>{{ asistencia.diaAsistencia }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.observacion">Observacion</span></dt>
+        <dd>
+          <span>{{ asistencia.observacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.comentarios">Comentarios</span></dt>
+        <dd>
+          <span>{{ asistencia.comentarios }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.estado">Estado</span></dt>
+        <dd>
+          <span>{{ asistencia.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.version">Version</span></dt>
+        <dd>
+          <span>{{ asistencia.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ asistencia.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ asistencia.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ asistencia.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ asistencia.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ asistencia.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ asistencia.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ asistencia.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asistencia.userId">User Id</span></dt>
+        <dd>
+          <div *ngIf="asistencia.userId">
+            <a [routerLink]="['/empleados', asistencia.userId.id, 'view']">{{ asistencia.userId.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/asistencia', asistencia.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

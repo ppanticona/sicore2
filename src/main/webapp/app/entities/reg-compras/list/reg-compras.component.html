@@ -1,0 +1,431 @@
+<div>
+  <h2 id="page-heading" data-cy="RegComprasHeading">
+    <span jhiTranslate="sicore2App.regCompras.home.title">Reg Compras</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.regCompras.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-reg-compras"
+        [routerLink]="['/reg-compras/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.regCompras.home.createLabel"> Crear nuevo Reg Compras </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="regCompras?.length === 0">
+    <span jhiTranslate="sicore2App.regCompras.home.notFound">Ningún Reg Compras encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="regCompras && regCompras.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="periodo">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.periodo">Periodo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cuo">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.cuo">Cuo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="asientContab">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.asientContab">Asient Contab</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecEmiComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.fecEmiComp">Fec Emi Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecVencComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.fecVencComp">Fec Venc Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.tipComp">Tip Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroSerieComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.nroSerieComp">Nro Serie Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="anhoEmisionDua">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.anhoEmisionDua">Anho Emision Dua</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.nroComp">Nro Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroFinal">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.nroFinal">Nro Final</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipDocProv">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.tipDocProv">Tip Doc Prov</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroDocProv">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.nroDocProv">Nro Doc Prov</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nomApeRazSocProv">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.nomApeRazSocProv">Nom Ape Raz Soc Prov</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="baseImponible">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.baseImponible">Base Imponible</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montoIgv">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.montoIgv">Monto Igv</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="baseImponible2">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.baseImponible2">Base Imponible 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montoIgv2">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.montoIgv2">Monto Igv 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="baseImponible3">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.baseImponible3">Base Imponible 3</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montoIgv3">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.montoIgv3">Monto Igv 3</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montoNoGravado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.montoNoGravado">Monto No Gravado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montoIsc">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.montoIsc">Monto Isc</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="impConsBols">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.impConsBols">Imp Cons Bols</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="otrosCargos">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.otrosCargos">Otros Cargos</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="importeTotal">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.importeTotal">Importe Total</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="codMoneda">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.codMoneda">Cod Moneda</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipCambio">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.tipCambio">Tip Cambio</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecEmiModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.fecEmiModif">Fec Emi Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipCompModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.tipCompModif">Tip Comp Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroSerieCompModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.nroSerieCompModif">Nro Serie Comp Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="codDuaRef">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.codDuaRef">Cod Dua Ref</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroCompModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.nroCompModif">Nro Comp Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecEmiDetracc">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.fecEmiDetracc">Fec Emi Detracc</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroConstDetracc">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.nroConstDetracc">Nro Const Detracc</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indCompSujRetenc">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.indCompSujRetenc">Ind Comp Suj Retenc</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="clasBienesyServicios">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.clasBienesyServicios">Clas Bienesy Servicios</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="identContrato">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.identContrato">Ident Contrato</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="errTipUno">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.errTipUno">Err Tip Uno</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="errTipDos">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.errTipDos">Err Tip Dos</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="errTipTres">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.errTipTres">Err Tip Tres</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="errTipCuatro">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.errTipCuatro">Err Tip Cuatro</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indCompPagoMedPago">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.indCompPagoMedPago">Ind Comp Pago Med Pago</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="campoLibre">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.campoLibre">Campo Libre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regCompras.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let regCompras of regCompras; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/reg-compras', regCompras.id, 'view']">{{ regCompras.id }}</a>
+          </td>
+          <td>{{ regCompras.periodo }}</td>
+          <td>{{ regCompras.cuo }}</td>
+          <td>{{ regCompras.asientContab }}</td>
+          <td>{{ regCompras.fecEmiComp | formatMediumDatetime }}</td>
+          <td>{{ regCompras.fecVencComp | formatMediumDatetime }}</td>
+          <td>{{ regCompras.tipComp }}</td>
+          <td>{{ regCompras.nroSerieComp }}</td>
+          <td>{{ regCompras.anhoEmisionDua }}</td>
+          <td>{{ regCompras.nroComp }}</td>
+          <td>{{ regCompras.nroFinal }}</td>
+          <td>{{ regCompras.tipDocProv }}</td>
+          <td>{{ regCompras.nroDocProv }}</td>
+          <td>{{ regCompras.nomApeRazSocProv }}</td>
+          <td>{{ regCompras.baseImponible }}</td>
+          <td>{{ regCompras.montoIgv }}</td>
+          <td>{{ regCompras.baseImponible2 }}</td>
+          <td>{{ regCompras.montoIgv2 }}</td>
+          <td>{{ regCompras.baseImponible3 }}</td>
+          <td>{{ regCompras.montoIgv3 }}</td>
+          <td>{{ regCompras.montoNoGravado }}</td>
+          <td>{{ regCompras.montoIsc }}</td>
+          <td>{{ regCompras.impConsBols }}</td>
+          <td>{{ regCompras.otrosCargos }}</td>
+          <td>{{ regCompras.importeTotal }}</td>
+          <td>{{ regCompras.codMoneda }}</td>
+          <td>{{ regCompras.tipCambio }}</td>
+          <td>{{ regCompras.fecEmiModif | formatMediumDatetime }}</td>
+          <td>{{ regCompras.tipCompModif }}</td>
+          <td>{{ regCompras.nroSerieCompModif }}</td>
+          <td>{{ regCompras.codDuaRef }}</td>
+          <td>{{ regCompras.nroCompModif }}</td>
+          <td>{{ regCompras.fecEmiDetracc | formatMediumDatetime }}</td>
+          <td>{{ regCompras.nroConstDetracc }}</td>
+          <td>{{ regCompras.indCompSujRetenc }}</td>
+          <td>{{ regCompras.clasBienesyServicios }}</td>
+          <td>{{ regCompras.identContrato }}</td>
+          <td>{{ regCompras.errTipUno }}</td>
+          <td>{{ regCompras.errTipDos }}</td>
+          <td>{{ regCompras.errTipTres }}</td>
+          <td>{{ regCompras.errTipCuatro }}</td>
+          <td>{{ regCompras.indCompPagoMedPago }}</td>
+          <td>{{ regCompras.estado }}</td>
+          <td>{{ regCompras.campoLibre }}</td>
+          <td>{{ regCompras.indDel }}</td>
+          <td>{{ regCompras.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ regCompras.usuCrea }}</td>
+          <td>{{ regCompras.ipCrea }}</td>
+          <td>{{ regCompras.fecModif | formatMediumDatetime }}</td>
+          <td>{{ regCompras.usuModif }}</td>
+          <td>{{ regCompras.ipModif }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/reg-compras', regCompras.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/reg-compras', regCompras.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(regCompras)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

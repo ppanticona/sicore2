@@ -1,0 +1,210 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="regVenta">
+      <h2 data-cy="regVentaDetailsHeading"><span jhiTranslate="sicore2App.regVenta.detail.title">Reg Venta</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ regVenta.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.periodo">Periodo</span></dt>
+        <dd>
+          <span>{{ regVenta.periodo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.cuo">Cuo</span></dt>
+        <dd>
+          <span>{{ regVenta.cuo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.asientContab">Asient Contab</span></dt>
+        <dd>
+          <span>{{ regVenta.asientContab }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.fecEmiComp">Fec Emi Comp</span></dt>
+        <dd>
+          <span>{{ regVenta.fecEmiComp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.fecVencComp">Fec Venc Comp</span></dt>
+        <dd>
+          <span>{{ regVenta.fecVencComp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.tipComp">Tip Comp</span></dt>
+        <dd>
+          <span>{{ regVenta.tipComp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.nroSerieComp">Nro Serie Comp</span></dt>
+        <dd>
+          <span>{{ regVenta.nroSerieComp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.nroComp">Nro Comp</span></dt>
+        <dd>
+          <span>{{ regVenta.nroComp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.consoDia">Conso Dia</span></dt>
+        <dd>
+          <span>{{ regVenta.consoDia }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.tipDocCli">Tip Doc Cli</span></dt>
+        <dd>
+          <span>{{ regVenta.tipDocCli }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.nroDocCli">Nro Doc Cli</span></dt>
+        <dd>
+          <span>{{ regVenta.nroDocCli }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.apeRazSocCli">Ape Raz Soc Cli</span></dt>
+        <dd>
+          <span>{{ regVenta.apeRazSocCli }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.valFacExpor">Val Fac Expor</span></dt>
+        <dd>
+          <span>{{ regVenta.valFacExpor }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.baseImpOperGrav">Base Imp Oper Grav</span></dt>
+        <dd>
+          <span>{{ regVenta.baseImpOperGrav }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.dsctoBaseImp">Dscto Base Imp</span></dt>
+        <dd>
+          <span>{{ regVenta.dsctoBaseImp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.igvIpm">Igv Ipm</span></dt>
+        <dd>
+          <span>{{ regVenta.igvIpm }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.dsctoIgvIpm">Dscto Igv Ipm</span></dt>
+        <dd>
+          <span>{{ regVenta.dsctoIgvIpm }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.impOpeExo">Imp Ope Exo</span></dt>
+        <dd>
+          <span>{{ regVenta.impOpeExo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.impTotOpeInafec">Imp Tot Ope Inafec</span></dt>
+        <dd>
+          <span>{{ regVenta.impTotOpeInafec }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.impSecCons">Imp Sec Cons</span></dt>
+        <dd>
+          <span>{{ regVenta.impSecCons }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.baseImpArroz">Base Imp Arroz</span></dt>
+        <dd>
+          <span>{{ regVenta.baseImpArroz }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.impVentArroz">Imp Vent Arroz</span></dt>
+        <dd>
+          <span>{{ regVenta.impVentArroz }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.otrosNoBaseImp">Otros No Base Imp</span></dt>
+        <dd>
+          <span>{{ regVenta.otrosNoBaseImp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.importeTotalComp">Importe Total Comp</span></dt>
+        <dd>
+          <span>{{ regVenta.importeTotalComp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.codMoneda">Cod Moneda</span></dt>
+        <dd>
+          <span>{{ regVenta.codMoneda }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.tipCambio">Tip Cambio</span></dt>
+        <dd>
+          <span>{{ regVenta.tipCambio }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.fecEmiModif">Fec Emi Modif</span></dt>
+        <dd>
+          <span>{{ regVenta.fecEmiModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.tipCompModif">Tip Comp Modif</span></dt>
+        <dd>
+          <span>{{ regVenta.tipCompModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.nroSerieCompModif">Nro Serie Comp Modif</span></dt>
+        <dd>
+          <span>{{ regVenta.nroSerieCompModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.nroCompModif">Nro Comp Modif</span></dt>
+        <dd>
+          <span>{{ regVenta.nroCompModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.identContrato">Ident Contrato</span></dt>
+        <dd>
+          <span>{{ regVenta.identContrato }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.errTipUno">Err Tip Uno</span></dt>
+        <dd>
+          <span>{{ regVenta.errTipUno }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.indCompVancMp">Ind Comp Vanc Mp</span></dt>
+        <dd>
+          <span>{{ regVenta.indCompVancMp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.estadoOperaCancMp">Estado Opera Canc Mp</span></dt>
+        <dd>
+          <span>{{ regVenta.estadoOperaCancMp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.campoLibre">Campo Libre</span></dt>
+        <dd>
+          <span>{{ regVenta.campoLibre }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.formPago">Form Pago</span></dt>
+        <dd>
+          <span>{{ regVenta.formPago }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.moneda">Moneda</span></dt>
+        <dd>
+          <span>{{ regVenta.moneda }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ regVenta.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ regVenta.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ regVenta.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ regVenta.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ regVenta.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ regVenta.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ regVenta.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regVenta.orden">Orden</span></dt>
+        <dd>
+          <div *ngIf="regVenta.orden">
+            <a [routerLink]="['/orden', regVenta.orden.id, 'view']">{{ regVenta.orden.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/reg-venta', regVenta.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

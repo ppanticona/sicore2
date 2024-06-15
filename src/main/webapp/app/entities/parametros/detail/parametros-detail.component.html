@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parametros">
+      <h2 data-cy="parametrosDetailsHeading"><span jhiTranslate="sicore2App.parametros.detail.title">Parametros</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ parametros.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.parametros.codParam">Cod Param</span></dt>
+        <dd>
+          <span>{{ parametros.codParam }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.parametros.detParam">Det Param</span></dt>
+        <dd>
+          <span>{{ parametros.detParam }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.parametros.primParam">Prim Param</span></dt>
+        <dd>
+          <span>{{ parametros.primParam }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.parametros.segParam">Seg Param</span></dt>
+        <dd>
+          <span>{{ parametros.segParam }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.parametros.tercParam">Terc Param</span></dt>
+        <dd>
+          <span>{{ parametros.tercParam }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.parametros.cuarParam">Cuar Param</span></dt>
+        <dd>
+          <span>{{ parametros.cuarParam }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.parametros.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ parametros.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.parametros.sequence">Sequence</span></dt>
+        <dd>
+          <span>{{ parametros.sequence }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parametros', parametros.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

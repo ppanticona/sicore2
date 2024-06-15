@@ -1,0 +1,110 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="promocion">
+      <h2 data-cy="promocionDetailsHeading"><span jhiTranslate="sicore2App.promocion.detail.title">Promocion</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ promocion.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.tipPromocion">Tip Promocion</span></dt>
+        <dd>
+          <span>{{ promocion.tipPromocion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.val1">Val 1</span></dt>
+        <dd>
+          <span>{{ promocion.val1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.val2">Val 2</span></dt>
+        <dd>
+          <span>{{ promocion.val2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.val3">Val 3</span></dt>
+        <dd>
+          <span>{{ promocion.val3 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.val4">Val 4</span></dt>
+        <dd>
+          <span>{{ promocion.val4 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.val5">Val 5</span></dt>
+        <dd>
+          <span>{{ promocion.val5 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.maxProm">Max Prom</span></dt>
+        <dd>
+          <span>{{ promocion.maxProm }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.fecIniVig">Fec Ini Vig</span></dt>
+        <dd>
+          <span>{{ promocion.fecIniVig | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.fecFinVig">Fec Fin Vig</span></dt>
+        <dd>
+          <span>{{ promocion.fecFinVig | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.comentarios">Comentarios</span></dt>
+        <dd>
+          <span>{{ promocion.comentarios }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.estado">Estado</span></dt>
+        <dd>
+          <span>{{ promocion.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.version">Version</span></dt>
+        <dd>
+          <span>{{ promocion.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ promocion.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ promocion.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ promocion.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ promocion.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ promocion.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ promocion.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ promocion.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.promocion.autorizacion">Autorizacion</span></dt>
+        <dd>
+          <div *ngIf="promocion.autorizacion">
+            <a [routerLink]="['/autorizacion', promocion.autorizacion.id, 'view']">{{ promocion.autorizacion.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/promocion', promocion.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

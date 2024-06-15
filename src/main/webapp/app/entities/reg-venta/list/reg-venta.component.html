@@ -1,0 +1,400 @@
+<div>
+  <h2 id="page-heading" data-cy="RegVentaHeading">
+    <span jhiTranslate="sicore2App.regVenta.home.title">Reg Ventas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.regVenta.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-reg-venta"
+        [routerLink]="['/reg-venta/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.regVenta.home.createLabel"> Crear nuevo Reg Venta </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="regVentas?.length === 0">
+    <span jhiTranslate="sicore2App.regVenta.home.notFound">Ningún Reg Ventas encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="regVentas && regVentas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="periodo">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.periodo">Periodo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cuo">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.cuo">Cuo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="asientContab">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.asientContab">Asient Contab</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecEmiComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.fecEmiComp">Fec Emi Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecVencComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.fecVencComp">Fec Venc Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.tipComp">Tip Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroSerieComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.nroSerieComp">Nro Serie Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.nroComp">Nro Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="consoDia">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.consoDia">Conso Dia</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipDocCli">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.tipDocCli">Tip Doc Cli</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroDocCli">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.nroDocCli">Nro Doc Cli</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="apeRazSocCli">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.apeRazSocCli">Ape Raz Soc Cli</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="valFacExpor">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.valFacExpor">Val Fac Expor</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="baseImpOperGrav">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.baseImpOperGrav">Base Imp Oper Grav</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dsctoBaseImp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.dsctoBaseImp">Dscto Base Imp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="igvIpm">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.igvIpm">Igv Ipm</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dsctoIgvIpm">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.dsctoIgvIpm">Dscto Igv Ipm</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="impOpeExo">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.impOpeExo">Imp Ope Exo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="impTotOpeInafec">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.impTotOpeInafec">Imp Tot Ope Inafec</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="impSecCons">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.impSecCons">Imp Sec Cons</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="baseImpArroz">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.baseImpArroz">Base Imp Arroz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="impVentArroz">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.impVentArroz">Imp Vent Arroz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="otrosNoBaseImp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.otrosNoBaseImp">Otros No Base Imp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="importeTotalComp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.importeTotalComp">Importe Total Comp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="codMoneda">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.codMoneda">Cod Moneda</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipCambio">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.tipCambio">Tip Cambio</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecEmiModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.fecEmiModif">Fec Emi Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipCompModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.tipCompModif">Tip Comp Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroSerieCompModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.nroSerieCompModif">Nro Serie Comp Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroCompModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.nroCompModif">Nro Comp Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="identContrato">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.identContrato">Ident Contrato</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="errTipUno">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.errTipUno">Err Tip Uno</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indCompVancMp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.indCompVancMp">Ind Comp Vanc Mp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estadoOperaCancMp">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.estadoOperaCancMp">Estado Opera Canc Mp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="campoLibre">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.campoLibre">Campo Libre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="formPago">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.formPago">Form Pago</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="moneda">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.moneda">Moneda</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orden.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.regVenta.orden">Orden</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let regVenta of regVentas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/reg-venta', regVenta.id, 'view']">{{ regVenta.id }}</a>
+          </td>
+          <td>{{ regVenta.periodo }}</td>
+          <td>{{ regVenta.cuo }}</td>
+          <td>{{ regVenta.asientContab }}</td>
+          <td>{{ regVenta.fecEmiComp | formatMediumDatetime }}</td>
+          <td>{{ regVenta.fecVencComp | formatMediumDatetime }}</td>
+          <td>{{ regVenta.tipComp }}</td>
+          <td>{{ regVenta.nroSerieComp }}</td>
+          <td>{{ regVenta.nroComp }}</td>
+          <td>{{ regVenta.consoDia }}</td>
+          <td>{{ regVenta.tipDocCli }}</td>
+          <td>{{ regVenta.nroDocCli }}</td>
+          <td>{{ regVenta.apeRazSocCli }}</td>
+          <td>{{ regVenta.valFacExpor }}</td>
+          <td>{{ regVenta.baseImpOperGrav }}</td>
+          <td>{{ regVenta.dsctoBaseImp }}</td>
+          <td>{{ regVenta.igvIpm }}</td>
+          <td>{{ regVenta.dsctoIgvIpm }}</td>
+          <td>{{ regVenta.impOpeExo }}</td>
+          <td>{{ regVenta.impTotOpeInafec }}</td>
+          <td>{{ regVenta.impSecCons }}</td>
+          <td>{{ regVenta.baseImpArroz }}</td>
+          <td>{{ regVenta.impVentArroz }}</td>
+          <td>{{ regVenta.otrosNoBaseImp }}</td>
+          <td>{{ regVenta.importeTotalComp }}</td>
+          <td>{{ regVenta.codMoneda }}</td>
+          <td>{{ regVenta.tipCambio }}</td>
+          <td>{{ regVenta.fecEmiModif | formatMediumDatetime }}</td>
+          <td>{{ regVenta.tipCompModif }}</td>
+          <td>{{ regVenta.nroSerieCompModif }}</td>
+          <td>{{ regVenta.nroCompModif }}</td>
+          <td>{{ regVenta.identContrato }}</td>
+          <td>{{ regVenta.errTipUno }}</td>
+          <td>{{ regVenta.indCompVancMp }}</td>
+          <td>{{ regVenta.estadoOperaCancMp }}</td>
+          <td>{{ regVenta.campoLibre }}</td>
+          <td>{{ regVenta.formPago }}</td>
+          <td>{{ regVenta.moneda }}</td>
+          <td>{{ regVenta.indDel }}</td>
+          <td>{{ regVenta.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ regVenta.usuCrea }}</td>
+          <td>{{ regVenta.ipCrea }}</td>
+          <td>{{ regVenta.fecModif | formatMediumDatetime }}</td>
+          <td>{{ regVenta.usuModif }}</td>
+          <td>{{ regVenta.ipModif }}</td>
+          <td>
+            <div *ngIf="regVenta.orden">
+              <a [routerLink]="['/orden', regVenta.orden.id, 'view']">{{ regVenta.orden.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/reg-venta', regVenta.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/reg-venta', regVenta.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(regVenta)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

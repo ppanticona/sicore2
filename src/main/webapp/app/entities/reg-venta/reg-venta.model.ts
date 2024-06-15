@@ -1,0 +1,53 @@
+import dayjs from 'dayjs/esm';
+import { IOrden } from 'app/entities/orden/orden.model';
+
+export interface IRegVenta {
+  id: string;
+  periodo?: string | null;
+  cuo?: string | null;
+  asientContab?: string | null;
+  fecEmiComp?: dayjs.Dayjs | null;
+  fecVencComp?: dayjs.Dayjs | null;
+  tipComp?: string | null;
+  nroSerieComp?: string | null;
+  nroComp?: string | null;
+  consoDia?: string | null;
+  tipDocCli?: string | null;
+  nroDocCli?: string | null;
+  apeRazSocCli?: string | null;
+  valFacExpor?: number | null;
+  baseImpOperGrav?: number | null;
+  dsctoBaseImp?: number | null;
+  igvIpm?: number | null;
+  dsctoIgvIpm?: number | null;
+  impOpeExo?: number | null;
+  impTotOpeInafec?: number | null;
+  impSecCons?: number | null;
+  baseImpArroz?: number | null;
+  impVentArroz?: number | null;
+  otrosNoBaseImp?: number | null;
+  importeTotalComp?: number | null;
+  codMoneda?: string | null;
+  tipCambio?: number | null;
+  fecEmiModif?: dayjs.Dayjs | null;
+  tipCompModif?: string | null;
+  nroSerieCompModif?: string | null;
+  nroCompModif?: string | null;
+  identContrato?: string | null;
+  errTipUno?: string | null;
+  indCompVancMp?: string | null;
+  estadoOperaCancMp?: string | null;
+  campoLibre?: string | null;
+  formPago?: string | null;
+  moneda?: string | null;
+  indDel?: boolean | null;
+  fecCrea?: dayjs.Dayjs | null;
+  usuCrea?: string | null;
+  ipCrea?: string | null;
+  fecModif?: dayjs.Dayjs | null;
+  usuModif?: string | null;
+  ipModif?: string | null;
+  orden?: Pick<IOrden, 'id'> | null;
+}
+
+export type NewRegVenta = Omit<IRegVenta, 'id'> & { id: null };

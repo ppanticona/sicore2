@@ -1,0 +1,124 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="asignacionCaja">
+      <h2 data-cy="asignacionCajaDetailsHeading"><span jhiTranslate="sicore2App.asignacionCaja.detail.title">Asignacion Caja</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.codAsignacion">Cod Asignacion</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.codAsignacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.mntoInicialSoles">Mnto Inicial Soles</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.mntoInicialSoles }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.mntoFinalSoles">Mnto Final Soles</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.mntoFinalSoles }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.montoMaximoSoles">Monto Maximo Soles</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.montoMaximoSoles }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.diferenciaSoles">Diferencia Soles</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.diferenciaSoles }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.mntoInicialDolares">Mnto Inicial Dolares</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.mntoInicialDolares }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.mntoFinalDolares">Mnto Final Dolares</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.mntoFinalDolares }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.montoMaximoDolares">Monto Maximo Dolares</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.montoMaximoDolares }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.diferenciaDolares">Diferencia Dolares</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.diferenciaDolares }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.observacionApertura">Observacion Apertura</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.observacionApertura }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.observacionCierre">Observacion Cierre</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.observacionCierre }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.fecAsignacion">Fec Asignacion</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.fecAsignacion | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.estado">Estado</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.version">Version</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ asignacionCaja.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.userId">User Id</span></dt>
+        <dd>
+          <div *ngIf="asignacionCaja.userId">
+            <a [routerLink]="['/empleados', asignacionCaja.userId.id, 'view']">{{ asignacionCaja.userId.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.caja">Caja</span></dt>
+        <dd>
+          <div *ngIf="asignacionCaja.caja">
+            <a [routerLink]="['/caja', asignacionCaja.caja.id, 'view']">{{ asignacionCaja.caja.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/asignacion-caja', asignacionCaja.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

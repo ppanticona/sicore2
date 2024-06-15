@@ -1,0 +1,104 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sede">
+      <h2 data-cy="sedeDetailsHeading"><span jhiTranslate="sicore2App.sede.detail.title">Sede</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sede.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.codSede">Cod Sede</span></dt>
+        <dd>
+          <span>{{ sede.codSede }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ sede.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.categoria">Categoria</span></dt>
+        <dd>
+          <span>{{ sede.categoria }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.tel1">Tel 1</span></dt>
+        <dd>
+          <span>{{ sede.tel1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.tel2">Tel 2</span></dt>
+        <dd>
+          <span>{{ sede.tel2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.correo">Correo</span></dt>
+        <dd>
+          <span>{{ sede.correo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.direccion">Direccion</span></dt>
+        <dd>
+          <span>{{ sede.direccion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.refDirecc">Ref Direcc</span></dt>
+        <dd>
+          <span>{{ sede.refDirecc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.distrito">Distrito</span></dt>
+        <dd>
+          <span>{{ sede.distrito }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.fecAper">Fec Aper</span></dt>
+        <dd>
+          <span>{{ sede.fecAper | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.estado">Estado</span></dt>
+        <dd>
+          <span>{{ sede.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.version">Version</span></dt>
+        <dd>
+          <span>{{ sede.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ sede.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ sede.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ sede.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ sede.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ sede.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ sede.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.sede.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ sede.ipModif }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sede', sede.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

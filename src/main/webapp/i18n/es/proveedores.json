@@ -1,0 +1,45 @@
+{
+  "sicore2App": {
+    "proveedores": {
+      "home": {
+        "title": "Proveedores",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Proveedores",
+        "createOrEditLabel": "Crear o editar Proveedores",
+        "notFound": "Ningún Proveedores encontrado"
+      },
+      "created": "Un nuevo Proveedores ha sido creado con el identificador {{ param }}",
+      "updated": "Un Proveedores ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Proveedores ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Proveedores {{ id }}?"
+      },
+      "detail": {
+        "title": "Proveedores"
+      },
+      "id": "ID",
+      "tipDoc": "Tip Doc",
+      "nroDoc": "Nro Doc",
+      "nombres": "Nombres",
+      "apellidos": "Apellidos",
+      "categoria": "Categoria",
+      "tel1": "Tel 1",
+      "tel2": "Tel 2",
+      "correo": "Correo",
+      "direccion": "Direccion",
+      "refDirecc": "Ref Direcc",
+      "distrito": "Distrito",
+      "fecNac": "Fec Nac",
+      "userId": "User Id",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif"
+    }
+  }
+}

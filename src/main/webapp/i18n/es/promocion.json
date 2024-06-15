@@ -1,0 +1,43 @@
+{
+  "sicore2App": {
+    "promocion": {
+      "home": {
+        "title": "Promocions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Promocion",
+        "createOrEditLabel": "Crear o editar Promocion",
+        "notFound": "Ningún Promocions encontrado"
+      },
+      "created": "Un nuevo Promocion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Promocion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Promocion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Promocion {{ id }}?"
+      },
+      "detail": {
+        "title": "Promocion"
+      },
+      "id": "ID",
+      "tipPromocion": "Tip Promocion",
+      "val1": "Val 1",
+      "val2": "Val 2",
+      "val3": "Val 3",
+      "val4": "Val 4",
+      "val5": "Val 5",
+      "maxProm": "Max Prom",
+      "fecIniVig": "Fec Ini Vig",
+      "fecFinVig": "Fec Fin Vig",
+      "comentarios": "Comentarios",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "autorizacion": "Autorizacion"
+    }
+  }
+}

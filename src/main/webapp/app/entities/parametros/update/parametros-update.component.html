@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-parametros-heading" data-cy="ParametrosCreateUpdateHeading" jhiTranslate="sicore2App.parametros.home.createOrEditLabel">
+        Crear o editar Parametros
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.parametros.codParam" for="field_codParam">Cod Param</label>
+          <input type="text" class="form-control" name="codParam" id="field_codParam" data-cy="codParam" formControlName="codParam" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.parametros.detParam" for="field_detParam">Det Param</label>
+          <input type="text" class="form-control" name="detParam" id="field_detParam" data-cy="detParam" formControlName="detParam" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.parametros.primParam" for="field_primParam">Prim Param</label>
+          <input type="text" class="form-control" name="primParam" id="field_primParam" data-cy="primParam" formControlName="primParam" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.parametros.segParam" for="field_segParam">Seg Param</label>
+          <input type="text" class="form-control" name="segParam" id="field_segParam" data-cy="segParam" formControlName="segParam" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.parametros.tercParam" for="field_tercParam">Terc Param</label>
+          <input type="text" class="form-control" name="tercParam" id="field_tercParam" data-cy="tercParam" formControlName="tercParam" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.parametros.cuarParam" for="field_cuarParam">Cuar Param</label>
+          <input type="text" class="form-control" name="cuarParam" id="field_cuarParam" data-cy="cuarParam" formControlName="cuarParam" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.parametros.descripcion" for="field_descripcion">Descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.parametros.sequence" for="field_sequence">Sequence</label>
+          <input type="number" class="form-control" name="sequence" id="field_sequence" data-cy="sequence" formControlName="sequence" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

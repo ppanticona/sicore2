@@ -1,0 +1,228 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="regCompras">
+      <h2 data-cy="regComprasDetailsHeading"><span jhiTranslate="sicore2App.regCompras.detail.title">Reg Compras</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ regCompras.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.periodo">Periodo</span></dt>
+        <dd>
+          <span>{{ regCompras.periodo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.cuo">Cuo</span></dt>
+        <dd>
+          <span>{{ regCompras.cuo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.asientContab">Asient Contab</span></dt>
+        <dd>
+          <span>{{ regCompras.asientContab }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.fecEmiComp">Fec Emi Comp</span></dt>
+        <dd>
+          <span>{{ regCompras.fecEmiComp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.fecVencComp">Fec Venc Comp</span></dt>
+        <dd>
+          <span>{{ regCompras.fecVencComp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.tipComp">Tip Comp</span></dt>
+        <dd>
+          <span>{{ regCompras.tipComp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.nroSerieComp">Nro Serie Comp</span></dt>
+        <dd>
+          <span>{{ regCompras.nroSerieComp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.anhoEmisionDua">Anho Emision Dua</span></dt>
+        <dd>
+          <span>{{ regCompras.anhoEmisionDua }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.nroComp">Nro Comp</span></dt>
+        <dd>
+          <span>{{ regCompras.nroComp }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.nroFinal">Nro Final</span></dt>
+        <dd>
+          <span>{{ regCompras.nroFinal }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.tipDocProv">Tip Doc Prov</span></dt>
+        <dd>
+          <span>{{ regCompras.tipDocProv }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.nroDocProv">Nro Doc Prov</span></dt>
+        <dd>
+          <span>{{ regCompras.nroDocProv }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.nomApeRazSocProv">Nom Ape Raz Soc Prov</span></dt>
+        <dd>
+          <span>{{ regCompras.nomApeRazSocProv }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.baseImponible">Base Imponible</span></dt>
+        <dd>
+          <span>{{ regCompras.baseImponible }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.montoIgv">Monto Igv</span></dt>
+        <dd>
+          <span>{{ regCompras.montoIgv }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.baseImponible2">Base Imponible 2</span></dt>
+        <dd>
+          <span>{{ regCompras.baseImponible2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.montoIgv2">Monto Igv 2</span></dt>
+        <dd>
+          <span>{{ regCompras.montoIgv2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.baseImponible3">Base Imponible 3</span></dt>
+        <dd>
+          <span>{{ regCompras.baseImponible3 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.montoIgv3">Monto Igv 3</span></dt>
+        <dd>
+          <span>{{ regCompras.montoIgv3 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.montoNoGravado">Monto No Gravado</span></dt>
+        <dd>
+          <span>{{ regCompras.montoNoGravado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.montoIsc">Monto Isc</span></dt>
+        <dd>
+          <span>{{ regCompras.montoIsc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.impConsBols">Imp Cons Bols</span></dt>
+        <dd>
+          <span>{{ regCompras.impConsBols }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.otrosCargos">Otros Cargos</span></dt>
+        <dd>
+          <span>{{ regCompras.otrosCargos }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.importeTotal">Importe Total</span></dt>
+        <dd>
+          <span>{{ regCompras.importeTotal }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.codMoneda">Cod Moneda</span></dt>
+        <dd>
+          <span>{{ regCompras.codMoneda }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.tipCambio">Tip Cambio</span></dt>
+        <dd>
+          <span>{{ regCompras.tipCambio }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.fecEmiModif">Fec Emi Modif</span></dt>
+        <dd>
+          <span>{{ regCompras.fecEmiModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.tipCompModif">Tip Comp Modif</span></dt>
+        <dd>
+          <span>{{ regCompras.tipCompModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.nroSerieCompModif">Nro Serie Comp Modif</span></dt>
+        <dd>
+          <span>{{ regCompras.nroSerieCompModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.codDuaRef">Cod Dua Ref</span></dt>
+        <dd>
+          <span>{{ regCompras.codDuaRef }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.nroCompModif">Nro Comp Modif</span></dt>
+        <dd>
+          <span>{{ regCompras.nroCompModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.fecEmiDetracc">Fec Emi Detracc</span></dt>
+        <dd>
+          <span>{{ regCompras.fecEmiDetracc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.nroConstDetracc">Nro Const Detracc</span></dt>
+        <dd>
+          <span>{{ regCompras.nroConstDetracc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.indCompSujRetenc">Ind Comp Suj Retenc</span></dt>
+        <dd>
+          <span>{{ regCompras.indCompSujRetenc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.clasBienesyServicios">Clas Bienesy Servicios</span></dt>
+        <dd>
+          <span>{{ regCompras.clasBienesyServicios }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.identContrato">Ident Contrato</span></dt>
+        <dd>
+          <span>{{ regCompras.identContrato }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.errTipUno">Err Tip Uno</span></dt>
+        <dd>
+          <span>{{ regCompras.errTipUno }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.errTipDos">Err Tip Dos</span></dt>
+        <dd>
+          <span>{{ regCompras.errTipDos }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.errTipTres">Err Tip Tres</span></dt>
+        <dd>
+          <span>{{ regCompras.errTipTres }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.errTipCuatro">Err Tip Cuatro</span></dt>
+        <dd>
+          <span>{{ regCompras.errTipCuatro }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.indCompPagoMedPago">Ind Comp Pago Med Pago</span></dt>
+        <dd>
+          <span>{{ regCompras.indCompPagoMedPago }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.estado">Estado</span></dt>
+        <dd>
+          <span>{{ regCompras.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.campoLibre">Campo Libre</span></dt>
+        <dd>
+          <span>{{ regCompras.campoLibre }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ regCompras.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ regCompras.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ regCompras.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ regCompras.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ regCompras.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ regCompras.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.regCompras.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ regCompras.ipModif }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/reg-compras', regCompras.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

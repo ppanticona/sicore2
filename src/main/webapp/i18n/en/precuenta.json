@@ -1,0 +1,35 @@
+{
+  "sicore2App": {
+    "precuenta": {
+      "home": {
+        "title": "Precuentas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Precuenta",
+        "createOrEditLabel": "Create or edit a Precuenta",
+        "notFound": "No Precuentas found"
+      },
+      "created": "A new Precuenta is created with identifier {{ param }}",
+      "updated": "A Precuenta is updated with identifier {{ param }}",
+      "deleted": "A Precuenta is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Precuenta {{ id }}?"
+      },
+      "detail": {
+        "title": "Precuenta"
+      },
+      "id": "ID",
+      "numPrecuenta": "Num Precuenta",
+      "observacion": "Observacion",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "orden": "Orden"
+    }
+  }
+}

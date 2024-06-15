@@ -1,0 +1,116 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="clientes">
+      <h2 data-cy="clientesDetailsHeading"><span jhiTranslate="sicore2App.clientes.detail.title">Clientes</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ clientes.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.tipDoc">Tip Doc</span></dt>
+        <dd>
+          <span>{{ clientes.tipDoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.nroDoc">Nro Doc</span></dt>
+        <dd>
+          <span>{{ clientes.nroDoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.nombres">Nombres</span></dt>
+        <dd>
+          <span>{{ clientes.nombres }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.apellidos">Apellidos</span></dt>
+        <dd>
+          <span>{{ clientes.apellidos }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.categoria">Categoria</span></dt>
+        <dd>
+          <span>{{ clientes.categoria }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.tel1">Tel 1</span></dt>
+        <dd>
+          <span>{{ clientes.tel1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.tel2">Tel 2</span></dt>
+        <dd>
+          <span>{{ clientes.tel2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.correo">Correo</span></dt>
+        <dd>
+          <span>{{ clientes.correo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.direccion">Direccion</span></dt>
+        <dd>
+          <span>{{ clientes.direccion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.refDirecc">Ref Direcc</span></dt>
+        <dd>
+          <span>{{ clientes.refDirecc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.distrito">Distrito</span></dt>
+        <dd>
+          <span>{{ clientes.distrito }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.fecNac">Fec Nac</span></dt>
+        <dd>
+          <span>{{ clientes.fecNac | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.userId">User Id</span></dt>
+        <dd>
+          <span>{{ clientes.userId }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.estado">Estado</span></dt>
+        <dd>
+          <span>{{ clientes.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.version">Version</span></dt>
+        <dd>
+          <span>{{ clientes.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ clientes.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ clientes.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ clientes.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ clientes.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ clientes.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ clientes.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.clientes.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ clientes.ipModif }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/clientes', clientes.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

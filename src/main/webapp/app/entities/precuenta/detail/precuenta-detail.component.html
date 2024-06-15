@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="precuenta">
+      <h2 data-cy="precuentaDetailsHeading"><span jhiTranslate="sicore2App.precuenta.detail.title">Precuenta</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ precuenta.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.numPrecuenta">Num Precuenta</span></dt>
+        <dd>
+          <span>{{ precuenta.numPrecuenta }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.observacion">Observacion</span></dt>
+        <dd>
+          <span>{{ precuenta.observacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.estado">Estado</span></dt>
+        <dd>
+          <span>{{ precuenta.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.version">Version</span></dt>
+        <dd>
+          <span>{{ precuenta.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ precuenta.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ precuenta.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ precuenta.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ precuenta.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ precuenta.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ precuenta.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ precuenta.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.precuenta.orden">Orden</span></dt>
+        <dd>
+          <div *ngIf="precuenta.orden">
+            <a [routerLink]="['/orden', precuenta.orden.id, 'view']">{{ precuenta.orden.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/precuenta', precuenta.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

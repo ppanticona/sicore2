@@ -1,0 +1,40 @@
+{
+  "sicore2App": {
+    "movimientoCaja": {
+      "home": {
+        "title": "Movimiento Cajas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Movimiento Caja",
+        "createOrEditLabel": "Create or edit a Movimiento Caja",
+        "notFound": "No Movimiento Cajas found"
+      },
+      "created": "A new Movimiento Caja is created with identifier {{ param }}",
+      "updated": "A Movimiento Caja is updated with identifier {{ param }}",
+      "deleted": "A Movimiento Caja is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Movimiento Caja {{ id }}?"
+      },
+      "detail": {
+        "title": "Movimiento Caja"
+      },
+      "id": "ID",
+      "tipMovimiento": "Tip Movimiento",
+      "concepto": "Concepto",
+      "monto": "Monto",
+      "tipMoneda": "Tip Moneda",
+      "formPago": "Form Pago",
+      "comprobante": "Comprobante",
+      "fecMovimiento": "Fec Movimiento",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "asignacionCaja": "Asignacion Caja",
+      "autorizacion": "Autorizacion"
+    }
+  }
+}

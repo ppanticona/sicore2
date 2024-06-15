@@ -1,0 +1,45 @@
+{
+  "sicore2App": {
+    "clientes": {
+      "home": {
+        "title": "Clientes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Clientes",
+        "createOrEditLabel": "Crear o editar Clientes",
+        "notFound": "Ningún Clientes encontrado"
+      },
+      "created": "Un nuevo Clientes ha sido creado con el identificador {{ param }}",
+      "updated": "Un Clientes ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Clientes ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Clientes {{ id }}?"
+      },
+      "detail": {
+        "title": "Clientes"
+      },
+      "id": "ID",
+      "tipDoc": "Tip Doc",
+      "nroDoc": "Nro Doc",
+      "nombres": "Nombres",
+      "apellidos": "Apellidos",
+      "categoria": "Categoria",
+      "tel1": "Tel 1",
+      "tel2": "Tel 2",
+      "correo": "Correo",
+      "direccion": "Direccion",
+      "refDirecc": "Ref Direcc",
+      "distrito": "Distrito",
+      "fecNac": "Fec Nac",
+      "userId": "User Id",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif"
+    }
+  }
+}

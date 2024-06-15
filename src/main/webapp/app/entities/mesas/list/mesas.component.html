@@ -1,0 +1,209 @@
+<div>
+  <h2 id="page-heading" data-cy="MesasHeading">
+    <span jhiTranslate="sicore2App.mesas.home.title">Mesas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.mesas.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-mesas"
+        [routerLink]="['/mesas/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.mesas.home.createLabel"> Crear nuevo Mesas </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="mesas?.length === 0">
+    <span jhiTranslate="sicore2App.mesas.home.notFound">Ningún Mesas encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="mesas && mesas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="seqMesa">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.seqMesa">Seq Mesa</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nroMesa">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.nroMesa">Nro Mesa</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="codGrupo">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.codGrupo">Cod Grupo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="categoria">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.categoria">Categoria</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="capacidad">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.capacidad">Capacidad</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indMesaJunta">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.indMesaJunta">Ind Mesa Junta</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orden.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.orden">Orden</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sede.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.sede">Sede</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="empleado.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.mesas.empleado">Empleado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mesas of mesas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/mesas', mesas.id, 'view']">{{ mesas.id }}</a>
+          </td>
+          <td>{{ mesas.seqMesa }}</td>
+          <td>{{ mesas.nroMesa }}</td>
+          <td>{{ mesas.codGrupo }}</td>
+          <td>{{ mesas.categoria }}</td>
+          <td>{{ mesas.capacidad }}</td>
+          <td>{{ mesas.indMesaJunta }}</td>
+          <td>{{ mesas.estado }}</td>
+          <td>{{ mesas.version }}</td>
+          <td>{{ mesas.indDel }}</td>
+          <td>{{ mesas.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ mesas.usuCrea }}</td>
+          <td>{{ mesas.ipCrea }}</td>
+          <td>{{ mesas.fecModif | formatMediumDatetime }}</td>
+          <td>{{ mesas.usuModif }}</td>
+          <td>{{ mesas.ipModif }}</td>
+          <td>
+            <div *ngIf="mesas.orden">
+              <a [routerLink]="['/orden', mesas.orden.id, 'view']">{{ mesas.orden.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="mesas.sede">
+              <a [routerLink]="['/sede', mesas.sede.id, 'view']">{{ mesas.sede.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="mesas.empleado">
+              <a [routerLink]="['/empleados', mesas.empleado.id, 'view']">{{ mesas.empleado.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/mesas', mesas.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/mesas', mesas.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(mesas)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

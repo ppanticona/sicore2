@@ -1,0 +1,731 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-reg-venta-heading" data-cy="RegVentaCreateUpdateHeading" jhiTranslate="sicore2App.regVenta.home.createOrEditLabel">
+        Crear o editar Reg Venta
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.periodo" for="field_periodo">Periodo</label>
+          <input type="text" class="form-control" name="periodo" id="field_periodo" data-cy="periodo" formControlName="periodo" />
+          <div *ngIf="editForm.get('periodo')!.invalid && (editForm.get('periodo')!.dirty || editForm.get('periodo')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('periodo')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.cuo" for="field_cuo">Cuo</label>
+          <input type="text" class="form-control" name="cuo" id="field_cuo" data-cy="cuo" formControlName="cuo" />
+          <div *ngIf="editForm.get('cuo')!.invalid && (editForm.get('cuo')!.dirty || editForm.get('cuo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('cuo')?.errors?.required" jhiTranslate="entity.validation.required">
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.asientContab" for="field_asientContab">Asient Contab</label>
+          <input
+            type="text"
+            class="form-control"
+            name="asientContab"
+            id="field_asientContab"
+            data-cy="asientContab"
+            formControlName="asientContab"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.fecEmiComp" for="field_fecEmiComp">Fec Emi Comp</label>
+          <div class="d-flex">
+            <input
+              id="field_fecEmiComp"
+              data-cy="fecEmiComp"
+              type="datetime-local"
+              class="form-control"
+              name="fecEmiComp"
+              formControlName="fecEmiComp"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('fecEmiComp')!.invalid && (editForm.get('fecEmiComp')!.dirty || editForm.get('fecEmiComp')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fecEmiComp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fecEmiComp')?.errors?.datetimelocal"
+              jhiTranslate="entity.validation.datetimelocal"
+            >
+              Este campo debe ser una fecha y hora.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.fecVencComp" for="field_fecVencComp">Fec Venc Comp</label>
+          <div class="d-flex">
+            <input
+              id="field_fecVencComp"
+              data-cy="fecVencComp"
+              type="datetime-local"
+              class="form-control"
+              name="fecVencComp"
+              formControlName="fecVencComp"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.tipComp" for="field_tipComp">Tip Comp</label>
+          <input type="text" class="form-control" name="tipComp" id="field_tipComp" data-cy="tipComp" formControlName="tipComp" />
+          <div *ngIf="editForm.get('tipComp')!.invalid && (editForm.get('tipComp')!.dirty || editForm.get('tipComp')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('tipComp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.nroSerieComp" for="field_nroSerieComp">Nro Serie Comp</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nroSerieComp"
+            id="field_nroSerieComp"
+            data-cy="nroSerieComp"
+            formControlName="nroSerieComp"
+          />
+          <div
+            *ngIf="editForm.get('nroSerieComp')!.invalid && (editForm.get('nroSerieComp')!.dirty || editForm.get('nroSerieComp')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nroSerieComp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.nroComp" for="field_nroComp">Nro Comp</label>
+          <input type="text" class="form-control" name="nroComp" id="field_nroComp" data-cy="nroComp" formControlName="nroComp" />
+          <div *ngIf="editForm.get('nroComp')!.invalid && (editForm.get('nroComp')!.dirty || editForm.get('nroComp')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nroComp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.consoDia" for="field_consoDia">Conso Dia</label>
+          <input type="text" class="form-control" name="consoDia" id="field_consoDia" data-cy="consoDia" formControlName="consoDia" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.tipDocCli" for="field_tipDocCli">Tip Doc Cli</label>
+          <input type="text" class="form-control" name="tipDocCli" id="field_tipDocCli" data-cy="tipDocCli" formControlName="tipDocCli" />
+          <div *ngIf="editForm.get('tipDocCli')!.invalid && (editForm.get('tipDocCli')!.dirty || editForm.get('tipDocCli')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('tipDocCli')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.nroDocCli" for="field_nroDocCli">Nro Doc Cli</label>
+          <input type="text" class="form-control" name="nroDocCli" id="field_nroDocCli" data-cy="nroDocCli" formControlName="nroDocCli" />
+          <div *ngIf="editForm.get('nroDocCli')!.invalid && (editForm.get('nroDocCli')!.dirty || editForm.get('nroDocCli')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nroDocCli')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.apeRazSocCli" for="field_apeRazSocCli">Ape Raz Soc Cli</label>
+          <input
+            type="text"
+            class="form-control"
+            name="apeRazSocCli"
+            id="field_apeRazSocCli"
+            data-cy="apeRazSocCli"
+            formControlName="apeRazSocCli"
+          />
+          <div
+            *ngIf="editForm.get('apeRazSocCli')!.invalid && (editForm.get('apeRazSocCli')!.dirty || editForm.get('apeRazSocCli')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('apeRazSocCli')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.valFacExpor" for="field_valFacExpor">Val Fac Expor</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valFacExpor"
+            id="field_valFacExpor"
+            data-cy="valFacExpor"
+            formControlName="valFacExpor"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.baseImpOperGrav" for="field_baseImpOperGrav"
+            >Base Imp Oper Grav</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="baseImpOperGrav"
+            id="field_baseImpOperGrav"
+            data-cy="baseImpOperGrav"
+            formControlName="baseImpOperGrav"
+          />
+          <div
+            *ngIf="
+              editForm.get('baseImpOperGrav')!.invalid &&
+              (editForm.get('baseImpOperGrav')!.dirty || editForm.get('baseImpOperGrav')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('baseImpOperGrav')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('baseImpOperGrav')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.dsctoBaseImp" for="field_dsctoBaseImp">Dscto Base Imp</label>
+          <input
+            type="number"
+            class="form-control"
+            name="dsctoBaseImp"
+            id="field_dsctoBaseImp"
+            data-cy="dsctoBaseImp"
+            formControlName="dsctoBaseImp"
+          />
+          <div
+            *ngIf="editForm.get('dsctoBaseImp')!.invalid && (editForm.get('dsctoBaseImp')!.dirty || editForm.get('dsctoBaseImp')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dsctoBaseImp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dsctoBaseImp')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.igvIpm" for="field_igvIpm">Igv Ipm</label>
+          <input type="number" class="form-control" name="igvIpm" id="field_igvIpm" data-cy="igvIpm" formControlName="igvIpm" />
+          <div *ngIf="editForm.get('igvIpm')!.invalid && (editForm.get('igvIpm')!.dirty || editForm.get('igvIpm')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('igvIpm')?.errors?.required" jhiTranslate="entity.validation.required">
+              Este campo es obligatorio.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('igvIpm')?.errors?.number" jhiTranslate="entity.validation.number">
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.dsctoIgvIpm" for="field_dsctoIgvIpm">Dscto Igv Ipm</label>
+          <input
+            type="number"
+            class="form-control"
+            name="dsctoIgvIpm"
+            id="field_dsctoIgvIpm"
+            data-cy="dsctoIgvIpm"
+            formControlName="dsctoIgvIpm"
+          />
+          <div *ngIf="editForm.get('dsctoIgvIpm')!.invalid && (editForm.get('dsctoIgvIpm')!.dirty || editForm.get('dsctoIgvIpm')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dsctoIgvIpm')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dsctoIgvIpm')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.impOpeExo" for="field_impOpeExo">Imp Ope Exo</label>
+          <input type="number" class="form-control" name="impOpeExo" id="field_impOpeExo" data-cy="impOpeExo" formControlName="impOpeExo" />
+          <div *ngIf="editForm.get('impOpeExo')!.invalid && (editForm.get('impOpeExo')!.dirty || editForm.get('impOpeExo')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('impOpeExo')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('impOpeExo')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.impTotOpeInafec" for="field_impTotOpeInafec"
+            >Imp Tot Ope Inafec</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="impTotOpeInafec"
+            id="field_impTotOpeInafec"
+            data-cy="impTotOpeInafec"
+            formControlName="impTotOpeInafec"
+          />
+          <div
+            *ngIf="
+              editForm.get('impTotOpeInafec')!.invalid &&
+              (editForm.get('impTotOpeInafec')!.dirty || editForm.get('impTotOpeInafec')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('impTotOpeInafec')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('impTotOpeInafec')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.impSecCons" for="field_impSecCons">Imp Sec Cons</label>
+          <input
+            type="number"
+            class="form-control"
+            name="impSecCons"
+            id="field_impSecCons"
+            data-cy="impSecCons"
+            formControlName="impSecCons"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.baseImpArroz" for="field_baseImpArroz">Base Imp Arroz</label>
+          <input
+            type="number"
+            class="form-control"
+            name="baseImpArroz"
+            id="field_baseImpArroz"
+            data-cy="baseImpArroz"
+            formControlName="baseImpArroz"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.impVentArroz" for="field_impVentArroz">Imp Vent Arroz</label>
+          <input
+            type="number"
+            class="form-control"
+            name="impVentArroz"
+            id="field_impVentArroz"
+            data-cy="impVentArroz"
+            formControlName="impVentArroz"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.otrosNoBaseImp" for="field_otrosNoBaseImp">Otros No Base Imp</label>
+          <input
+            type="number"
+            class="form-control"
+            name="otrosNoBaseImp"
+            id="field_otrosNoBaseImp"
+            data-cy="otrosNoBaseImp"
+            formControlName="otrosNoBaseImp"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.importeTotalComp" for="field_importeTotalComp"
+            >Importe Total Comp</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="importeTotalComp"
+            id="field_importeTotalComp"
+            data-cy="importeTotalComp"
+            formControlName="importeTotalComp"
+          />
+          <div
+            *ngIf="
+              editForm.get('importeTotalComp')!.invalid &&
+              (editForm.get('importeTotalComp')!.dirty || editForm.get('importeTotalComp')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('importeTotalComp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('importeTotalComp')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.codMoneda" for="field_codMoneda">Cod Moneda</label>
+          <input type="text" class="form-control" name="codMoneda" id="field_codMoneda" data-cy="codMoneda" formControlName="codMoneda" />
+          <div *ngIf="editForm.get('codMoneda')!.invalid && (editForm.get('codMoneda')!.dirty || editForm.get('codMoneda')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codMoneda')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.tipCambio" for="field_tipCambio">Tip Cambio</label>
+          <input type="number" class="form-control" name="tipCambio" id="field_tipCambio" data-cy="tipCambio" formControlName="tipCambio" />
+          <div *ngIf="editForm.get('tipCambio')!.invalid && (editForm.get('tipCambio')!.dirty || editForm.get('tipCambio')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('tipCambio')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('tipCambio')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.fecEmiModif" for="field_fecEmiModif">Fec Emi Modif</label>
+          <div class="d-flex">
+            <input
+              id="field_fecEmiModif"
+              data-cy="fecEmiModif"
+              type="datetime-local"
+              class="form-control"
+              name="fecEmiModif"
+              formControlName="fecEmiModif"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.tipCompModif" for="field_tipCompModif">Tip Comp Modif</label>
+          <input
+            type="text"
+            class="form-control"
+            name="tipCompModif"
+            id="field_tipCompModif"
+            data-cy="tipCompModif"
+            formControlName="tipCompModif"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.nroSerieCompModif" for="field_nroSerieCompModif"
+            >Nro Serie Comp Modif</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nroSerieCompModif"
+            id="field_nroSerieCompModif"
+            data-cy="nroSerieCompModif"
+            formControlName="nroSerieCompModif"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.nroCompModif" for="field_nroCompModif">Nro Comp Modif</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nroCompModif"
+            id="field_nroCompModif"
+            data-cy="nroCompModif"
+            formControlName="nroCompModif"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.identContrato" for="field_identContrato">Ident Contrato</label>
+          <input
+            type="text"
+            class="form-control"
+            name="identContrato"
+            id="field_identContrato"
+            data-cy="identContrato"
+            formControlName="identContrato"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.errTipUno" for="field_errTipUno">Err Tip Uno</label>
+          <input type="text" class="form-control" name="errTipUno" id="field_errTipUno" data-cy="errTipUno" formControlName="errTipUno" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.indCompVancMp" for="field_indCompVancMp">Ind Comp Vanc Mp</label>
+          <input
+            type="text"
+            class="form-control"
+            name="indCompVancMp"
+            id="field_indCompVancMp"
+            data-cy="indCompVancMp"
+            formControlName="indCompVancMp"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.estadoOperaCancMp" for="field_estadoOperaCancMp"
+            >Estado Opera Canc Mp</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="estadoOperaCancMp"
+            id="field_estadoOperaCancMp"
+            data-cy="estadoOperaCancMp"
+            formControlName="estadoOperaCancMp"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.campoLibre" for="field_campoLibre">Campo Libre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="campoLibre"
+            id="field_campoLibre"
+            data-cy="campoLibre"
+            formControlName="campoLibre"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.formPago" for="field_formPago">Form Pago</label>
+          <input type="text" class="form-control" name="formPago" id="field_formPago" data-cy="formPago" formControlName="formPago" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.moneda" for="field_moneda">Moneda</label>
+          <input type="text" class="form-control" name="moneda" id="field_moneda" data-cy="moneda" formControlName="moneda" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.indDel" for="field_indDel">Ind Del</label>
+          <input type="checkbox" class="form-check" name="indDel" id="field_indDel" data-cy="indDel" formControlName="indDel" />
+          <div *ngIf="editForm.get('indDel')!.invalid && (editForm.get('indDel')!.dirty || editForm.get('indDel')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('indDel')?.errors?.required" jhiTranslate="entity.validation.required">
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.fecCrea" for="field_fecCrea">Fec Crea</label>
+          <div class="d-flex">
+            <input
+              id="field_fecCrea"
+              data-cy="fecCrea"
+              type="datetime-local"
+              class="form-control"
+              name="fecCrea"
+              formControlName="fecCrea"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('fecCrea')!.invalid && (editForm.get('fecCrea')!.dirty || editForm.get('fecCrea')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fecCrea')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fecCrea')?.errors?.datetimelocal"
+              jhiTranslate="entity.validation.datetimelocal"
+            >
+              Este campo debe ser una fecha y hora.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.usuCrea" for="field_usuCrea">Usu Crea</label>
+          <input type="text" class="form-control" name="usuCrea" id="field_usuCrea" data-cy="usuCrea" formControlName="usuCrea" />
+          <div *ngIf="editForm.get('usuCrea')!.invalid && (editForm.get('usuCrea')!.dirty || editForm.get('usuCrea')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('usuCrea')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.ipCrea" for="field_ipCrea">Ip Crea</label>
+          <input type="text" class="form-control" name="ipCrea" id="field_ipCrea" data-cy="ipCrea" formControlName="ipCrea" />
+          <div *ngIf="editForm.get('ipCrea')!.invalid && (editForm.get('ipCrea')!.dirty || editForm.get('ipCrea')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ipCrea')?.errors?.required" jhiTranslate="entity.validation.required">
+              Este campo es obligatorio.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.fecModif" for="field_fecModif">Fec Modif</label>
+          <div class="d-flex">
+            <input
+              id="field_fecModif"
+              data-cy="fecModif"
+              type="datetime-local"
+              class="form-control"
+              name="fecModif"
+              formControlName="fecModif"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.usuModif" for="field_usuModif">Usu Modif</label>
+          <input type="text" class="form-control" name="usuModif" id="field_usuModif" data-cy="usuModif" formControlName="usuModif" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.ipModif" for="field_ipModif">Ip Modif</label>
+          <input type="text" class="form-control" name="ipModif" id="field_ipModif" data-cy="ipModif" formControlName="ipModif" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sicore2App.regVenta.orden" for="field_orden">Orden</label>
+          <select class="form-control" id="field_orden" data-cy="orden" name="orden" formControlName="orden" [compareWith]="compareOrden">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="ordenOption" *ngFor="let ordenOption of ordensSharedCollection">{{ ordenOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

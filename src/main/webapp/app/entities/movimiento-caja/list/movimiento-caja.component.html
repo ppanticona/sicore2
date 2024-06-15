@@ -1,0 +1,208 @@
+<div>
+  <h2 id="page-heading" data-cy="MovimientoCajaHeading">
+    <span jhiTranslate="sicore2App.movimientoCaja.home.title">Movimiento Cajas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.movimientoCaja.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-movimiento-caja"
+        [routerLink]="['/movimiento-caja/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.movimientoCaja.home.createLabel"> Crear nuevo Movimiento Caja </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="movimientoCajas?.length === 0">
+    <span jhiTranslate="sicore2App.movimientoCaja.home.notFound">Ningún Movimiento Cajas encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="movimientoCajas && movimientoCajas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipMovimiento">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.tipMovimiento">Tip Movimiento</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="concepto">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.concepto">Concepto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="monto">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.monto">Monto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipMoneda">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.tipMoneda">Tip Moneda</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="formPago">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.formPago">Form Pago</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="comprobante">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.comprobante">Comprobante</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecMovimiento">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.fecMovimiento">Fec Movimiento</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="asignacionCaja.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.asignacionCaja">Asignacion Caja</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autorizacion.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.movimientoCaja.autorizacion">Autorizacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movimientoCaja of movimientoCajas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/movimiento-caja', movimientoCaja.id, 'view']">{{ movimientoCaja.id }}</a>
+          </td>
+          <td>{{ movimientoCaja.tipMovimiento }}</td>
+          <td>{{ movimientoCaja.concepto }}</td>
+          <td>{{ movimientoCaja.monto }}</td>
+          <td>{{ movimientoCaja.tipMoneda }}</td>
+          <td>{{ movimientoCaja.formPago }}</td>
+          <td>{{ movimientoCaja.comprobante }}</td>
+          <td>{{ movimientoCaja.fecMovimiento | formatMediumDatetime }}</td>
+          <td>{{ movimientoCaja.version }}</td>
+          <td>{{ movimientoCaja.indDel }}</td>
+          <td>{{ movimientoCaja.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ movimientoCaja.usuCrea }}</td>
+          <td>{{ movimientoCaja.ipCrea }}</td>
+          <td>{{ movimientoCaja.fecModif | formatMediumDatetime }}</td>
+          <td>{{ movimientoCaja.usuModif }}</td>
+          <td>{{ movimientoCaja.ipModif }}</td>
+          <td>
+            <div *ngIf="movimientoCaja.asignacionCaja">
+              <a [routerLink]="['/asignacion-caja', movimientoCaja.asignacionCaja.id, 'view']">{{ movimientoCaja.asignacionCaja.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="movimientoCaja.autorizacion">
+              <a [routerLink]="['/autorizacion', movimientoCaja.autorizacion.id, 'view']">{{ movimientoCaja.autorizacion.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/movimiento-caja', movimientoCaja.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/movimiento-caja', movimientoCaja.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(movimientoCaja)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

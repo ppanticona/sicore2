@@ -1,0 +1,120 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171650",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "asignacion_caja",
+  "fields": [
+    {
+      "fieldName": "codAsignacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mntoInicialSoles",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "mntoFinalSoles",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "montoMaximoSoles",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "diferenciaSoles",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "mntoInicialDolares",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "mntoFinalDolares",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "montoMaximoDolares",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "diferenciaDolares",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "observacionApertura",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "observacionCierre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fecAsignacion",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AsignacionCaja",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "empleados",
+      "ownerSide": true,
+      "relationshipName": "userId",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "caja",
+      "ownerSide": true,
+      "relationshipName": "caja",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

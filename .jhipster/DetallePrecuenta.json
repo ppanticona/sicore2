@@ -1,0 +1,89 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171643",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "detalle_precuenta",
+  "fields": [
+    {
+      "fieldName": "correlativo",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "DetallePrecuenta",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "orden",
+      "relationshipName": "orden",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "autorizacion",
+      "relationshipName": "autorizacion",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "regVenta",
+      "relationshipName": "regVenta",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "precuenta",
+      "relationshipName": "precuenta",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "detalleOrden",
+      "relationshipName": "detalleOrden",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

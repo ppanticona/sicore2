@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="detalleOrden">
+      <h2 data-cy="detalleOrdenDetailsHeading"><span jhiTranslate="sicore2App.detalleOrden.detail.title">Detalle Orden</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ detalleOrden.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.observacion">Observacion</span></dt>
+        <dd>
+          <span>{{ detalleOrden.observacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.monto">Monto</span></dt>
+        <dd>
+          <span>{{ detalleOrden.monto }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.indPagado">Ind Pagado</span></dt>
+        <dd>
+          <span>{{ detalleOrden.indPagado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.estado">Estado</span></dt>
+        <dd>
+          <span>{{ detalleOrden.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.version">Version</span></dt>
+        <dd>
+          <span>{{ detalleOrden.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ detalleOrden.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ detalleOrden.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ detalleOrden.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ detalleOrden.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ detalleOrden.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ detalleOrden.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ detalleOrden.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.orden">Orden</span></dt>
+        <dd>
+          <div *ngIf="detalleOrden.orden">
+            <a [routerLink]="['/orden', detalleOrden.orden.id, 'view']">{{ detalleOrden.orden.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.promocion">Promocion</span></dt>
+        <dd>
+          <div *ngIf="detalleOrden.promocion">
+            <a [routerLink]="['/promocion', detalleOrden.promocion.id, 'view']">{{ detalleOrden.promocion.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.autorizacion">Autorizacion</span></dt>
+        <dd>
+          <div *ngIf="detalleOrden.autorizacion">
+            <a [routerLink]="['/autorizacion', detalleOrden.autorizacion.id, 'view']">{{ detalleOrden.autorizacion.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.detalleOrden.producto">Producto</span></dt>
+        <dd>
+          <div *ngIf="detalleOrden.producto">
+            <a [routerLink]="['/producto', detalleOrden.producto.id, 'view']">{{ detalleOrden.producto.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/detalle-orden', detalleOrden.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

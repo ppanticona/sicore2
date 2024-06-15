@@ -1,0 +1,47 @@
+{
+  "sicore2App": {
+    "empleados": {
+      "home": {
+        "title": "Empleados",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Empleados",
+        "createOrEditLabel": "Crear o editar Empleados",
+        "notFound": "Ningún Empleados encontrado"
+      },
+      "created": "Un nuevo Empleados ha sido creado con el identificador {{ param }}",
+      "updated": "Un Empleados ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Empleados ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Empleados {{ id }}?"
+      },
+      "detail": {
+        "title": "Empleados"
+      },
+      "id": "ID",
+      "tipDoc": "Tip Doc",
+      "nroDoc": "Nro Doc",
+      "nombres": "Nombres",
+      "apellidos": "Apellidos",
+      "categoria": "Categoria",
+      "tel1": "Tel 1",
+      "tel2": "Tel 2",
+      "correo": "Correo",
+      "direccion": "Direccion",
+      "refDirecc": "Ref Direcc",
+      "distrito": "Distrito",
+      "fecIngreso": "Fec Ingreso",
+      "fecNac": "Fec Nac",
+      "imagen": "Imagen",
+      "userId": "User Id",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif"
+    }
+  }
+}

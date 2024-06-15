@@ -1,0 +1,116 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="proveedores">
+      <h2 data-cy="proveedoresDetailsHeading"><span jhiTranslate="sicore2App.proveedores.detail.title">Proveedores</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ proveedores.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.tipDoc">Tip Doc</span></dt>
+        <dd>
+          <span>{{ proveedores.tipDoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.nroDoc">Nro Doc</span></dt>
+        <dd>
+          <span>{{ proveedores.nroDoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.nombres">Nombres</span></dt>
+        <dd>
+          <span>{{ proveedores.nombres }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.apellidos">Apellidos</span></dt>
+        <dd>
+          <span>{{ proveedores.apellidos }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.categoria">Categoria</span></dt>
+        <dd>
+          <span>{{ proveedores.categoria }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.tel1">Tel 1</span></dt>
+        <dd>
+          <span>{{ proveedores.tel1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.tel2">Tel 2</span></dt>
+        <dd>
+          <span>{{ proveedores.tel2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.correo">Correo</span></dt>
+        <dd>
+          <span>{{ proveedores.correo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.direccion">Direccion</span></dt>
+        <dd>
+          <span>{{ proveedores.direccion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.refDirecc">Ref Direcc</span></dt>
+        <dd>
+          <span>{{ proveedores.refDirecc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.distrito">Distrito</span></dt>
+        <dd>
+          <span>{{ proveedores.distrito }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.fecNac">Fec Nac</span></dt>
+        <dd>
+          <span>{{ proveedores.fecNac | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.userId">User Id</span></dt>
+        <dd>
+          <span>{{ proveedores.userId }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.estado">Estado</span></dt>
+        <dd>
+          <span>{{ proveedores.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.version">Version</span></dt>
+        <dd>
+          <span>{{ proveedores.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ proveedores.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ proveedores.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ proveedores.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ proveedores.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ proveedores.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ proveedores.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.proveedores.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ proveedores.ipModif }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/proveedores', proveedores.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

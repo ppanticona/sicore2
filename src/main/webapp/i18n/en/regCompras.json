@@ -1,0 +1,73 @@
+{
+  "sicore2App": {
+    "regCompras": {
+      "home": {
+        "title": "Reg Compras",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Reg Compras",
+        "createOrEditLabel": "Create or edit a Reg Compras",
+        "notFound": "No Reg Compras found"
+      },
+      "created": "A new Reg Compras is created with identifier {{ param }}",
+      "updated": "A Reg Compras is updated with identifier {{ param }}",
+      "deleted": "A Reg Compras is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Reg Compras {{ id }}?"
+      },
+      "detail": {
+        "title": "Reg Compras"
+      },
+      "id": "ID",
+      "periodo": "Periodo",
+      "cuo": "Cuo",
+      "asientContab": "Asient Contab",
+      "fecEmiComp": "Fec Emi Comp",
+      "fecVencComp": "Fec Venc Comp",
+      "tipComp": "Tip Comp",
+      "nroSerieComp": "Nro Serie Comp",
+      "anhoEmisionDua": "Anho Emision Dua",
+      "nroComp": "Nro Comp",
+      "nroFinal": "Nro Final",
+      "tipDocProv": "Tip Doc Prov",
+      "nroDocProv": "Nro Doc Prov",
+      "nomApeRazSocProv": "Nom Ape Raz Soc Prov",
+      "baseImponible": "Base Imponible",
+      "montoIgv": "Monto Igv",
+      "baseImponible2": "Base Imponible 2",
+      "montoIgv2": "Monto Igv 2",
+      "baseImponible3": "Base Imponible 3",
+      "montoIgv3": "Monto Igv 3",
+      "montoNoGravado": "Monto No Gravado",
+      "montoIsc": "Monto Isc",
+      "impConsBols": "Imp Cons Bols",
+      "otrosCargos": "Otros Cargos",
+      "importeTotal": "Importe Total",
+      "codMoneda": "Cod Moneda",
+      "tipCambio": "Tip Cambio",
+      "fecEmiModif": "Fec Emi Modif",
+      "tipCompModif": "Tip Comp Modif",
+      "nroSerieCompModif": "Nro Serie Comp Modif",
+      "codDuaRef": "Cod Dua Ref",
+      "nroCompModif": "Nro Comp Modif",
+      "fecEmiDetracc": "Fec Emi Detracc",
+      "nroConstDetracc": "Nro Const Detracc",
+      "indCompSujRetenc": "Ind Comp Suj Retenc",
+      "clasBienesyServicios": "Clas Bienesy Servicios",
+      "identContrato": "Ident Contrato",
+      "errTipUno": "Err Tip Uno",
+      "errTipDos": "Err Tip Dos",
+      "errTipTres": "Err Tip Tres",
+      "errTipCuatro": "Err Tip Cuatro",
+      "indCompPagoMedPago": "Ind Comp Pago Med Pago",
+      "estado": "Estado",
+      "campoLibre": "Campo Libre",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif"
+    }
+  }
+}

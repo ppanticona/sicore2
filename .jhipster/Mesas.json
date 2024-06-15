@@ -1,0 +1,101 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171632",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "mesas",
+  "fields": [
+    {
+      "fieldName": "seqMesa",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nroMesa",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codGrupo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "categoria",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "capacidad",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "indMesaJunta",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Mesas",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "orden",
+      "relationshipName": "orden",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "sede",
+      "relationshipName": "sede",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "empleados",
+      "relationshipName": "empleado",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

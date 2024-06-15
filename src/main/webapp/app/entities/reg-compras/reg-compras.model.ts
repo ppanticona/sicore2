@@ -1,0 +1,57 @@
+import dayjs from 'dayjs/esm';
+
+export interface IRegCompras {
+  id: string;
+  periodo?: string | null;
+  cuo?: string | null;
+  asientContab?: string | null;
+  fecEmiComp?: dayjs.Dayjs | null;
+  fecVencComp?: dayjs.Dayjs | null;
+  tipComp?: string | null;
+  nroSerieComp?: string | null;
+  anhoEmisionDua?: string | null;
+  nroComp?: string | null;
+  nroFinal?: string | null;
+  tipDocProv?: string | null;
+  nroDocProv?: string | null;
+  nomApeRazSocProv?: string | null;
+  baseImponible?: number | null;
+  montoIgv?: number | null;
+  baseImponible2?: number | null;
+  montoIgv2?: number | null;
+  baseImponible3?: number | null;
+  montoIgv3?: number | null;
+  montoNoGravado?: number | null;
+  montoIsc?: number | null;
+  impConsBols?: number | null;
+  otrosCargos?: number | null;
+  importeTotal?: number | null;
+  codMoneda?: string | null;
+  tipCambio?: number | null;
+  fecEmiModif?: dayjs.Dayjs | null;
+  tipCompModif?: string | null;
+  nroSerieCompModif?: string | null;
+  codDuaRef?: string | null;
+  nroCompModif?: string | null;
+  fecEmiDetracc?: dayjs.Dayjs | null;
+  nroConstDetracc?: string | null;
+  indCompSujRetenc?: string | null;
+  clasBienesyServicios?: string | null;
+  identContrato?: string | null;
+  errTipUno?: string | null;
+  errTipDos?: string | null;
+  errTipTres?: string | null;
+  errTipCuatro?: string | null;
+  indCompPagoMedPago?: string | null;
+  estado?: number | null;
+  campoLibre?: string | null;
+  indDel?: boolean | null;
+  fecCrea?: dayjs.Dayjs | null;
+  usuCrea?: string | null;
+  ipCrea?: string | null;
+  fecModif?: dayjs.Dayjs | null;
+  usuModif?: string | null;
+  ipModif?: string | null;
+}
+
+export type NewRegCompras = Omit<IRegCompras, 'id'> & { id: null };

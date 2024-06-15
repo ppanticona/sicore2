@@ -1,0 +1,477 @@
+ entity Mesas {
+	seqMesa Integer required, 
+    nroMesa Integer required, 
+    codGrupo String,
+    categoria String, 
+    capacidad Integer,
+    indMesaJunta Boolean required,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+ 
+ entity Sede {
+	codSede Integer required, 
+    descripcion Integer required, 
+    categoria String,
+    tel1 String,
+    tel2 String,
+    correo String,
+    direccion String,
+    refDirecc String,
+    distrito String, 
+    fecAper ZonedDateTime required,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+} 
+ entity Proveedores {
+	tipDoc String required,
+    nroDoc String required,
+    nombres String required,
+    apellidos String required,
+    categoria String,
+    tel1 String,
+    tel2 String,
+    correo String,
+    direccion String,
+    refDirecc String,
+    distrito String, 
+    fecNac ZonedDateTime required,
+    userId String,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+entity Clientes {
+	tipDoc String required,
+    nroDoc String required,
+    nombres String required,
+    apellidos String required,
+    categoria String,
+    tel1 String,
+    tel2 String,
+    correo String,
+    direccion String,
+    refDirecc String,
+    distrito String, 
+    fecNac ZonedDateTime required,
+    userId String,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+entity Empleados {
+	tipDoc String required,
+    nroDoc String required,
+    nombres String required,
+    apellidos String required,
+    categoria String,
+    tel1 String,
+    tel2 String,
+    correo String,
+    direccion String,
+    refDirecc String,
+    distrito String,
+    fecIngreso ZonedDateTime,
+    fecNac ZonedDateTime required,
+    imagen String,
+    userId String,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+
+entity RegVenta {  
+    periodo String required,
+    cuo String required,
+    asientContab String,
+    fecEmiComp ZonedDateTime required,
+    fecVencComp ZonedDateTime,
+    tipComp String required,
+    nroSerieComp String required,
+    nroComp String required,
+    consoDia String, 
+    tipDocCli String required,
+    nroDocCli String required,
+    apeRazSocCli String required,
+    valFacExpor Double,
+    baseImpOperGrav Double required, 
+    dsctoBaseImp Double required,
+    igvIpm Double required,
+    dsctoIgvIpm Double required,
+    impOpeExo Double required,
+    impTotOpeInafec Double required,
+    impSecCons Double ,
+    baseImpArroz Double ,
+    impVentArroz Double, 
+    otrosNoBaseImp Double ,
+    importeTotalComp Double required,
+    codMoneda String required,
+    tipCambio Double required,
+    fecEmiModif ZonedDateTime,
+    tipCompModif String,
+    nroSerieCompModif String,
+    nroCompModif String,
+    identContrato String,
+    errTipUno String,
+    indCompVancMp String,
+    estadoOperaCancMp String,
+    campoLibre String,
+    formPago String,
+    moneda String,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+entity RegCompras {
+    periodo String required,
+    cuo String required,
+    asientContab String,
+    fecEmiComp ZonedDateTime required,
+    fecVencComp ZonedDateTime,
+    tipComp String required,
+    nroSerieComp String required,
+    anhoEmisionDua String,
+    nroComp String required,
+    nroFinal String,
+    tipDocProv String required,
+    nroDocProv String required,
+    nomApeRazSocProv String required,
+    baseImponible Double required,
+    montoIgv Double required,
+    baseImponible2 Double required,
+    montoIgv2 Double required,
+    baseImponible3 Double ,
+    montoIgv3 Double required,
+    montoNoGravado Double,
+    montoIsc Double,
+    impConsBols Double,
+    otrosCargos Double,
+    importeTotal Double,
+    codMoneda String,
+    tipCambio Double,
+    fecEmiModif ZonedDateTime,
+    tipCompModif String,
+    nroSerieCompModif String,
+    codDuaRef String,
+    nroCompModif String,
+    fecEmiDetracc ZonedDateTime,
+    nroConstDetracc String,
+    indCompSujRetenc String,
+    clasBienesyServicios String,
+    identContrato String,
+    errTipUno String,
+    errTipDos String,
+    errTipTres String,
+    errTipCuatro String,
+    indCompPagoMedPago String,
+    estado Integer,
+    campoLibre String,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+entity MovimientoCaja {
+    tipMovimiento String,
+    concepto String,
+    monto Double,
+    tipMoneda String,
+    formPago String,
+    comprobante String,
+    fecMovimiento ZonedDateTime,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+ 
+
+entity Autorizacion {
+    tipAutorizacion String required,
+    subTipAutorizacion String required,
+    concepto String,
+    comentario String,
+    monto Double, 
+    moneda String,
+	token String required,
+    fecIniVig ZonedDateTime required,
+    fecFinVig ZonedDateTime required,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+           
+}
+
+entity Caja {
+    tipCaja String required,
+    descripcion String required,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+    
+}
+
+entity Producto {
+    codProducto String ,
+    tipProducto String,// tipo: matricula, clase, accesorios, campeonato, pension
+    codQr String,
+    codBarra String,
+    descripcion String required, 
+    detalleDesc String ,
+    valor Double, //el monto
+    categoria String,
+    subCategoria String,
+    categoriaMenu String, 
+    urlImage String , 
+    fecIniVig ZonedDateTime  ,
+    fecFinVig ZonedDateTime  ,
+    costoProd Double,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+entity Precuenta {
+    numPrecuenta Integer required,
+    observacion TextBlob , 
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+
+entity DetallePrecuenta {
+    correlativo Integer required, 
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+
+
+entity Orden {
+    numOrden Integer required,
+    observacion TextBlob ,
+    fecIngreso ZonedDateTime,
+    fecSalida ZonedDateTime,
+    codCanal String required,
+    tipOrden String required,// orden inmediata; programada (campeonatos)
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+entity DetalleOrden { 
+    observacion TextBlob ,
+    monto Double,
+    indPagado Boolean,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+entity Secuencias {
+	
+    seqid String,
+    descripcion String,
+    sequence Integer 
+}
+entity Parametros {
+	
+    codParam String,
+    detParam String,
+    primParam String,
+    segParam String,
+    tercParam String,
+    cuarParam String,
+    descripcion String,
+    sequence Integer 
+}
+
+entity Promocion {
+    tipPromocion String required,
+    val1 String, 
+    val2 String,
+    val3 String,
+    val4 String,
+    val5 String,
+    maxProm String,
+    fecIniVig ZonedDateTime required,
+    fecFinVig ZonedDateTime required,
+    comentarios TextBlob required,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+entity Asistencia {
+    tipAsistente String required, // alumno, empleado, entrenador
+    resultado String, // Asistió, tardanza, faltó
+    anoAsistencia Integer ,
+    mesAsistencia Integer ,
+    diaAsistencia Integer ,
+    observacion String,
+    comentarios TextBlob required,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+entity AsignacionCaja {
+    codAsignacion String required, // generado de secuencia
+    mntoInicialSoles Double,
+    mntoFinalSoles Double,
+    montoMaximoSoles Double ,
+    diferenciaSoles Double, 
+    mntoInicialDolares Double,
+    mntoFinalDolares Double,
+    montoMaximoDolares Double,
+    diferenciaDolares Double,
+    observacionApertura String,
+    observacionCierre String,
+    fecAsignacion ZonedDateTime ,
+    estado String required,
+    version Integer required,
+    indDel Boolean required,
+    fecCrea ZonedDateTime required,
+    usuCrea String required,
+    ipCrea String required,
+    fecModif ZonedDateTime ,
+    usuModif String ,
+    ipModif String 
+}
+
+relationship ManyToOne {
+  MovimientoCaja{asignacionCaja} to AsignacionCaja
+  MovimientoCaja{autorizacion} to Autorizacion 
+  Mesas{orden} to Orden
+  Mesas{sede} to Sede
+  Mesas{empleado} to Empleados
+  Precuenta{orden} to Orden
+  DetalleOrden{orden} to Orden
+  DetallePrecuenta{orden} to Orden
+  DetallePrecuenta{autorizacion} to Autorizacion 
+  DetallePrecuenta{regVenta} to RegVenta
+  DetallePrecuenta{precuenta} to Precuenta 
+  DetallePrecuenta{detalleOrden} to DetalleOrden
+  DetalleOrden{promocion} to Promocion
+  DetalleOrden{autorizacion} to Autorizacion
+  DetalleOrden{producto} to Producto
+  
+}
+relationship OneToMany { 
+    Orden{regVenta} to RegVenta{orden}
+    
+    
+}
+
+relationship OneToOne {
+	
+Promocion{autorizacion} to Autorizacion  
+Autorizacion{producto} to Producto  
+Asistencia{userId} to Empleados 
+AsignacionCaja{userId} to Empleados
+AsignacionCaja{caja} to Caja 
+    
+}
+ 

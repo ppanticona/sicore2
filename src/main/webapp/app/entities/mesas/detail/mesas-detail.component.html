@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="mesas">
+      <h2 data-cy="mesasDetailsHeading"><span jhiTranslate="sicore2App.mesas.detail.title">Mesas</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ mesas.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.seqMesa">Seq Mesa</span></dt>
+        <dd>
+          <span>{{ mesas.seqMesa }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.nroMesa">Nro Mesa</span></dt>
+        <dd>
+          <span>{{ mesas.nroMesa }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.codGrupo">Cod Grupo</span></dt>
+        <dd>
+          <span>{{ mesas.codGrupo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.categoria">Categoria</span></dt>
+        <dd>
+          <span>{{ mesas.categoria }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.capacidad">Capacidad</span></dt>
+        <dd>
+          <span>{{ mesas.capacidad }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.indMesaJunta">Ind Mesa Junta</span></dt>
+        <dd>
+          <span>{{ mesas.indMesaJunta }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.estado">Estado</span></dt>
+        <dd>
+          <span>{{ mesas.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.version">Version</span></dt>
+        <dd>
+          <span>{{ mesas.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ mesas.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ mesas.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ mesas.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ mesas.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ mesas.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ mesas.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ mesas.ipModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.orden">Orden</span></dt>
+        <dd>
+          <div *ngIf="mesas.orden">
+            <a [routerLink]="['/orden', mesas.orden.id, 'view']">{{ mesas.orden.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.sede">Sede</span></dt>
+        <dd>
+          <div *ngIf="mesas.sede">
+            <a [routerLink]="['/sede', mesas.sede.id, 'view']">{{ mesas.sede.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.mesas.empleado">Empleado</span></dt>
+        <dd>
+          <div *ngIf="mesas.empleado">
+            <a [routerLink]="['/empleados', mesas.empleado.id, 'view']">{{ mesas.empleado.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/mesas', mesas.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

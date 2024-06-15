@@ -1,0 +1,26 @@
+{
+  "sicore2App": {
+    "secuencias": {
+      "home": {
+        "title": "Secuencias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Secuencias",
+        "createOrEditLabel": "Crear o editar Secuencias",
+        "notFound": "Ningún Secuencias encontrado"
+      },
+      "created": "Un nuevo Secuencias ha sido creado con el identificador {{ param }}",
+      "updated": "Un Secuencias ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Secuencias ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Secuencias {{ id }}?"
+      },
+      "detail": {
+        "title": "Secuencias"
+      },
+      "id": "ID",
+      "seqid": "Seqid",
+      "descripcion": "Descripcion",
+      "sequence": "Sequence"
+    }
+  }
+}

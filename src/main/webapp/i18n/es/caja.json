@@ -1,0 +1,34 @@
+{
+  "sicore2App": {
+    "caja": {
+      "home": {
+        "title": "Cajas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Caja",
+        "createOrEditLabel": "Crear o editar Caja",
+        "notFound": "Ningún Cajas encontrado"
+      },
+      "created": "Un nuevo Caja ha sido creado con el identificador {{ param }}",
+      "updated": "Un Caja ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Caja ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Caja {{ id }}?"
+      },
+      "detail": {
+        "title": "Caja"
+      },
+      "id": "ID",
+      "tipCaja": "Tip Caja",
+      "descripcion": "Descripcion",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif"
+    }
+  }
+}

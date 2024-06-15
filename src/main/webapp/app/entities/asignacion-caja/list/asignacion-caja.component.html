@@ -1,0 +1,250 @@
+<div>
+  <h2 id="page-heading" data-cy="AsignacionCajaHeading">
+    <span jhiTranslate="sicore2App.asignacionCaja.home.title">Asignacion Cajas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.asignacionCaja.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-asignacion-caja"
+        [routerLink]="['/asignacion-caja/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.asignacionCaja.home.createLabel"> Crear nuevo Asignacion Caja </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="asignacionCajas?.length === 0">
+    <span jhiTranslate="sicore2App.asignacionCaja.home.notFound">Ningún Asignacion Cajas encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="asignacionCajas && asignacionCajas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="codAsignacion">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.codAsignacion">Cod Asignacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mntoInicialSoles">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.mntoInicialSoles">Mnto Inicial Soles</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mntoFinalSoles">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.mntoFinalSoles">Mnto Final Soles</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montoMaximoSoles">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.montoMaximoSoles">Monto Maximo Soles</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="diferenciaSoles">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.diferenciaSoles">Diferencia Soles</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mntoInicialDolares">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.mntoInicialDolares">Mnto Inicial Dolares</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mntoFinalDolares">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.mntoFinalDolares">Mnto Final Dolares</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="montoMaximoDolares">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.montoMaximoDolares">Monto Maximo Dolares</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="diferenciaDolares">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.diferenciaDolares">Diferencia Dolares</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="observacionApertura">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.observacionApertura">Observacion Apertura</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="observacionCierre">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.observacionCierre">Observacion Cierre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecAsignacion">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.fecAsignacion">Fec Asignacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="userId.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.userId">User Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="caja.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asignacionCaja.caja">Caja</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asignacionCaja of asignacionCajas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/asignacion-caja', asignacionCaja.id, 'view']">{{ asignacionCaja.id }}</a>
+          </td>
+          <td>{{ asignacionCaja.codAsignacion }}</td>
+          <td>{{ asignacionCaja.mntoInicialSoles }}</td>
+          <td>{{ asignacionCaja.mntoFinalSoles }}</td>
+          <td>{{ asignacionCaja.montoMaximoSoles }}</td>
+          <td>{{ asignacionCaja.diferenciaSoles }}</td>
+          <td>{{ asignacionCaja.mntoInicialDolares }}</td>
+          <td>{{ asignacionCaja.mntoFinalDolares }}</td>
+          <td>{{ asignacionCaja.montoMaximoDolares }}</td>
+          <td>{{ asignacionCaja.diferenciaDolares }}</td>
+          <td>{{ asignacionCaja.observacionApertura }}</td>
+          <td>{{ asignacionCaja.observacionCierre }}</td>
+          <td>{{ asignacionCaja.fecAsignacion | formatMediumDatetime }}</td>
+          <td>{{ asignacionCaja.estado }}</td>
+          <td>{{ asignacionCaja.version }}</td>
+          <td>{{ asignacionCaja.indDel }}</td>
+          <td>{{ asignacionCaja.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ asignacionCaja.usuCrea }}</td>
+          <td>{{ asignacionCaja.ipCrea }}</td>
+          <td>{{ asignacionCaja.fecModif | formatMediumDatetime }}</td>
+          <td>{{ asignacionCaja.usuModif }}</td>
+          <td>{{ asignacionCaja.ipModif }}</td>
+          <td>
+            <div *ngIf="asignacionCaja.userId">
+              <a [routerLink]="['/empleados', asignacionCaja.userId.id, 'view']">{{ asignacionCaja.userId.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="asignacionCaja.caja">
+              <a [routerLink]="['/caja', asignacionCaja.caja.id, 'view']">{{ asignacionCaja.caja.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/asignacion-caja', asignacionCaja.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/asignacion-caja', asignacionCaja.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(asignacionCaja)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

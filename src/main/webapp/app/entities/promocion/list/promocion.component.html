@@ -1,0 +1,225 @@
+<div>
+  <h2 id="page-heading" data-cy="PromocionHeading">
+    <span jhiTranslate="sicore2App.promocion.home.title">Promocions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.promocion.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-promocion"
+        [routerLink]="['/promocion/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.promocion.home.createLabel"> Crear nuevo Promocion </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="promocions?.length === 0">
+    <span jhiTranslate="sicore2App.promocion.home.notFound">Ningún Promocions encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="promocions && promocions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipPromocion">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.tipPromocion">Tip Promocion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="val1">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.val1">Val 1</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="val2">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.val2">Val 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="val3">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.val3">Val 3</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="val4">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.val4">Val 4</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="val5">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.val5">Val 5</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="maxProm">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.maxProm">Max Prom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecIniVig">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.fecIniVig">Fec Ini Vig</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecFinVig">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.fecFinVig">Fec Fin Vig</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="comentarios">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.comentarios">Comentarios</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autorizacion.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.promocion.autorizacion">Autorizacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let promocion of promocions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/promocion', promocion.id, 'view']">{{ promocion.id }}</a>
+          </td>
+          <td>{{ promocion.tipPromocion }}</td>
+          <td>{{ promocion.val1 }}</td>
+          <td>{{ promocion.val2 }}</td>
+          <td>{{ promocion.val3 }}</td>
+          <td>{{ promocion.val4 }}</td>
+          <td>{{ promocion.val5 }}</td>
+          <td>{{ promocion.maxProm }}</td>
+          <td>{{ promocion.fecIniVig | formatMediumDatetime }}</td>
+          <td>{{ promocion.fecFinVig | formatMediumDatetime }}</td>
+          <td>{{ promocion.comentarios }}</td>
+          <td>{{ promocion.estado }}</td>
+          <td>{{ promocion.version }}</td>
+          <td>{{ promocion.indDel }}</td>
+          <td>{{ promocion.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ promocion.usuCrea }}</td>
+          <td>{{ promocion.ipCrea }}</td>
+          <td>{{ promocion.fecModif | formatMediumDatetime }}</td>
+          <td>{{ promocion.usuModif }}</td>
+          <td>{{ promocion.ipModif }}</td>
+          <td>
+            <div *ngIf="promocion.autorizacion">
+              <a [routerLink]="['/autorizacion', promocion.autorizacion.id, 'view']">{{ promocion.autorizacion.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/promocion', promocion.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/promocion', promocion.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(promocion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

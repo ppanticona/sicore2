@@ -1,0 +1,42 @@
+{
+  "sicore2App": {
+    "sede": {
+      "home": {
+        "title": "Sedes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sede",
+        "createOrEditLabel": "Create or edit a Sede",
+        "notFound": "No Sedes found"
+      },
+      "created": "A new Sede is created with identifier {{ param }}",
+      "updated": "A Sede is updated with identifier {{ param }}",
+      "deleted": "A Sede is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sede {{ id }}?"
+      },
+      "detail": {
+        "title": "Sede"
+      },
+      "id": "ID",
+      "codSede": "Cod Sede",
+      "descripcion": "Descripcion",
+      "categoria": "Categoria",
+      "tel1": "Tel 1",
+      "tel2": "Tel 2",
+      "correo": "Correo",
+      "direccion": "Direccion",
+      "refDirecc": "Ref Direcc",
+      "distrito": "Distrito",
+      "fecAper": "Fec Aper",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif"
+    }
+  }
+}

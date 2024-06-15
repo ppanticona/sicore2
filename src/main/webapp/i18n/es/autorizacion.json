@@ -1,0 +1,42 @@
+{
+  "sicore2App": {
+    "autorizacion": {
+      "home": {
+        "title": "Autorizacions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Autorizacion",
+        "createOrEditLabel": "Crear o editar Autorizacion",
+        "notFound": "Ningún Autorizacions encontrado"
+      },
+      "created": "Un nuevo Autorizacion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Autorizacion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Autorizacion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Autorizacion {{ id }}?"
+      },
+      "detail": {
+        "title": "Autorizacion"
+      },
+      "id": "ID",
+      "tipAutorizacion": "Tip Autorizacion",
+      "subTipAutorizacion": "Sub Tip Autorizacion",
+      "concepto": "Concepto",
+      "comentario": "Comentario",
+      "monto": "Monto",
+      "moneda": "Moneda",
+      "token": "Token",
+      "fecIniVig": "Fec Ini Vig",
+      "fecFinVig": "Fec Fin Vig",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "producto": "Producto"
+    }
+  }
+}

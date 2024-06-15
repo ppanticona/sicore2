@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171646",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "secuencias",
+  "fields": [
+    {
+      "fieldName": "seqid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sequence",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Secuencias",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

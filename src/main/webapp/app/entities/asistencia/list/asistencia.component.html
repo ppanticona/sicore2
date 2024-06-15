@@ -1,0 +1,204 @@
+<div>
+  <h2 id="page-heading" data-cy="AsistenciaHeading">
+    <span jhiTranslate="sicore2App.asistencia.home.title">Asistencias</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.asistencia.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-asistencia"
+        [routerLink]="['/asistencia/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.asistencia.home.createLabel"> Crear nuevo Asistencia </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="asistencias?.length === 0">
+    <span jhiTranslate="sicore2App.asistencia.home.notFound">Ningún Asistencias encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="asistencias && asistencias.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tipAsistente">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.tipAsistente">Tip Asistente</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="resultado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.resultado">Resultado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="anoAsistencia">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.anoAsistencia">Ano Asistencia</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mesAsistencia">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.mesAsistencia">Mes Asistencia</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="diaAsistencia">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.diaAsistencia">Dia Asistencia</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="observacion">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.observacion">Observacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="comentarios">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.comentarios">Comentarios</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="userId.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.asistencia.userId">User Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asistencia of asistencias; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/asistencia', asistencia.id, 'view']">{{ asistencia.id }}</a>
+          </td>
+          <td>{{ asistencia.tipAsistente }}</td>
+          <td>{{ asistencia.resultado }}</td>
+          <td>{{ asistencia.anoAsistencia }}</td>
+          <td>{{ asistencia.mesAsistencia }}</td>
+          <td>{{ asistencia.diaAsistencia }}</td>
+          <td>{{ asistencia.observacion }}</td>
+          <td>{{ asistencia.comentarios }}</td>
+          <td>{{ asistencia.estado }}</td>
+          <td>{{ asistencia.version }}</td>
+          <td>{{ asistencia.indDel }}</td>
+          <td>{{ asistencia.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ asistencia.usuCrea }}</td>
+          <td>{{ asistencia.ipCrea }}</td>
+          <td>{{ asistencia.fecModif | formatMediumDatetime }}</td>
+          <td>{{ asistencia.usuModif }}</td>
+          <td>{{ asistencia.ipModif }}</td>
+          <td>
+            <div *ngIf="asistencia.userId">
+              <a [routerLink]="['/empleados', asistencia.userId.id, 'view']">{{ asistencia.userId.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/asistencia', asistencia.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/asistencia', asistencia.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(asistencia)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

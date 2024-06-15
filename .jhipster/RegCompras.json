@@ -1,0 +1,234 @@
+{
+  "applications": "*",
+  "changelogDate": "20240613171637",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "reg_compras",
+  "fields": [
+    {
+      "fieldName": "periodo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cuo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "asientContab",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fecEmiComp",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecVencComp",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "tipComp",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nroSerieComp",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "anhoEmisionDua",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nroComp",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nroFinal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipDocProv",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nroDocProv",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nomApeRazSocProv",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "baseImponible",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "montoIgv",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "baseImponible2",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "montoIgv2",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "baseImponible3",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "montoIgv3",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "montoNoGravado",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "montoIsc",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "impConsBols",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "otrosCargos",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "importeTotal",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "codMoneda",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipCambio",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fecEmiModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "tipCompModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nroSerieCompModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codDuaRef",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nroCompModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fecEmiDetracc",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "nroConstDetracc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "indCompSujRetenc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "clasBienesyServicios",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "identContrato",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "errTipUno",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "errTipDos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "errTipTres",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "errTipCuatro",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "indCompPagoMedPago",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "campoLibre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "indDel",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecCrea",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usuCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipCrea",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "usuModif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipModif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "RegCompras",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

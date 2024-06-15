@@ -1,0 +1,120 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="producto">
+      <h2 data-cy="productoDetailsHeading"><span jhiTranslate="sicore2App.producto.detail.title">Producto</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ producto.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.codProducto">Cod Producto</span></dt>
+        <dd>
+          <span>{{ producto.codProducto }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.tipProducto">Tip Producto</span></dt>
+        <dd>
+          <span>{{ producto.tipProducto }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.codQr">Cod Qr</span></dt>
+        <dd>
+          <span>{{ producto.codQr }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.codBarra">Cod Barra</span></dt>
+        <dd>
+          <span>{{ producto.codBarra }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ producto.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.detalleDesc">Detalle Desc</span></dt>
+        <dd>
+          <span>{{ producto.detalleDesc }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.valor">Valor</span></dt>
+        <dd>
+          <span>{{ producto.valor }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.categoria">Categoria</span></dt>
+        <dd>
+          <span>{{ producto.categoria }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.subCategoria">Sub Categoria</span></dt>
+        <dd>
+          <span>{{ producto.subCategoria }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.categoriaMenu">Categoria Menu</span></dt>
+        <dd>
+          <span>{{ producto.categoriaMenu }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.urlImage">Url Image</span></dt>
+        <dd>
+          <span>{{ producto.urlImage }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.fecIniVig">Fec Ini Vig</span></dt>
+        <dd>
+          <span>{{ producto.fecIniVig | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.fecFinVig">Fec Fin Vig</span></dt>
+        <dd>
+          <span>{{ producto.fecFinVig | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.costoProd">Costo Prod</span></dt>
+        <dd>
+          <span>{{ producto.costoProd }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.estado">Estado</span></dt>
+        <dd>
+          <span>{{ producto.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.version">Version</span></dt>
+        <dd>
+          <span>{{ producto.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ producto.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ producto.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ producto.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ producto.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ producto.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ producto.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.producto.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ producto.ipModif }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/producto', producto.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

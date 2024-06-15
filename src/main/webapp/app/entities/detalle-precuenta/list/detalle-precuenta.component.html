@@ -1,0 +1,206 @@
+<div>
+  <h2 id="page-heading" data-cy="DetallePrecuentaHeading">
+    <span jhiTranslate="sicore2App.detallePrecuenta.home.title">Detalle Precuentas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sicore2App.detallePrecuenta.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-detalle-precuenta"
+        [routerLink]="['/detalle-precuenta/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sicore2App.detallePrecuenta.home.createLabel"> Crear nuevo Detalle Precuenta </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="detallePrecuentas?.length === 0">
+    <span jhiTranslate="sicore2App.detallePrecuenta.home.notFound">Ningún Detalle Precuentas encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="detallePrecuentas && detallePrecuentas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="correlativo">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.correlativo">Correlativo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.estado">Estado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indDel">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.indDel">Ind Del</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.fecCrea">Fec Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.usuCrea">Usu Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipCrea">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.ipCrea">Ip Crea</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fecModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.fecModif">Fec Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.usuModif">Usu Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipModif">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.ipModif">Ip Modif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orden.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.orden">Orden</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autorizacion.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.autorizacion">Autorizacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="regVenta.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.regVenta">Reg Venta</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="precuenta.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.precuenta">Precuenta</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="detalleOrden.id">
+            <div class="d-flex">
+              <span jhiTranslate="sicore2App.detallePrecuenta.detalleOrden">Detalle Orden</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detallePrecuenta of detallePrecuentas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/detalle-precuenta', detallePrecuenta.id, 'view']">{{ detallePrecuenta.id }}</a>
+          </td>
+          <td>{{ detallePrecuenta.correlativo }}</td>
+          <td>{{ detallePrecuenta.estado }}</td>
+          <td>{{ detallePrecuenta.version }}</td>
+          <td>{{ detallePrecuenta.indDel }}</td>
+          <td>{{ detallePrecuenta.fecCrea | formatMediumDatetime }}</td>
+          <td>{{ detallePrecuenta.usuCrea }}</td>
+          <td>{{ detallePrecuenta.ipCrea }}</td>
+          <td>{{ detallePrecuenta.fecModif | formatMediumDatetime }}</td>
+          <td>{{ detallePrecuenta.usuModif }}</td>
+          <td>{{ detallePrecuenta.ipModif }}</td>
+          <td>
+            <div *ngIf="detallePrecuenta.orden">
+              <a [routerLink]="['/orden', detallePrecuenta.orden.id, 'view']">{{ detallePrecuenta.orden.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detallePrecuenta.autorizacion">
+              <a [routerLink]="['/autorizacion', detallePrecuenta.autorizacion.id, 'view']">{{ detallePrecuenta.autorizacion.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detallePrecuenta.regVenta">
+              <a [routerLink]="['/reg-venta', detallePrecuenta.regVenta.id, 'view']">{{ detallePrecuenta.regVenta.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detallePrecuenta.precuenta">
+              <a [routerLink]="['/precuenta', detallePrecuenta.precuenta.id, 'view']">{{ detallePrecuenta.precuenta.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detallePrecuenta.detalleOrden">
+              <a [routerLink]="['/detalle-orden', detallePrecuenta.detalleOrden.id, 'view']">{{ detallePrecuenta.detalleOrden.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/detalle-precuenta', detallePrecuenta.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/detalle-precuenta', detallePrecuenta.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(detallePrecuenta)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

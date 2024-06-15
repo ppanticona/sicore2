@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="orden">
+      <h2 data-cy="ordenDetailsHeading"><span jhiTranslate="sicore2App.orden.detail.title">Orden</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ orden.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.numOrden">Num Orden</span></dt>
+        <dd>
+          <span>{{ orden.numOrden }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.observacion">Observacion</span></dt>
+        <dd>
+          <span>{{ orden.observacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.fecIngreso">Fec Ingreso</span></dt>
+        <dd>
+          <span>{{ orden.fecIngreso | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.fecSalida">Fec Salida</span></dt>
+        <dd>
+          <span>{{ orden.fecSalida | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.codCanal">Cod Canal</span></dt>
+        <dd>
+          <span>{{ orden.codCanal }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.tipOrden">Tip Orden</span></dt>
+        <dd>
+          <span>{{ orden.tipOrden }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.estado">Estado</span></dt>
+        <dd>
+          <span>{{ orden.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.version">Version</span></dt>
+        <dd>
+          <span>{{ orden.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.indDel">Ind Del</span></dt>
+        <dd>
+          <span>{{ orden.indDel }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.fecCrea">Fec Crea</span></dt>
+        <dd>
+          <span>{{ orden.fecCrea | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.usuCrea">Usu Crea</span></dt>
+        <dd>
+          <span>{{ orden.usuCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.ipCrea">Ip Crea</span></dt>
+        <dd>
+          <span>{{ orden.ipCrea }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.fecModif">Fec Modif</span></dt>
+        <dd>
+          <span>{{ orden.fecModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.usuModif">Usu Modif</span></dt>
+        <dd>
+          <span>{{ orden.usuModif }}</span>
+        </dd>
+        <dt><span jhiTranslate="sicore2App.orden.ipModif">Ip Modif</span></dt>
+        <dd>
+          <span>{{ orden.ipModif }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/orden', orden.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

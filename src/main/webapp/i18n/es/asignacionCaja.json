@@ -1,0 +1,46 @@
+{
+  "sicore2App": {
+    "asignacionCaja": {
+      "home": {
+        "title": "Asignacion Cajas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Asignacion Caja",
+        "createOrEditLabel": "Crear o editar Asignacion Caja",
+        "notFound": "Ningún Asignacion Cajas encontrado"
+      },
+      "created": "Un nuevo Asignacion Caja ha sido creado con el identificador {{ param }}",
+      "updated": "Un Asignacion Caja ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Asignacion Caja ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Asignacion Caja {{ id }}?"
+      },
+      "detail": {
+        "title": "Asignacion Caja"
+      },
+      "id": "ID",
+      "codAsignacion": "Cod Asignacion",
+      "mntoInicialSoles": "Mnto Inicial Soles",
+      "mntoFinalSoles": "Mnto Final Soles",
+      "montoMaximoSoles": "Monto Maximo Soles",
+      "diferenciaSoles": "Diferencia Soles",
+      "mntoInicialDolares": "Mnto Inicial Dolares",
+      "mntoFinalDolares": "Mnto Final Dolares",
+      "montoMaximoDolares": "Monto Maximo Dolares",
+      "diferenciaDolares": "Diferencia Dolares",
+      "observacionApertura": "Observacion Apertura",
+      "observacionCierre": "Observacion Cierre",
+      "fecAsignacion": "Fec Asignacion",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "userId": "User Id",
+      "caja": "Caja"
+    }
+  }
+}

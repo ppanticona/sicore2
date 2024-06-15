@@ -1,0 +1,39 @@
+{
+  "sicore2App": {
+    "orden": {
+      "home": {
+        "title": "Ordens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Orden",
+        "createOrEditLabel": "Create or edit a Orden",
+        "notFound": "No Ordens found"
+      },
+      "created": "A new Orden is created with identifier {{ param }}",
+      "updated": "A Orden is updated with identifier {{ param }}",
+      "deleted": "A Orden is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Orden {{ id }}?"
+      },
+      "detail": {
+        "title": "Orden"
+      },
+      "id": "ID",
+      "numOrden": "Num Orden",
+      "observacion": "Observacion",
+      "fecIngreso": "Fec Ingreso",
+      "fecSalida": "Fec Salida",
+      "codCanal": "Cod Canal",
+      "tipOrden": "Tip Orden",
+      "estado": "Estado",
+      "version": "Version",
+      "indDel": "Ind Del",
+      "fecCrea": "Fec Crea",
+      "usuCrea": "Usu Crea",
+      "ipCrea": "Ip Crea",
+      "fecModif": "Fec Modif",
+      "usuModif": "Usu Modif",
+      "ipModif": "Ip Modif",
+      "regVenta": "Reg Venta"
+    }
+  }
+}
