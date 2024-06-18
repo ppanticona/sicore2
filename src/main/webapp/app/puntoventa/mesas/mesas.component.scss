@@ -52,17 +52,6 @@
     align-items: center;
   }
   
-  .btn-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .btn-content i {
-    margin-top: 10px; /* Añade espacio entre el texto y los iconos */
-    font-size: 24px; /* Ajusta el tamaño de los iconos según tus necesidades */
-  }
   
   .card-block {
     display: flex;
@@ -81,33 +70,102 @@
 
   .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajusta el ancho de cada columna */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajusta el ancho de cada columna */
   gap: 10px; /* Espacio entre los elementos */
 }
 
+
+.container {
+  display: flex;
+ 
+  gap: 10px; /* Espacio entre los botones */
+}
+
+
 .custom-btn {
-  width: 100%;
-  height: 100px; /* Ajusta la altura según tus necesidades */
+  width: 100%; /* Aumenta el ancho del botón al 150% del valor original */
+  height: auto; /* Permite que la altura se ajuste automáticamente */
   border-radius: 25px; /* Hace que los bordes sean redondeados */
   text-align: center;
-  font-size: 16px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  font-size: 26px; /* Ajusta el tamaño de la fuente según tus necesidades */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
+  box-sizing: border-box; /* Incluye el padding y el border en el ancho y la altura */
 }
+
+.card {
+  cursor: pointer; /* Hace que el cursor se muestre como una mano */
+}
+ 
 
 .btn-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .btn-content i {
-  margin-top: 10px; /* Añade espacio entre el texto y los iconos */
-  font-size: 24px; /* Ajusta el tamaño de los iconos según tus necesidades */
+  margin-top: 5px; /* Espacio entre el texto y los iconos */
+}
+
+.custom-btn input {
+  display: none; /* Oculta el checkbox */
 }
 
 
+
+.btn-circle.btn-xl {
+  width: 140px;
+  height: 140px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 70px;
+}
+
+
+
+.pin-input-container {
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.pin-display {
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.pin-display span {
+  width: 20%;
+  text-align: center;
+}
+
+.pin-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px; /* Ajusta el espacio entre los botones */
+}
+
+.pin-buttons button {
+  padding: 25px; /* Aumenta el padding para hacer los botones más grandes */
+  font-size: 34px; /* Ajusta el tamaño de la fuente */
+  cursor: pointer;
+}
+
+.clear-btn {
+  grid-column: span 3; 
+  padding: 15px; /* Aumenta el padding para hacer el botón "Del" más grande */
+  font-size: 24px; /* Ajusta el tamaño de la fuente */
+  cursor: pointer;
+}
+ 

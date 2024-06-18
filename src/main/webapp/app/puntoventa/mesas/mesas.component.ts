@@ -10,6 +10,7 @@ import { MesasService } from './mesas.service';
 export class MesasComponent implements OnInit {
 
   
+  errorTokenMensaje="";
   filter: string;
   orderProp: string;
   reverse: boolean;
@@ -20,8 +21,10 @@ export class MesasComponent implements OnInit {
   mesasSeleccionadas:any[]=[];
   mesaSeleccionada:any={};
   accionBoton="Valor Inicial";
-  
+  accionSolicitada:boolean=false;
   ingresaToken:boolean=false;
+  token:string="";
+   
   
   cajeros:any[]=[];
 
@@ -63,7 +66,12 @@ export class MesasComponent implements OnInit {
             this.cajeros=data.listaCajeros
           })
   }
-
+  mostrarToken(){
+    this.ingresaToken=true;
+  }
+  append(digito: string){
+        this.token += digito;
+  }
   aperturarCaja(forma:any){
     
     this.mesasService.aperturarCaja(forma.value)
@@ -86,9 +94,49 @@ export class MesasComponent implements OnInit {
       let indexx = this.mesasSeleccionadas.indexOf(value);
       this.mesasSeleccionadas.splice(indexx,1);
     }
+ 
+  }
+
+
+  procesarToken(){
+
+    this.errorTokenMensaje=""; 
+    //servicio de busqueda de acceso el result enviarlo en el dismiss
 
 
 
 
 }
+
+
+pin: string = '';
+
+addDigit(digit: string): void {
+  if (this.pin.length < 4) {
+    this.pin += digit;
+
+    if (this.pin.length === 4) {
+      this.submitPin();
+    }
+  }
+}
+
+clearPin(): void {
+  this.pin = '';
+}
+
+submitPin(): void {
+  console.log('Submitted PIN:', this.pin);
+  // Aquí puedes agregar la lógica para enviar el PIN al servidor
+
+  this.clearPin();
+}
+getDisplay(): string[] {
+  const display = this.pin.split('').map(() => '*');
+  while (display.length < 4) {
+    display.push('-');
+  }
+  return display;
+}
+
 }

@@ -25,7 +25,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
-
+import { CajaModule } from 'app/caja/caja.module';
 import { PuntoventaModule } from 'app/puntoventa/puntoventa.module';
 @NgModule({
   imports: [
@@ -33,6 +33,7 @@ import { PuntoventaModule } from 'app/puntoventa/puntoventa.module';
     SharedModule,
     HomeModule,
     PuntoventaModule,
+    CajaModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     AppRoutingModule,
     // Set this to true to enable service worker (PWA)

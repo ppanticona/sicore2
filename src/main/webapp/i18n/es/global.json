@@ -4,6 +4,12 @@
     "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=es\">actualice su navegador</a> para mejorar su experiencia.",
     "menu": {
       "home": "Inicio",
+      "pointOfSell": "Punto de Venta",
+      "gestionCajas": "Gestión de Cajas",
+      "aperturaCaja": "Apertura de Caja",
+      "cierreCaja": "Cierre de Caja",
+      "arqueoCaja": "Arqueo de Caja",
+      "isla": "Isla",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
