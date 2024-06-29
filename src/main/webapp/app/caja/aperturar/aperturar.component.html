@@ -1,1 +1,146 @@
-APERTURAR CAJA
+<div class="container">
+
+    <div class="row animated fadeIn ">
+      <div class="col-md-5">
+        <div class="card card-outline-primary mb-3 text-center">
+          <div class="card-header card-outline-primary mb-3 text-center">
+            <h3>Cajas Activas</h3>
+          </div>
+          <div class="card-block">
+  
+            <table class="table">
+              <thead class="thead-inverse">
+                <tr>
+                  <th class="text-center">Nro Caja</th>
+                  <th class="text-center">Cajero</th>
+  
+                </tr>
+              </thead> 
+              <tbody >
+                <tr *ngFor="let cajaActiva of cajasAsignadasActivas">
+                  <td>{{cajaActiva.caja.descripcion}}</td>
+                  <td>{{cajaActiva.cajero.nombres}} {{cajaActiva.cajero.apellidos}} </td>
+  
+                </tr>
+  
+              </tbody>
+            </table>
+  
+            <div  *ngIf="cajasAsignadasActivas.length===0 && !loading"
+                  class="alert alert-danger" role="alert">
+              <strong>No existen</strong> Cajas activas !
+            </div>
+            <div *ngIf="loading"
+                  class="alert alert-info" role="alert">
+              <strong>Cargando</strong> por favor espere
+            </div>
+  
+  
+          </div>
+        </div>
+      </div> 
+      <div class="col-md-7">
+        <form (ngSubmit)="aperturarCaja(forma)"  #forma="ngForm" novalidate="" *ngIf="cajasActivas.length>0 " >
+          <div class="card card-outline-primary mb-3 text-center">
+            <div class="card-header card-outline-primary mb-3 text-center">
+              <h3>Aperturar Caja</h3>
+            </div>
+            <div class="card-block">
+  
+              <div class="form-group">
+                <label for="exampleSelect1">Isla(Nro Caja)</label>
+                <select
+                        class="form-control"
+                        id="exampleSelect1"
+                        ngModel
+                        name="NroCaja"
+                        required>
+                  <option *ngFor="let caja of cajasActivas" [value]="caja.id">{{caja.descripcion}}</option>
+  
+                </select>
+              </div>
+  
+  
+  
+              <div class="form-group">
+                <label for="exampleSelect2">Empleado a asignar</label>
+                <select
+                        class="form-control"
+                        id="exampleSelect2"
+                        ngModel
+                        name="Cajero"
+                        required>
+                  <option *ngFor="let cajero of cajeros" [value]="cajero.id">{{cajero.firstName}} {{cajero.lastName}}</option>
+  
+                </select>
+              </div>
+  
+              <div class="form-group row">
+  
+                <label for="example-number-input" class="col-2 col-form-label">Monto Inicial Soles</label>
+                <div class="col-1">
+                  S/.
+                </div>
+                <div class="col-9">
+                  <input
+                          class="form-control"
+                          type="number"
+                          id="example-number-input"
+                          ngModel
+                          name="MontoInicialSoles"
+                          required>
+                </div>
+  
+              </div>
+  
+              <div class="form-group row">
+  
+                <label  class="col-2 col-form-label">Monto Inicial Dolares</label>
+  
+                <div class="col-1">
+                  $
+                </div>
+                <div class="col-9">
+                    <input
+                            class="form-control"
+                            type="number"
+                            ngModel
+  
+                            name="MontoInicialDolares"
+                            required>
+                </div>
+  
+              </div>
+  
+  
+              <div class="form-group">
+                <label for="exampleTextarea">Observaciones:</label>
+                <textarea
+                          class="form-control"
+                          id="exampleTextarea"
+                          ngModel
+                          name="Observaciones"
+                          rows="3">
+                </textarea>
+              </div>
+  
+              <div class="form-group">
+                <button [disabled]="!forma.valid"
+                        type="submit"
+                        class="btn btn-primary"
+                        name="button">
+                  Aperturar Caja
+                </button>
+              </div>
+  
+            </div>
+          </div>
+        </form>
+        <div  *ngIf="cajasActivas.length===0 "
+              class="alert alert-danger" role="alert">
+          <strong>No existen</strong> cajas disponibles para Aperturar !
+        </div>
+      </div>
+    </div>
+  </div>
+  

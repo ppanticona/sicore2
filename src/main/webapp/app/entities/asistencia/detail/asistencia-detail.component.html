@@ -78,11 +78,9 @@
         <dd>
           <span>{{ asistencia.ipModif }}</span>
         </dd>
-        <dt><span jhiTranslate="sicore2App.asistencia.userId">User Id</span></dt>
+        <dt><span jhiTranslate="sicore2App.asistencia.user">User</span></dt>
         <dd>
-          <div *ngIf="asistencia.userId">
-            <a [routerLink]="['/empleados', asistencia.userId.id, 'view']">{{ asistencia.userId.id }}</a>
-          </div>
+          <span>{{ asistencia.user?.id }}</span>
         </dd>
       </dl>
 

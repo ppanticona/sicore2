@@ -1,4 +1,5 @@
 import dayjs from 'dayjs/esm';
+import { IUser } from 'app/entities/user/user.model';
 
 export interface IEmpleados {
   id: string;
@@ -26,6 +27,7 @@ export interface IEmpleados {
   fecModif?: dayjs.Dayjs | null;
   usuModif?: string | null;
   ipModif?: string | null;
+  user?: Pick<IUser, 'id'> | null;
 }
 
 export type NewEmpleados = Omit<IEmpleados, 'id'> & { id: null };

@@ -98,11 +98,9 @@
         <dd>
           <span>{{ asignacionCaja.ipModif }}</span>
         </dd>
-        <dt><span jhiTranslate="sicore2App.asignacionCaja.userId">User Id</span></dt>
+        <dt><span jhiTranslate="sicore2App.asignacionCaja.user">User</span></dt>
         <dd>
-          <div *ngIf="asignacionCaja.userId">
-            <a [routerLink]="['/empleados', asignacionCaja.userId.id, 'view']">{{ asignacionCaja.userId.id }}</a>
-          </div>
+          <span>{{ asignacionCaja.user?.id }}</span>
         </dd>
         <dt><span jhiTranslate="sicore2App.asignacionCaja.caja">Caja</span></dt>
         <dd>

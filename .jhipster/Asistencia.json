@@ -86,9 +86,9 @@
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "empleados",
+      "otherEntityName": "user",
       "ownerSide": true,
-      "relationshipName": "userId",
+      "relationshipName": "user",
       "relationshipType": "one-to-one"
     }
   ],

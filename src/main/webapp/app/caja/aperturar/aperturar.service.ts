@@ -10,9 +10,10 @@ import { map } from 'rxjs/operators';
 export class AperturarService {
 
     listaAsignacionCajasxEstadoURL:string=`api/listarCajasAsignadasPorEstado/`
-    listaMesasxEstadoURL:string=`api/listarMesasPorEstado/`
+    listaCajasxEstadoURL:string=`api/listarCajasPorEstado/`
     listaCajasParaAsignarURL:string =`api/listarCajasParaAsignar`
-    listaEmpleadosURL:string=`api/listarCajerosPorEstado/`
+    listaEmpleadosURL:string=`api/listarEmpleadosPorEstadoAndCategoria/` 
+    listaUsuariosPorRolURL:string =`api/admin/usuariosByRol/`
 
     aperturarCajaURL:string=`api/aperturarCaja/`
     constructor(private http: HttpClient) {
@@ -24,8 +25,8 @@ export class AperturarService {
                       .pipe(map(res=>res));
     }
     
-    listaMesasxEstado(cod_estado:string){
-      let url=this.listaMesasxEstadoURL+cod_estado;
+    listaCajasxEstado(cod_estado:string){
+      let url=this.listaCajasxEstadoURL+cod_estado;
       return this.http.get(url)
                       .pipe(map(res=>res));
     }
@@ -35,11 +36,15 @@ export class AperturarService {
                       .pipe(map(res=>res));
     }
     listaCajerosxEstado(cod_estado:string){
-      let url=this.listaEmpleadosURL+cod_estado;
+      let url=this.listaEmpleadosURL+cod_estado+"/ROLE_CAJERO";
       return this.http.get(url)
                       .pipe(map(res=>res));
     }
-
+    listaUsuariosPorRol(rol:string){
+      let url=this.listaUsuariosPorRolURL+rol;
+      return this.http.get(url)
+                      .pipe(map(res=>res));
+    }
     aperturarCaja(asignacion:any[]){
 
         let body=JSON.stringify(asignacion);

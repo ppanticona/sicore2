@@ -73,7 +73,7 @@ public class MovimientoCaja implements Serializable {
 
     @DBRef
     @Field("asignacionCaja")
-    @JsonIgnoreProperties(value = { "userId", "caja" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "caja" }, allowSetters = true)
     private AsignacionCaja asignacionCaja;
 
     @DBRef

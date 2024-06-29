@@ -1,5 +1,5 @@
 import dayjs from 'dayjs/esm';
-import { IEmpleados } from 'app/entities/empleados/empleados.model';
+import { IUser } from 'app/entities/user/user.model';
 
 export interface IAsistencia {
   id: string;
@@ -19,7 +19,7 @@ export interface IAsistencia {
   fecModif?: dayjs.Dayjs | null;
   usuModif?: string | null;
   ipModif?: string | null;
-  userId?: Pick<IEmpleados, 'id'> | null;
+  user?: Pick<IUser, 'id'> | null;
 }
 
 export type NewAsistencia = Omit<IAsistencia, 'id'> & { id: null };

@@ -41,7 +41,7 @@ describe('AsignacionCaja Form Service', () => {
             fecModif: expect.any(Object),
             usuModif: expect.any(Object),
             ipModif: expect.any(Object),
-            userId: expect.any(Object),
+            user: expect.any(Object),
             caja: expect.any(Object),
           })
         );
@@ -74,7 +74,7 @@ describe('AsignacionCaja Form Service', () => {
             fecModif: expect.any(Object),
             usuModif: expect.any(Object),
             ipModif: expect.any(Object),
-            userId: expect.any(Object),
+            user: expect.any(Object),
             caja: expect.any(Object),
           })
         );

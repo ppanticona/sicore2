@@ -1,19 +1,25 @@
 package com.ppanticona.web.rest;
 
 import com.ppanticona.domain.Empleados;
-import com.ppanticona.repository.EmpleadosRepository;
+import com.ppanticona.repository.EmpleadosRepository; 
+import com.ppanticona.service.EmpleadosService;
 import com.ppanticona.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -33,9 +39,11 @@ public class EmpleadosResource {
     private String applicationName;
 
     private final EmpleadosRepository empleadosRepository;
+    private final EmpleadosService empleadosService;
 
-    public EmpleadosResource(EmpleadosRepository empleadosRepository) {
+    public EmpleadosResource(EmpleadosRepository empleadosRepository,EmpleadosService empleadosService) {
         this.empleadosRepository = empleadosRepository;
+        this.empleadosService = empleadosService;
     }
 
     /**
@@ -242,4 +250,21 @@ public class EmpleadosResource {
         empleadosRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id)).build();
     }
+    
+
+	@PreAuthorize("hasAnyRole('ROLE_GERENTE','ROLE_ADMIN')")
+	@GetMapping("/listarEmpleadosPorEstadoAndCategoria/{cod_estado}/{categoria}")
+	public ResponseEntity<String> listarCajerosPorEstado(@PathVariable("cod_estado") String codEstado,@PathVariable("categoria") String categoria,HttpServletResponse response) {
+
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+
+		StringBuffer data = new StringBuffer();
+
+		String listaCajeros = empleadosService.listarEmpleadosPorRolAndEstado(codEstado, categoria);
+		data.append(listaCajeros);
+
+		return new ResponseEntity(data.toString(), responseHeaders, HttpStatus.OK);
+
+	}
 }

@@ -9,8 +9,9 @@ import { of, Subject, from } from 'rxjs';
 import { AsistenciaFormService } from './asistencia-form.service';
 import { AsistenciaService } from '../service/asistencia.service';
 import { IAsistencia } from '../asistencia.model';
-import { IEmpleados } from 'app/entities/empleados/empleados.model';
-import { EmpleadosService } from 'app/entities/empleados/service/empleados.service';
+
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
 
 import { AsistenciaUpdateComponent } from './asistencia-update.component';
 
@@ -20,7 +21,7 @@ describe('Asistencia Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let asistenciaFormService: AsistenciaFormService;
   let asistenciaService: AsistenciaService;
-  let empleadosService: EmpleadosService;
+  let userService: UserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -43,43 +44,43 @@ describe('Asistencia Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     asistenciaFormService = TestBed.inject(AsistenciaFormService);
     asistenciaService = TestBed.inject(AsistenciaService);
-    empleadosService = TestBed.inject(EmpleadosService);
+    userService = TestBed.inject(UserService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Empleados query and add missing value', () => {
+    it('Should call User query and add missing value', () => {
       const asistencia: IAsistencia = { id: 'CBA' };
-      const userId: IEmpleados = { id: '994db739-9c91-4e98-89e2-21809aba26f0' };
-      asistencia.userId = userId;
+      const user: IUser = { id: '511e09d2-ca6f-409a-b09e-86501ea6e42d' };
+      asistencia.user = user;
 
-      const empleadosCollection: IEmpleados[] = [{ id: 'ea1bf707-5b32-4297-b2ad-3b346873d250' }];
-      jest.spyOn(empleadosService, 'query').mockReturnValue(of(new HttpResponse({ body: empleadosCollection })));
-      const additionalEmpleados = [userId];
-      const expectedCollection: IEmpleados[] = [...additionalEmpleados, ...empleadosCollection];
-      jest.spyOn(empleadosService, 'addEmpleadosToCollectionIfMissing').mockReturnValue(expectedCollection);
+      const userCollection: IUser[] = [{ id: 'a3fe33fd-147d-42bc-b31a-9a2568fa0de4' }];
+      jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
+      const additionalUsers = [user];
+      const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
+      jest.spyOn(userService, 'addUserToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ asistencia });
       comp.ngOnInit();
 
-      expect(empleadosService.query).toHaveBeenCalled();
-      expect(empleadosService.addEmpleadosToCollectionIfMissing).toHaveBeenCalledWith(
-        empleadosCollection,
-        ...additionalEmpleados.map(expect.objectContaining)
+      expect(userService.query).toHaveBeenCalled();
+      expect(userService.addUserToCollectionIfMissing).toHaveBeenCalledWith(
+        userCollection,
+        ...additionalUsers.map(expect.objectContaining)
       );
-      expect(comp.empleadosSharedCollection).toEqual(expectedCollection);
+      expect(comp.usersSharedCollection).toEqual(expectedCollection);
     });
 
     it('Should update editForm', () => {
       const asistencia: IAsistencia = { id: 'CBA' };
-      const userId: IEmpleados = { id: '9c332313-10ad-4559-adb2-58a6661e5dd1' };
-      asistencia.userId = userId;
+      const user: IUser = { id: 'f33cc123-e5e7-4a64-a77a-ef1c7346d1f6' };
+      asistencia.user = user;
 
       activatedRoute.data = of({ asistencia });
       comp.ngOnInit();
 
-      expect(comp.empleadosSharedCollection).toContain(userId);
+      expect(comp.usersSharedCollection).toContain(user);
       expect(comp.asistencia).toEqual(asistencia);
     });
   });
@@ -153,13 +154,13 @@ describe('Asistencia Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareEmpleados', () => {
-      it('Should forward to empleadosService', () => {
+    describe('compareUser', () => {
+      it('Should forward to userService', () => {
         const entity = { id: 'ABC' };
         const entity2 = { id: 'CBA' };
-        jest.spyOn(empleadosService, 'compareEmpleados');
-        comp.compareEmpleados(entity, entity2);
-        expect(empleadosService.compareEmpleados).toHaveBeenCalledWith(entity, entity2);
+        jest.spyOn(userService, 'compareUser');
+        comp.compareUser(entity, entity2);
+        expect(userService.compareUser).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

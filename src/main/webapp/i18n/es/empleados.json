@@ -41,7 +41,8 @@
       "ipCrea": "Ip Crea",
       "fecModif": "Fec Modif",
       "usuModif": "Usu Modif",
-      "ipModif": "Ip Modif"
+      "ipModif": "Ip Modif",
+      "user": "User"
     }
   }
 }

@@ -7,8 +7,8 @@ import { finalize, map } from 'rxjs/operators';
 import { AsignacionCajaFormService, AsignacionCajaFormGroup } from './asignacion-caja-form.service';
 import { IAsignacionCaja } from '../asignacion-caja.model';
 import { AsignacionCajaService } from '../service/asignacion-caja.service';
-import { IEmpleados } from 'app/entities/empleados/empleados.model';
-import { EmpleadosService } from 'app/entities/empleados/service/empleados.service';
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
 import { ICaja } from 'app/entities/caja/caja.model';
 import { CajaService } from 'app/entities/caja/service/caja.service';
 
@@ -20,7 +20,7 @@ export class AsignacionCajaUpdateComponent implements OnInit {
   isSaving = false;
   asignacionCaja: IAsignacionCaja | null = null;
 
-  empleadosSharedCollection: IEmpleados[] = [];
+  usersSharedCollection: IUser[] = [];
   cajasSharedCollection: ICaja[] = [];
 
   editForm: AsignacionCajaFormGroup = this.asignacionCajaFormService.createAsignacionCajaFormGroup();
@@ -28,12 +28,12 @@ export class AsignacionCajaUpdateComponent implements OnInit {
   constructor(
     protected asignacionCajaService: AsignacionCajaService,
     protected asignacionCajaFormService: AsignacionCajaFormService,
-    protected empleadosService: EmpleadosService,
+    protected userService: UserService,
     protected cajaService: CajaService,
     protected activatedRoute: ActivatedRoute
   ) {}
 
-  compareEmpleados = (o1: IEmpleados | null, o2: IEmpleados | null): boolean => this.empleadosService.compareEmpleados(o1, o2);
+  compareUser = (o1: IUser | null, o2: IUser | null): boolean => this.userService.compareUser(o1, o2);
 
   compareCaja = (o1: ICaja | null, o2: ICaja | null): boolean => this.cajaService.compareCaja(o1, o2);
 
@@ -85,23 +85,16 @@ export class AsignacionCajaUpdateComponent implements OnInit {
     this.asignacionCaja = asignacionCaja;
     this.asignacionCajaFormService.resetForm(this.editForm, asignacionCaja);
 
-    this.empleadosSharedCollection = this.empleadosService.addEmpleadosToCollectionIfMissing<IEmpleados>(
-      this.empleadosSharedCollection,
-      asignacionCaja.userId
-    );
+    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, asignacionCaja.user);
     this.cajasSharedCollection = this.cajaService.addCajaToCollectionIfMissing<ICaja>(this.cajasSharedCollection, asignacionCaja.caja);
   }
 
   protected loadRelationshipsOptions(): void {
-    this.empleadosService
+    this.userService
       .query()
-      .pipe(map((res: HttpResponse<IEmpleados[]>) => res.body ?? []))
-      .pipe(
-        map((empleados: IEmpleados[]) =>
-          this.empleadosService.addEmpleadosToCollectionIfMissing<IEmpleados>(empleados, this.asignacionCaja?.userId)
-        )
-      )
-      .subscribe((empleados: IEmpleados[]) => (this.empleadosSharedCollection = empleados));
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.asignacionCaja?.user)))
+      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
 
     this.cajaService
       .query()

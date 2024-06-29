@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 /**
  * Creates the initial database setup.
  */
-@ChangeUnit(id = "users-initialization", order = "001")
+@ChangeUnit(id = "users-initializationv2", order = "001")
 public class InitialSetupMigration {
 
     private final MongoTemplate template;
@@ -28,7 +28,19 @@ public class InitialSetupMigration {
         userAuthority = template.save(userAuthority);
         Authority adminAuthority = createAdminAuthority();
         adminAuthority = template.save(adminAuthority);
+        
+        Authority cajeroAuthority = createCajeroAuthority();
+        cajeroAuthority = template.save(cajeroAuthority);
+        Authority meseroAuthority = createMeseroAuthority();
+        meseroAuthority = template.save(meseroAuthority);
+        Authority cocineroAuthority = createCocineroAuthority();
+        cocineroAuthority = template.save(cocineroAuthority);
+        Authority gerenteAuthority = createGerenteAuthority();
+        gerenteAuthority = template.save(gerenteAuthority);
+        Authority inventarioAuthority = createInventarioAuthority();
+        inventarioAuthority = template.save(inventarioAuthority);
         addUsers(userAuthority, adminAuthority);
+        
     }
 
     @RollbackExecution
@@ -49,6 +61,29 @@ public class InitialSetupMigration {
         Authority userAuthority = createAuthority(AuthoritiesConstants.USER);
         return userAuthority;
     }
+    private Authority createCajeroAuthority() {
+        Authority cajeroAuthority = createAuthority(AuthoritiesConstants.CAJERO);
+        return cajeroAuthority;
+    }
+
+    private Authority createMeseroAuthority() {
+        Authority meseroAuthority = createAuthority(AuthoritiesConstants.MESERO);
+        return meseroAuthority;
+    }
+    private Authority createCocineroAuthority() {
+        Authority cocineroAuthority = createAuthority(AuthoritiesConstants.COCINERO);
+        return cocineroAuthority;
+    }
+
+    private Authority createGerenteAuthority() {
+        Authority gerenteAuthority = createAuthority(AuthoritiesConstants.GERENTE);
+        return gerenteAuthority;
+    }
+    private Authority createInventarioAuthority() {
+        Authority inventarioAuthority = createAuthority(AuthoritiesConstants.INVENTARIO);
+        return inventarioAuthority;
+    }
+ 
 
     private void addUsers(Authority userAuthority, Authority adminAuthority) {
         User user = createUser(userAuthority);

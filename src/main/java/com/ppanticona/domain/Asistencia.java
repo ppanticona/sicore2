@@ -76,8 +76,8 @@ public class Asistencia implements Serializable {
     private String ipModif;
 
     @DBRef
-    @Field("userId")
-    private Empleados userId;
+    @Field("user")
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -302,16 +302,16 @@ public class Asistencia implements Serializable {
         this.ipModif = ipModif;
     }
 
-    public Empleados getUserId() {
-        return this.userId;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setUserId(Empleados empleados) {
-        this.userId = empleados;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Asistencia userId(Empleados empleados) {
-        this.setUserId(empleados);
+    public Asistencia user(User user) {
+        this.setUser(user);
         return this;
     }
 

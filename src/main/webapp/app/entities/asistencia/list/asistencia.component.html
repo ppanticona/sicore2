@@ -134,9 +134,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="userId.id">
+          <th scope="col" jhiSortBy="user.id">
             <div class="d-flex">
-              <span jhiTranslate="sicore2App.asistencia.userId">User Id</span>
+              <span jhiTranslate="sicore2App.asistencia.user">User</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -165,9 +165,7 @@
           <td>{{ asistencia.usuModif }}</td>
           <td>{{ asistencia.ipModif }}</td>
           <td>
-            <div *ngIf="asistencia.userId">
-              <a [routerLink]="['/empleados', asistencia.userId.id, 'view']">{{ asistencia.userId.id }}</a>
-            </div>
+            {{ asistencia.user?.id }}
           </td>
           <td class="text-end">
             <div class="btn-group">

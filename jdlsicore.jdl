@@ -446,7 +446,7 @@ relationship ManyToOne {
   MovimientoCaja{autorizacion} to Autorizacion 
   Mesas{orden} to Orden
   Mesas{sede} to Sede
-  Mesas{empleado} to Empleados
+  Mesas{user} to User
   Precuenta{orden} to Orden
   DetalleOrden{orden} to Orden
   DetallePrecuenta{orden} to Orden
@@ -464,13 +464,15 @@ relationship OneToMany {
     
     
 }
+ 
 
 relationship OneToOne {
 	
-Promocion{autorizacion} to Autorizacion  
+Promocion{autorizacion} to Autorizacion 
+Empleados{user} to User   
 Autorizacion{producto} to Producto  
-Asistencia{userId} to Empleados 
-AsignacionCaja{userId} to Empleados
+Asistencia{user} to User 
+AsignacionCaja{user} to User
 AsignacionCaja{caja} to Caja 
     
 }

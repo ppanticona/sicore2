@@ -1,1 +1,217 @@
-CERRAR CAJA 
+<div class="container fadeIn">
+
+    <div class="col-md-12  ">
+      <div class="card card-outline-primary mb-3 text-center">
+        <div class="card-header card-outline-primary mb-3 text-center">
+          <h3>Cerrar Caja {{mensaje}}</h3>
+        </div>
+        <div class="card-block"> 
+          <div class="row" *ngIf="cajasActivas.length>0 ">
+            <div class="col-md-8">
+
+              <div class="form-group">
+                <label >Caja</label>
+                <select
+                        class="form-control"
+                        [(ngModel)]="NroCaja"
+                        name="NroCaja"
+                        required>
+                  <option *ngFor="let caja of cajasActivas" [value]="caja.id">{{caja.descripcion}}</option>
+
+                </select>
+              </div>
+
+            </div>
+            <div class="col-md-4">
+              <br>
+                <a (click)="verCaja()" class="btn btn-outline-success"> Ver Caja</a>
+            </div>
+          </div>
+
+          <div  *ngIf="cajasActivas.length===0"
+                class="alert alert-danger" role="alert">
+            <strong>No existen</strong> Cajas activas.
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  <hr>
+  <div class="row" *ngIf="detalleCaja.Result=='OK'">
+    <div class="col-md-12">
+      <div class="card card-outline-primary mb-3 text-center">
+        <div class="card-header card-outline-primary mb-3 text-center">
+          <h3>Detalle Caja</h3>
+        </div>
+        <div class="card-block">
+
+          <form  #forma="ngForm" novalidate=""  >
+            <div class="row">
+              <div class="form-group">
+                <label >Fecha Asignacion:</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        disabled value="{{detalleCaja.fec_asignacion|date:'medium'}}">
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label > Caja:</label>
+                  <input  disabled
+                          type="text"
+                          class="form-control"
+                          name="cod_caja"
+                          [ngModel]="detalleCaja.resasignacionCaja.id"
+                          [value]="detalleCaja.resasignacionCaja.id"
+                          >
+
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label >Cajero:</label>
+                  <input  disabled
+                          type="text"
+                          class="form-control"
+                          value="{{detalleCaja.resasignacionCaja.cajero.nombres}} {{detalleCaja.resasignacionCaja.cajero.apellidos}}">
+
+                </div>
+              </div>
+
+            </div>
+            <hr>
+            <h2>Nuevos Soles <small></small></h2>
+
+            <div class="row">
+
+              <div class="col-md-3">
+
+                <div class="form-group">
+                  <label >Monto Apertura Soles:</label>
+                  <input  disabled
+                          type="text"
+                          class="form-control"
+                          value={{detalleCaja.resasignacionCaja.mntoInicialSoles}}>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label >Saldo actual Soles:</label>
+                  <input  disabled
+                          type="text"
+                          class="form-control"
+                          value={{detalleCaja.saldoActualSoles}}>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                    <label>Monto Real Soles</label>
+                    <input
+                            type="number"
+                            class="form-control"
+                            [(ngModel)]="detalleCaja.mrealSoles"
+                            required
+
+                            name="mrealSoles"
+                            placeholder="Ingrese Monto Soles">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                    <label >Diferencia Soles</label>
+                    <input
+                            type="double"
+                            class="form-control "
+                            disabled
+
+                            [value]="(detalleCaja.saldoActualSoles-detalleCaja.mrealSoles|nonumerico) |number : '1.2-2'"
+                            >
+                </div>
+              </div>
+            </div>
+            <hr>
+            <h2>Dolares Americanos <small></small></h2>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label >Monto Apertura Dolares:</label>
+                  <input  disabled
+                          type="text"
+                          class="form-control"
+                          value={{detalleCaja.resasignacionCaja.mntoInicialDolares}}>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="disabledTextInput">Saldo actual Dolares:</label>
+                  <input  disabled
+                          type="text"
+                          class="form-control"
+                          value={{detalleCaja.saldoActualDolares}}>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                    <label for="mrealDolares">Monto Real dolares</label>
+                    <input
+                            type="number"
+                            class="form-control"
+                            required
+                            [(ngModel)]="detalleCaja.mrealDolares"
+                            name="mrealDolares"
+                            placeholder="Ingrese Monto Dolares">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                    <label>Diferencia Dolares</label>
+                    <input
+                            type="double"
+                            class="form-control"
+                            disabled
+                            [value]="(detalleCaja.saldoActualDolares-detalleCaja.mrealDolares|nonumerico) |number : '1.2-2' "
+                            >
+
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label >Observaciones:</label>
+                  <textarea
+                            class="form-control"
+                            [(ngModel)]="this.detalleCaja.obsCierre"
+
+                            maxlength="200"
+                            rows="3">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button [disabled]="!forma.valid"
+                        (click)="cerrarCaja()"
+                        class="btn btn-primary btn-lg">
+                  Cerrar Caja
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

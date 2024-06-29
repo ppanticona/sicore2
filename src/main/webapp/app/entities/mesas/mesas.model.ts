@@ -1,7 +1,7 @@
 import dayjs from 'dayjs/esm';
 import { IOrden } from 'app/entities/orden/orden.model';
 import { ISede } from 'app/entities/sede/sede.model';
-import { IEmpleados } from 'app/entities/empleados/empleados.model';
+import { IUser } from 'app/entities/user/user.model';
 
 export interface IMesas {
   id: string;
@@ -22,7 +22,7 @@ export interface IMesas {
   ipModif?: string | null;
   orden?: Pick<IOrden, 'id'> | null;
   sede?: Pick<ISede, 'id'> | null;
-  empleado?: Pick<IEmpleados, 'id'> | null;
+  user?: Pick<IUser, 'id'> | null;
 }
 
 export type NewMesas = Omit<IMesas, 'id'> & { id: null };

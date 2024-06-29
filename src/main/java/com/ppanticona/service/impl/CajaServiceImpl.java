@@ -5,12 +5,14 @@ import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ppanticona.domain.Caja;
-import com.ppanticona.domain.AsignacionCaja;
 import com.ppanticona.domain.Empleados;
+import com.ppanticona.domain.AsignacionCaja;
+import com.ppanticona.domain.User;
 import com.ppanticona.repository.CajaRepository;
 import com.ppanticona.repository.AsignacionCajaRepository;
 import com.ppanticona.service.CajaService;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -52,53 +54,77 @@ public class CajaServiceImpl implements CajaService {
 	}
     @Override
     public String aperturarCaja(Map datosMap, String login) {
-        try {
-            this.log.debug("caja =  ");
-            this.log.debug(String.valueOf(datosMap.get("caja")));
-            String usuCrea = String.valueOf(datosMap.get("usuCrea"));
-            ZonedDateTime fecCrea = ZonedDateTime.parse(String.valueOf(datosMap.get("fecCrea")));
-            final ObjectMapper mapper = new ObjectMapper(); // jackson's objectmapper
-            mapper.registerModule(new JSR310Module());
-            Map<String, Object> cajaMap = (Map<String, Object>) datosMap.get("caja");
-            Caja cajaBean = mapper.convertValue(cajaMap, Caja.class);
 
-            cajaBean.setEstado("02");
-            cajaBean.setUsuModif(usuCrea);
-            cajaBean.setFecModif(fecCrea);
 
-            Caja res = this.cajaRepository.save(cajaBean);
+		AsignacionCaja asignacionCajaBean = new AsignacionCaja();
+		
+		Caja cajaBean = new Caja(); 
+        User userBean = new User();
+        userBean.setId(String.valueOf(((Map<String, Object>) datosMap.get("empleado")).get("id"))); 
+		
+		
+		Double MontoInicialSoles = null;
+		if (datosMap.get("MontoInicialSoles") instanceof Double) {
+			MontoInicialSoles = (double) datosMap.get("MontoInicialSoles");
+		} else if (datosMap.get("MontoInicialSoles") instanceof Integer) {
+			Integer entero = (Integer) datosMap.get("MontoInicialSoles");
+			MontoInicialSoles = (double) entero;
+		}
+		
 
-            AsignacionCaja asignacionCajaBean = new AsignacionCaja();
-            
-            Empleados empleadoBean = new Empleados();
 
-            empleadoBean.setIndDel(false);
-            empleadoBean.setEstado("01");
-            empleadoBean.setUsuCrea(login);  
-            empleadoBean.setVersion(1);
-            
-            asignacionCajaBean.setEstado("01"); //   01 activa ;  02 historica 
-            asignacionCajaBean.setMontoMaximoSoles(Double.valueOf(String.valueOf(datosMap.get("montoMaximoSoles"))));
-            asignacionCajaBean.setCaja(cajaBean);
-            asignacionCajaBean.setUsuCrea(usuCrea);
-            asignacionCajaBean.setFecCrea(fecCrea);
-            asignacionCajaBean.setVersion(1);
-            asignacionCajaBean.setIndDel(false);
-            asignacionCajaBean.ipCrea("0.0.0.0");
-            asignacionCajaBean.setUserId(empleadoBean);
 
-            this.asignacionCajaRepository.save(asignacionCajaBean);
+		Double MontoInicialDolares = null;
+		if (datosMap.get("MontoInicialDolares") instanceof Double) {
+			MontoInicialDolares = (double) datosMap.get("MontoInicialDolares");
+		} else if (datosMap.get("MontoInicialDolares") instanceof Integer) {
+			Integer entero = (Integer) datosMap.get("MontoInicialDolares");
+			MontoInicialDolares = (double) entero;
+		}
+	 
+		asignacionCajaBean.setMntoInicialSoles(MontoInicialSoles);
+		asignacionCajaBean.setMntoInicialDolares(MontoInicialDolares);
+		cajaBean.setId((String) datosMap.get("NroCaja"));
+		asignacionCajaBean.setCaja(cajaBean);
+		asignacionCajaBean.setObservacionApertura((String) datosMap.get("Observaciones"));
 
-            String jsonData = "{\"Result\":\"OK\",\"caja\":\"" + res.toString() + "\"}";
+		asignacionCajaBean.setIndDel(false);
+		asignacionCajaBean.setEstado("01");
+		asignacionCajaBean.setUsuCrea(login);
+		asignacionCajaBean.codAsignacion("01");  // está mal, en su lugar estoy usando el ID 
+		asignacionCajaBean.setVersion(1);
+        asignacionCajaBean.setUser(userBean);
+		 
+     
+		try {
+			
 
-            return jsonData;
-        } catch (Exception e) {
-            this.log.debug("Ocurrió un error durante la apertura de la caja ");
-            String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			AsignacionCaja resApertura = asignacionCajaRepository.save(asignacionCajaBean);   //se registra la asignacion con estado 01 asignada 
+			Optional<Caja> optionalCaja = cajaRepository.findById((String)datosMap.get("NroCaja"));
 
-            this.log.error("ERROR : " + e.getMessage(), e);
-            return error;
-        }
+			if (optionalCaja.isPresent()) {
+				Caja caja = optionalCaja.get();
+				caja.setEstado("02");
+				cajaRepository.save(caja);
+				this.LOG.debug("grabamos caja ------------ " + caja.toString());
+			} 
+
+			//cajaRepository.updateEstadoById("02", (String)datos.get("NroCaja")); // se cambia estado de la caja a 02 aperturada
+
+			String resAperturaString = gson.toJson(resApertura);
+
+			String jsonData = "{\"Result\":\"OK\",\"resApertura\":" + resAperturaString + "}";
+			return jsonData;
+
+		} catch (Exception e) {
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			return error;
+		}
+
+
+
+
+ 
     }
 
     @Override

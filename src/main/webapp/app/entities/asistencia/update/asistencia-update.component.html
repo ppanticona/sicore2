@@ -231,17 +231,10 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="sicore2App.asistencia.userId" for="field_userId">User Id</label>
-          <select
-            class="form-control"
-            id="field_userId"
-            data-cy="userId"
-            name="userId"
-            formControlName="userId"
-            [compareWith]="compareEmpleados"
-          >
+          <label class="form-label" jhiTranslate="sicore2App.asistencia.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
             <option [ngValue]="null"></option>
-            <option [ngValue]="empleadosOption" *ngFor="let empleadosOption of empleadosSharedCollection">{{ empleadosOption.id }}</option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.id }}</option>
           </select>
         </div>
       </div>

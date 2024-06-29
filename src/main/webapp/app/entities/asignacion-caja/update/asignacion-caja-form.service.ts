@@ -54,7 +54,7 @@ type AsignacionCajaFormGroupContent = {
   fecModif: FormControl<AsignacionCajaFormRawValue['fecModif']>;
   usuModif: FormControl<AsignacionCajaFormRawValue['usuModif']>;
   ipModif: FormControl<AsignacionCajaFormRawValue['ipModif']>;
-  userId: FormControl<AsignacionCajaFormRawValue['userId']>;
+  user: FormControl<AsignacionCajaFormRawValue['user']>;
   caja: FormControl<AsignacionCajaFormRawValue['caja']>;
 };
 
@@ -110,7 +110,7 @@ export class AsignacionCajaFormService {
       fecModif: new FormControl(asignacionCajaRawValue.fecModif),
       usuModif: new FormControl(asignacionCajaRawValue.usuModif),
       ipModif: new FormControl(asignacionCajaRawValue.ipModif),
-      userId: new FormControl(asignacionCajaRawValue.userId),
+      user: new FormControl(asignacionCajaRawValue.user),
       caja: new FormControl(asignacionCajaRawValue.caja),
     });
   }

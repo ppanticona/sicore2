@@ -86,11 +86,9 @@
             <a [routerLink]="['/sede', mesas.sede.id, 'view']">{{ mesas.sede.id }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="sicore2App.mesas.empleado">Empleado</span></dt>
+        <dt><span jhiTranslate="sicore2App.mesas.user">User</span></dt>
         <dd>
-          <div *ngIf="mesas.empleado">
-            <a [routerLink]="['/empleados', mesas.empleado.id, 'view']">{{ mesas.empleado.id }}</a>
-          </div>
+          <span>{{ mesas.user?.id }}</span>
         </dd>
       </dl>
 

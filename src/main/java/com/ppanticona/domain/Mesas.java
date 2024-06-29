@@ -85,8 +85,8 @@ public class Mesas implements Serializable {
     private Sede sede;
 
     @DBRef
-    @Field("empleado")
-    private Empleados empleado;
+    @Field("user")
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -324,16 +324,16 @@ public class Mesas implements Serializable {
         return this;
     }
 
-    public Empleados getEmpleado() {
-        return this.empleado;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setEmpleado(Empleados empleados) {
-        this.empleado = empleados;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Mesas empleado(Empleados empleados) {
-        this.setEmpleado(empleados);
+    public Mesas user(User user) {
+        this.setUser(user);
         return this;
     }
 

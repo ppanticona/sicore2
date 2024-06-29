@@ -49,7 +49,7 @@ type MesasFormGroupContent = {
   ipModif: FormControl<MesasFormRawValue['ipModif']>;
   orden: FormControl<MesasFormRawValue['orden']>;
   sede: FormControl<MesasFormRawValue['sede']>;
-  empleado: FormControl<MesasFormRawValue['empleado']>;
+  user: FormControl<MesasFormRawValue['user']>;
 };
 
 export type MesasFormGroup = FormGroup<MesasFormGroupContent>;
@@ -104,7 +104,7 @@ export class MesasFormService {
       ipModif: new FormControl(mesasRawValue.ipModif),
       orden: new FormControl(mesasRawValue.orden),
       sede: new FormControl(mesasRawValue.sede),
-      empleado: new FormControl(mesasRawValue.empleado),
+      user: new FormControl(mesasRawValue.user),
     });
   }
 

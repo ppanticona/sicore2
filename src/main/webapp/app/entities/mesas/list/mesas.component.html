@@ -140,9 +140,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="empleado.id">
+          <th scope="col" jhiSortBy="user.id">
             <div class="d-flex">
-              <span jhiTranslate="sicore2App.mesas.empleado">Empleado</span>
+              <span jhiTranslate="sicore2App.mesas.user">User</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -180,9 +180,7 @@
             </div>
           </td>
           <td>
-            <div *ngIf="mesas.empleado">
-              <a [routerLink]="['/empleados', mesas.empleado.id, 'view']">{{ mesas.empleado.id }}</a>
-            </div>
+            {{ mesas.user?.id }}
           </td>
           <td class="text-end">
             <div class="btn-group">

@@ -9,8 +9,9 @@ import { of, Subject, from } from 'rxjs';
 import { AsignacionCajaFormService } from './asignacion-caja-form.service';
 import { AsignacionCajaService } from '../service/asignacion-caja.service';
 import { IAsignacionCaja } from '../asignacion-caja.model';
-import { IEmpleados } from 'app/entities/empleados/empleados.model';
-import { EmpleadosService } from 'app/entities/empleados/service/empleados.service';
+
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
 import { ICaja } from 'app/entities/caja/caja.model';
 import { CajaService } from 'app/entities/caja/service/caja.service';
 
@@ -22,7 +23,7 @@ describe('AsignacionCaja Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let asignacionCajaFormService: AsignacionCajaFormService;
   let asignacionCajaService: AsignacionCajaService;
-  let empleadosService: EmpleadosService;
+  let userService: UserService;
   let cajaService: CajaService;
 
   beforeEach(() => {
@@ -46,33 +47,33 @@ describe('AsignacionCaja Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     asignacionCajaFormService = TestBed.inject(AsignacionCajaFormService);
     asignacionCajaService = TestBed.inject(AsignacionCajaService);
-    empleadosService = TestBed.inject(EmpleadosService);
+    userService = TestBed.inject(UserService);
     cajaService = TestBed.inject(CajaService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Empleados query and add missing value', () => {
+    it('Should call User query and add missing value', () => {
       const asignacionCaja: IAsignacionCaja = { id: 'CBA' };
-      const userId: IEmpleados = { id: 'fc38b054-8d4f-4051-9efa-c15db07df025' };
-      asignacionCaja.userId = userId;
+      const user: IUser = { id: 'edba8680-3c6a-405d-a60f-b03ccfba5ef7' };
+      asignacionCaja.user = user;
 
-      const empleadosCollection: IEmpleados[] = [{ id: '27265742-3c64-4777-a5ad-335110f3cade' }];
-      jest.spyOn(empleadosService, 'query').mockReturnValue(of(new HttpResponse({ body: empleadosCollection })));
-      const additionalEmpleados = [userId];
-      const expectedCollection: IEmpleados[] = [...additionalEmpleados, ...empleadosCollection];
-      jest.spyOn(empleadosService, 'addEmpleadosToCollectionIfMissing').mockReturnValue(expectedCollection);
+      const userCollection: IUser[] = [{ id: '25f0b6b1-0bf1-4884-84e0-5e21f8c47e87' }];
+      jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
+      const additionalUsers = [user];
+      const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
+      jest.spyOn(userService, 'addUserToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ asignacionCaja });
       comp.ngOnInit();
 
-      expect(empleadosService.query).toHaveBeenCalled();
-      expect(empleadosService.addEmpleadosToCollectionIfMissing).toHaveBeenCalledWith(
-        empleadosCollection,
-        ...additionalEmpleados.map(expect.objectContaining)
+      expect(userService.query).toHaveBeenCalled();
+      expect(userService.addUserToCollectionIfMissing).toHaveBeenCalledWith(
+        userCollection,
+        ...additionalUsers.map(expect.objectContaining)
       );
-      expect(comp.empleadosSharedCollection).toEqual(expectedCollection);
+      expect(comp.usersSharedCollection).toEqual(expectedCollection);
     });
 
     it('Should call Caja query and add missing value', () => {
@@ -99,15 +100,15 @@ describe('AsignacionCaja Management Update Component', () => {
 
     it('Should update editForm', () => {
       const asignacionCaja: IAsignacionCaja = { id: 'CBA' };
-      const userId: IEmpleados = { id: '1b265ce2-96cb-4e0e-b946-624e94e04073' };
-      asignacionCaja.userId = userId;
+      const user: IUser = { id: 'e0c61b0b-3bb7-491a-aa63-ccf8ac06d387' };
+      asignacionCaja.user = user;
       const caja: ICaja = { id: 'd9925a29-1995-4fe2-90ff-23ae38f39020' };
       asignacionCaja.caja = caja;
 
       activatedRoute.data = of({ asignacionCaja });
       comp.ngOnInit();
 
-      expect(comp.empleadosSharedCollection).toContain(userId);
+      expect(comp.usersSharedCollection).toContain(user);
       expect(comp.cajasSharedCollection).toContain(caja);
       expect(comp.asignacionCaja).toEqual(asignacionCaja);
     });
@@ -182,13 +183,13 @@ describe('AsignacionCaja Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareEmpleados', () => {
-      it('Should forward to empleadosService', () => {
+    describe('compareUser', () => {
+      it('Should forward to userService', () => {
         const entity = { id: 'ABC' };
         const entity2 = { id: 'CBA' };
-        jest.spyOn(empleadosService, 'compareEmpleados');
-        comp.compareEmpleados(entity, entity2);
-        expect(empleadosService.compareEmpleados).toHaveBeenCalledWith(entity, entity2);
+        jest.spyOn(userService, 'compareUser');
+        comp.compareUser(entity, entity2);
+        expect(userService.compareUser).toHaveBeenCalledWith(entity, entity2);
       });
     });
 

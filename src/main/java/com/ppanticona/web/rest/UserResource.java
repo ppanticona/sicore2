@@ -7,13 +7,14 @@ import com.ppanticona.security.AuthoritiesConstants;
 import com.ppanticona.service.MailService;
 import com.ppanticona.service.UserService;
 import com.ppanticona.service.dto.AdminUserDTO;
+import com.ppanticona.service.dto.UserDTO;
 import com.ppanticona.web.rest.errors.BadRequestAlertException;
 import com.ppanticona.web.rest.errors.EmailAlreadyUsedException;
 import com.ppanticona.web.rest.errors.LoginAlreadyUsedException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
-import java.util.Collections;
+
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import org.slf4j.Logger;
@@ -203,5 +204,18 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName, "userManagement.deleted", login)).build();
+    }
+
+    @GetMapping("/usuariosByRol/{rol}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\")")
+    public ResponseEntity<List<AdminUserDTO>> getAllUsersByAuthoritie(@PathVariable("rol") String rol,@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
+        log.debug("trae todos los usuarios que tienen un rol parametro");
+        if (!onlyContainsAllowedProperties(pageable)) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        final Page<AdminUserDTO> page = userService.getAllPublicUsersByAuthorities(rol,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

@@ -92,8 +92,8 @@
       "relationshipType": "many-to-one"
     },
     {
-      "otherEntityName": "empleados",
-      "relationshipName": "empleado",
+      "otherEntityName": "user",
+      "relationshipName": "user",
       "relationshipType": "many-to-one"
     }
   ],

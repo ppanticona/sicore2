@@ -32,6 +32,7 @@ export class AperturarComponent implements OnInit {
 
 
   constructor( 
+    private aperturarService: AperturarService
   ) {
       this.filter = '';
       this.orderProp = 'name';
@@ -50,6 +51,38 @@ export class AperturarComponent implements OnInit {
   ngOnInit() {
 
   }
-  cargaInicial(){ 
-  } 
+  cargaInicial(){
+
+    //lista cajas asignadas 01 estado activo
+    this.aperturarService.listaAsignacionCajaxEstado("01")
+        .subscribe((data: any)=>{
+          setTimeout(()=>{
+            console.log(data)
+            this.cajasAsignadasActivas=data.listaCajasAsignadas
+            this.loading=false;
+          },500)
+
+        })
+    //lista cajas  01 estado activo que no se encuentren asignadas
+    this.aperturarService.listaCajasxEstado("01")
+        .subscribe((data: any)=>{
+          console.log(data)
+          this.cajasActivas=data.listaCajas
+        })
+    //lista empleados
+    this.aperturarService.listaUsuariosPorRol("ROLE_CAJERO")
+        .subscribe((data: any)=>{
+          console.log(data)
+          this.cajeros=data
+        })
+}
+  aperturarCaja(forma:any){
+    
+    this.aperturarService.aperturarCaja(forma.value)
+        .subscribe((data: any)=>{
+          console.log(forma.value)
+          this.cargaInicial();
+         // window.location.reload();
+        })
+  }
 }

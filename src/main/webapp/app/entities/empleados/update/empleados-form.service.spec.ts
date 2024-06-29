@@ -44,6 +44,7 @@ describe('Empleados Form Service', () => {
             fecModif: expect.any(Object),
             usuModif: expect.any(Object),
             ipModif: expect.any(Object),
+            user: expect.any(Object),
           })
         );
       });
@@ -78,6 +79,7 @@ describe('Empleados Form Service', () => {
             fecModif: expect.any(Object),
             usuModif: expect.any(Object),
             ipModif: expect.any(Object),
+            user: expect.any(Object),
           })
         );
       });

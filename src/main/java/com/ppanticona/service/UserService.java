@@ -280,7 +280,9 @@ public class UserService {
     public Page<UserDTO> getAllPublicUsers(Pageable pageable) {
         return userRepository.findAllByIdNotNullAndActivatedIsTrue(pageable).map(UserDTO::new);
     }
-
+    public Page<AdminUserDTO> getAllPublicUsersByAuthorities(String rol, Pageable pageable) {
+        return userRepository.findAllByAuthoritiesAndIdNotNullAndActivatedIsTrue(rol,pageable).map(AdminUserDTO::new);
+    }
     public Optional<User> getUserWithAuthoritiesByLogin(String login) {
         return userRepository.findOneByLogin(login);
     }

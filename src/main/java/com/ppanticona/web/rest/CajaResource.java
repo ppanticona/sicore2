@@ -2,18 +2,24 @@ package com.ppanticona.web.rest;
 
 import com.ppanticona.domain.Caja;
 import com.ppanticona.repository.CajaRepository;
+import com.ppanticona.service.CajaService;
 import com.ppanticona.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Value; 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -33,9 +39,11 @@ public class CajaResource {
     private String applicationName;
 
     private final CajaRepository cajaRepository;
+    private final CajaService cajaService;
 
-    public CajaResource(CajaRepository cajaRepository) {
+    public CajaResource(CajaRepository cajaRepository, CajaService cajaService) {
         this.cajaRepository = cajaRepository;
+        this.cajaService = cajaService;
     }
 
     /**
@@ -198,4 +206,22 @@ public class CajaResource {
         cajaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id)).build();
     }
+
+    
+	@PreAuthorize("hasAnyRole('ROLE_GERENTE','ROLE_ADMIN')")
+	@GetMapping("/listarCajasPorEstado/{cod_estado}")
+	public ResponseEntity<String> listarCajasPorEstado(@PathVariable("cod_estado") String codEstado,HttpServletResponse response) {
+
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+
+		StringBuffer data = new StringBuffer();
+
+		String listaCajas = cajaService.listarCajasPorEstado(codEstado);
+		data.append(listaCajas);
+
+		return new ResponseEntity(data.toString(), responseHeaders, HttpStatus.OK);
+
+	}
+    
 }

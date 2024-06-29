@@ -91,8 +91,8 @@ public class AsignacionCaja implements Serializable {
     private String ipModif;
 
     @DBRef
-    @Field("userId")
-    private Empleados userId;
+    @Field("user")
+    private User user;
 
     @DBRef
     @Field("caja")
@@ -386,16 +386,16 @@ public class AsignacionCaja implements Serializable {
         this.ipModif = ipModif;
     }
 
-    public Empleados getUserId() {
-        return this.userId;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setUserId(Empleados empleados) {
-        this.userId = empleados;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public AsignacionCaja userId(Empleados empleados) {
-        this.setUserId(empleados);
+    public AsignacionCaja user(User user) {
+        this.setUser(user);
         return this;
     }
 

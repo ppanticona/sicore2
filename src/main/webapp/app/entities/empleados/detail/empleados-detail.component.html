@@ -110,6 +110,10 @@
         <dd>
           <span>{{ empleados.ipModif }}</span>
         </dd>
+        <dt><span jhiTranslate="sicore2App.empleados.user">User</span></dt>
+        <dd>
+          <span>{{ empleados.user?.id }}</span>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

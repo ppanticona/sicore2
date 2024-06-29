@@ -11,6 +11,9 @@ import { CerrarComponent } from './cerrar/cerrar.component';
 import { IslaService  } from './isla/isla.service'; 
 import { AperturarService  } from './aperturar/aperturar.service'; 
 import { CerrarService  } from './cerrar/cerrar.service';
+
+import { JhiCerrarCajaModalComponent } from './cerrar/cerrar-caja-modal.component';
+import { NonumericoPipe } from 'app/pipes/nonumerico.pipe';  
 @NgModule({
   imports: [
     SharedModule, 
@@ -19,9 +22,13 @@ import { CerrarService  } from './cerrar/cerrar.service';
     AperturarComponent,
     IslaComponent,
     CerrarComponent,
+    NonumericoPipe,
+    JhiCerrarCajaModalComponent
     
   ],
-  entryComponents: [ ],
+  entryComponents: [
+    JhiCerrarCajaModalComponent
+   ],
   providers: [
     IslaService, 
     AperturarService,

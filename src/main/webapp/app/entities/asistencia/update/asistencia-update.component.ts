@@ -10,8 +10,8 @@ import { AsistenciaService } from '../service/asistencia.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { IEmpleados } from 'app/entities/empleados/empleados.model';
-import { EmpleadosService } from 'app/entities/empleados/service/empleados.service';
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
 
 @Component({
   selector: 'jhi-asistencia-update',
@@ -21,7 +21,7 @@ export class AsistenciaUpdateComponent implements OnInit {
   isSaving = false;
   asistencia: IAsistencia | null = null;
 
-  empleadosSharedCollection: IEmpleados[] = [];
+  usersSharedCollection: IUser[] = [];
 
   editForm: AsistenciaFormGroup = this.asistenciaFormService.createAsistenciaFormGroup();
 
@@ -30,11 +30,11 @@ export class AsistenciaUpdateComponent implements OnInit {
     protected eventManager: EventManager,
     protected asistenciaService: AsistenciaService,
     protected asistenciaFormService: AsistenciaFormService,
-    protected empleadosService: EmpleadosService,
+    protected userService: UserService,
     protected activatedRoute: ActivatedRoute
   ) {}
 
-  compareEmpleados = (o1: IEmpleados | null, o2: IEmpleados | null): boolean => this.empleadosService.compareEmpleados(o1, o2);
+  compareUser = (o1: IUser | null, o2: IUser | null): boolean => this.userService.compareUser(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ asistencia }) => {
@@ -99,21 +99,14 @@ export class AsistenciaUpdateComponent implements OnInit {
     this.asistencia = asistencia;
     this.asistenciaFormService.resetForm(this.editForm, asistencia);
 
-    this.empleadosSharedCollection = this.empleadosService.addEmpleadosToCollectionIfMissing<IEmpleados>(
-      this.empleadosSharedCollection,
-      asistencia.userId
-    );
+    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, asistencia.user);
   }
 
   protected loadRelationshipsOptions(): void {
-    this.empleadosService
+    this.userService
       .query()
-      .pipe(map((res: HttpResponse<IEmpleados[]>) => res.body ?? []))
-      .pipe(
-        map((empleados: IEmpleados[]) =>
-          this.empleadosService.addEmpleadosToCollectionIfMissing<IEmpleados>(empleados, this.asistencia?.userId)
-        )
-      )
-      .subscribe((empleados: IEmpleados[]) => (this.empleadosSharedCollection = empleados));
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.asistencia?.user)))
+      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
   }
 }

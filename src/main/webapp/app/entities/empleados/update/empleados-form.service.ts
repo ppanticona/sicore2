@@ -58,6 +58,7 @@ type EmpleadosFormGroupContent = {
   fecModif: FormControl<EmpleadosFormRawValue['fecModif']>;
   usuModif: FormControl<EmpleadosFormRawValue['usuModif']>;
   ipModif: FormControl<EmpleadosFormRawValue['ipModif']>;
+  user: FormControl<EmpleadosFormRawValue['user']>;
 };
 
 export type EmpleadosFormGroup = FormGroup<EmpleadosFormGroupContent>;
@@ -123,6 +124,7 @@ export class EmpleadosFormService {
       fecModif: new FormControl(empleadosRawValue.fecModif),
       usuModif: new FormControl(empleadosRawValue.usuModif),
       ipModif: new FormControl(empleadosRawValue.ipModif),
+      user: new FormControl(empleadosRawValue.user),
     });
   }
 

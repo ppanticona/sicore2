@@ -13,8 +13,9 @@ import { IOrden } from 'app/entities/orden/orden.model';
 import { OrdenService } from 'app/entities/orden/service/orden.service';
 import { ISede } from 'app/entities/sede/sede.model';
 import { SedeService } from 'app/entities/sede/service/sede.service';
-import { IEmpleados } from 'app/entities/empleados/empleados.model';
-import { EmpleadosService } from 'app/entities/empleados/service/empleados.service';
+
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
 
 import { MesasUpdateComponent } from './mesas-update.component';
 
@@ -26,7 +27,7 @@ describe('Mesas Management Update Component', () => {
   let mesasService: MesasService;
   let ordenService: OrdenService;
   let sedeService: SedeService;
-  let empleadosService: EmpleadosService;
+  let userService: UserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -51,7 +52,7 @@ describe('Mesas Management Update Component', () => {
     mesasService = TestBed.inject(MesasService);
     ordenService = TestBed.inject(OrdenService);
     sedeService = TestBed.inject(SedeService);
-    empleadosService = TestBed.inject(EmpleadosService);
+    userService = TestBed.inject(UserService);
 
     comp = fixture.componentInstance;
   });
@@ -101,26 +102,26 @@ describe('Mesas Management Update Component', () => {
       expect(comp.sedesSharedCollection).toEqual(expectedCollection);
     });
 
-    it('Should call Empleados query and add missing value', () => {
+    it('Should call User query and add missing value', () => {
       const mesas: IMesas = { id: 'CBA' };
-      const empleado: IEmpleados = { id: '85336a2f-9ca4-4fff-b177-ee1bc5d21f46' };
-      mesas.empleado = empleado;
+      const user: IUser = { id: 'c797d872-f236-4fb4-a018-9c4e53532729' };
+      mesas.user = user;
 
-      const empleadosCollection: IEmpleados[] = [{ id: 'ed359e2c-dc05-441c-b815-698999f53059' }];
-      jest.spyOn(empleadosService, 'query').mockReturnValue(of(new HttpResponse({ body: empleadosCollection })));
-      const additionalEmpleados = [empleado];
-      const expectedCollection: IEmpleados[] = [...additionalEmpleados, ...empleadosCollection];
-      jest.spyOn(empleadosService, 'addEmpleadosToCollectionIfMissing').mockReturnValue(expectedCollection);
+      const userCollection: IUser[] = [{ id: '0aab71c2-7bd9-48f2-96ae-932aa2d43759' }];
+      jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
+      const additionalUsers = [user];
+      const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
+      jest.spyOn(userService, 'addUserToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ mesas });
       comp.ngOnInit();
 
-      expect(empleadosService.query).toHaveBeenCalled();
-      expect(empleadosService.addEmpleadosToCollectionIfMissing).toHaveBeenCalledWith(
-        empleadosCollection,
-        ...additionalEmpleados.map(expect.objectContaining)
+      expect(userService.query).toHaveBeenCalled();
+      expect(userService.addUserToCollectionIfMissing).toHaveBeenCalledWith(
+        userCollection,
+        ...additionalUsers.map(expect.objectContaining)
       );
-      expect(comp.empleadosSharedCollection).toEqual(expectedCollection);
+      expect(comp.usersSharedCollection).toEqual(expectedCollection);
     });
 
     it('Should update editForm', () => {
@@ -129,15 +130,15 @@ describe('Mesas Management Update Component', () => {
       mesas.orden = orden;
       const sede: ISede = { id: '4ac52d74-6a9c-4ebc-8b45-85055c048323' };
       mesas.sede = sede;
-      const empleado: IEmpleados = { id: '181ba636-7def-4f5d-bfe4-b1f72f4e2d9b' };
-      mesas.empleado = empleado;
+      const user: IUser = { id: '40b26408-0a09-4464-af1c-e8eeddaa3755' };
+      mesas.user = user;
 
       activatedRoute.data = of({ mesas });
       comp.ngOnInit();
 
       expect(comp.ordensSharedCollection).toContain(orden);
       expect(comp.sedesSharedCollection).toContain(sede);
-      expect(comp.empleadosSharedCollection).toContain(empleado);
+      expect(comp.usersSharedCollection).toContain(user);
       expect(comp.mesas).toEqual(mesas);
     });
   });
@@ -231,13 +232,13 @@ describe('Mesas Management Update Component', () => {
       });
     });
 
-    describe('compareEmpleados', () => {
-      it('Should forward to empleadosService', () => {
+    describe('compareUser', () => {
+      it('Should forward to userService', () => {
         const entity = { id: 'ABC' };
         const entity2 = { id: 'CBA' };
-        jest.spyOn(empleadosService, 'compareEmpleados');
-        comp.compareEmpleados(entity, entity2);
-        expect(empleadosService.compareEmpleados).toHaveBeenCalledWith(entity, entity2);
+        jest.spyOn(userService, 'compareUser');
+        comp.compareUser(entity, entity2);
+        expect(userService.compareUser).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

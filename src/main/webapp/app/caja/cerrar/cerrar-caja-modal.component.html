@@ -1,0 +1,39 @@
+<form name="cerrarForm" >
+    <div class="modal-header">
+        <h4 class="modal-title">Confirmar</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row">
+          <div class="col-md-12 text-center">
+              <h2><p>Está seguro de Cerrar la Caja  {{datos.cod_caja}}?</p></h2>
+          </div> 
+        </div> 
+        caja asignada a: <h1>{{datos.resasignacionCaja.cajero.nombres}}  {{datos.resasignacionCaja.cajero.apellidos}}</h1>
+
+        fecha asignacion : <small>{{datos.resasignacionCaja.fecCrea.dateTime.date.year}} /  {{datos.resasignacionCaja.fecCrea.dateTime.date.month}}  / {{datos.resasignacionCaja.fecCrea.dateTime.date.day}} </small>
+
+        <div class="alert alert-warning" role="alert" *ngIf="datos.diferencia_soles>0">
+          Tiene una diferencia de <strong>{{datos.diferencia_soles|number : '1.2-2'}} Nuevos Soles.</strong>
+        </div>
+
+        <div   class="alert alert-warning" role="alert"*ngIf="datos.diferencia_dolares>0">
+          Tiene una diferencia de <strong>{{datos.diferencia_dolares|number : '1.2-2'}} Dolares Americanos.</strong>
+        </div>
+        <div class="alert alert-danger" role="alert"*ngIf="flagError">
+            {{textoError}}
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="clear()">
+            <span class=""></span>&nbsp;<span>NO</span>
+        </button>
+        <button type="submit" class="btn btn-success" (click)="confirmarCierre()">
+            <span class=""></span>&nbsp;<span>SI</span>
+        </button>
+
+    </div>
+</form>

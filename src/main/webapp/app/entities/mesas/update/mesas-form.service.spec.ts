@@ -37,7 +37,7 @@ describe('Mesas Form Service', () => {
             ipModif: expect.any(Object),
             orden: expect.any(Object),
             sede: expect.any(Object),
-            empleado: expect.any(Object),
+            user: expect.any(Object),
           })
         );
       });
@@ -65,7 +65,7 @@ describe('Mesas Form Service', () => {
             ipModif: expect.any(Object),
             orden: expect.any(Object),
             sede: expect.any(Object),
-            empleado: expect.any(Object),
+            user: expect.any(Object),
           })
         );
       });

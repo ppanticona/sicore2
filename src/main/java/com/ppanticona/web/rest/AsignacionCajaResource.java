@@ -1,5 +1,7 @@
 package com.ppanticona.web.rest;
 
+import org.springframework.security.core.Authentication; 
+import org.springframework.security.core.userdetails.UserDetails;
 import com.ppanticona.domain.AsignacionCaja;
 import com.ppanticona.repository.AsignacionCajaRepository;
 import com.ppanticona.web.rest.errors.BadRequestAlertException;
@@ -8,12 +10,21 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -234,4 +245,35 @@ public class AsignacionCajaResource {
         asignacionCajaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id)).build();
     }
+
+
+
+    @PreAuthorize("hasAnyRole('ROLE_GERENTE','ROLE_ADMIN')")
+	@PostMapping("/aperturarCaja")
+	  @ResponseBody
+	  public ResponseEntity<String> aperturarCaja(@RequestBody Map<String, Object> datos, HttpServletRequest request, BindingResult result)
+	    throws Exception
+	  {
+	    log.debug("Inicio de aperturarCaja  datos: " + datos);
+	   	     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+                UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+                String username = userDetails.getUsername();
+            
+
+	    HttpHeaders responseHeaders = new HttpHeaders();
+	    responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+	   
+	    StringBuffer data = new StringBuffer();
+	    
+	    
+	    String resCajaAperturada = asignacionCajaService.aperturarCaja(datos,username);
+		data.append(resCajaAperturada);
+	    
+	    
+	    return new ResponseEntity(data.toString(), responseHeaders, HttpStatus.CREATED);
+	    
+	  }
+
 }

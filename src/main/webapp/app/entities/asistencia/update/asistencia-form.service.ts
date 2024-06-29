@@ -48,7 +48,7 @@ type AsistenciaFormGroupContent = {
   fecModif: FormControl<AsistenciaFormRawValue['fecModif']>;
   usuModif: FormControl<AsistenciaFormRawValue['usuModif']>;
   ipModif: FormControl<AsistenciaFormRawValue['ipModif']>;
-  userId: FormControl<AsistenciaFormRawValue['userId']>;
+  user: FormControl<AsistenciaFormRawValue['user']>;
 };
 
 export type AsistenciaFormGroup = FormGroup<AsistenciaFormGroupContent>;
@@ -100,7 +100,7 @@ export class AsistenciaFormService {
       fecModif: new FormControl(asistenciaRawValue.fecModif),
       usuModif: new FormControl(asistenciaRawValue.usuModif),
       ipModif: new FormControl(asistenciaRawValue.ipModif),
-      userId: new FormControl(asistenciaRawValue.userId),
+      user: new FormControl(asistenciaRawValue.user),
     });
   }
 

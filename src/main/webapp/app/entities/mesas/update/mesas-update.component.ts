@@ -11,8 +11,8 @@ import { IOrden } from 'app/entities/orden/orden.model';
 import { OrdenService } from 'app/entities/orden/service/orden.service';
 import { ISede } from 'app/entities/sede/sede.model';
 import { SedeService } from 'app/entities/sede/service/sede.service';
-import { IEmpleados } from 'app/entities/empleados/empleados.model';
-import { EmpleadosService } from 'app/entities/empleados/service/empleados.service';
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
 
 @Component({
   selector: 'jhi-mesas-update',
@@ -24,7 +24,7 @@ export class MesasUpdateComponent implements OnInit {
 
   ordensSharedCollection: IOrden[] = [];
   sedesSharedCollection: ISede[] = [];
-  empleadosSharedCollection: IEmpleados[] = [];
+  usersSharedCollection: IUser[] = [];
 
   editForm: MesasFormGroup = this.mesasFormService.createMesasFormGroup();
 
@@ -33,7 +33,7 @@ export class MesasUpdateComponent implements OnInit {
     protected mesasFormService: MesasFormService,
     protected ordenService: OrdenService,
     protected sedeService: SedeService,
-    protected empleadosService: EmpleadosService,
+    protected userService: UserService,
     protected activatedRoute: ActivatedRoute
   ) {}
 
@@ -41,7 +41,7 @@ export class MesasUpdateComponent implements OnInit {
 
   compareSede = (o1: ISede | null, o2: ISede | null): boolean => this.sedeService.compareSede(o1, o2);
 
-  compareEmpleados = (o1: IEmpleados | null, o2: IEmpleados | null): boolean => this.empleadosService.compareEmpleados(o1, o2);
+  compareUser = (o1: IUser | null, o2: IUser | null): boolean => this.userService.compareUser(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ mesas }) => {
@@ -93,10 +93,7 @@ export class MesasUpdateComponent implements OnInit {
 
     this.ordensSharedCollection = this.ordenService.addOrdenToCollectionIfMissing<IOrden>(this.ordensSharedCollection, mesas.orden);
     this.sedesSharedCollection = this.sedeService.addSedeToCollectionIfMissing<ISede>(this.sedesSharedCollection, mesas.sede);
-    this.empleadosSharedCollection = this.empleadosService.addEmpleadosToCollectionIfMissing<IEmpleados>(
-      this.empleadosSharedCollection,
-      mesas.empleado
-    );
+    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, mesas.user);
   }
 
   protected loadRelationshipsOptions(): void {
@@ -112,14 +109,10 @@ export class MesasUpdateComponent implements OnInit {
       .pipe(map((sedes: ISede[]) => this.sedeService.addSedeToCollectionIfMissing<ISede>(sedes, this.mesas?.sede)))
       .subscribe((sedes: ISede[]) => (this.sedesSharedCollection = sedes));
 
-    this.empleadosService
+    this.userService
       .query()
-      .pipe(map((res: HttpResponse<IEmpleados[]>) => res.body ?? []))
-      .pipe(
-        map((empleados: IEmpleados[]) =>
-          this.empleadosService.addEmpleadosToCollectionIfMissing<IEmpleados>(empleados, this.mesas?.empleado)
-        )
-      )
-      .subscribe((empleados: IEmpleados[]) => (this.empleadosSharedCollection = empleados));
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.mesas?.user)))
+      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
   }
 }
