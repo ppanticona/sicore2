@@ -25,6 +25,8 @@ import com.google.gson.GsonBuilder;
 //import com.teresitastudio.academy.component.ServicioDetalleConverter;
 import com.ppanticona.domain.AsignacionCaja;
 import com.ppanticona.domain.Caja;
+import com.ppanticona.domain.User;
+import com.ppanticona.domain.Empleados;
 //import com.teresitastudio.academy.domain.DetCierreAsignacionCaja; 
 import com.ppanticona.repository.AsignacionCajaRepository;
 import com.ppanticona.repository.CajaRepository; 
@@ -82,9 +84,8 @@ public class AsignacionCajaServiceImpl implements AsignacionCajaService {
 		AsignacionCaja bean = new AsignacionCaja();
 		
 		Caja cajaBean = new Caja(); 
-		Cajero cajeroBean = new Cajero();
-		Gerente gerenteBean = new Gerente();
-		
+        User userBean = new User();
+        userBean.setId(String.valueOf(((Map<String, Object>) datos.get("empleado")).get("id")));  
 		
 		Double MontoInicialSoles = null;
 		if (datos.get("MontoInicialSoles") instanceof Double) {
@@ -117,18 +118,9 @@ public class AsignacionCajaServiceImpl implements AsignacionCajaService {
 		bean.codAsignacion("01");  // está mal, en su lugar estoy usando el ID
 		bean.setFecCrea(fechaActual);
 		bean.setVersion(1);
-		
-		gerenteBean = gerenteRepository.findByUserId(login);
-
- 
-		bean.setGerente(gerenteBean);// debe ingresar del gerente    
-		bean.setIpCrea("1.0.0.1");// debe ser del usuario
-
-		ArrayList<String> list = (ArrayList) datos.get("Empleado");
-
-		cajeroBean.setId((String) datos.get("Cajero"));
-		bean.setCajero(cajeroBean);
- 
+		bean.setUser(userBean);
+		  
+   
 		try {
 			
 
@@ -308,16 +300,13 @@ public class AsignacionCajaServiceImpl implements AsignacionCajaService {
 	@Override
 	public String obtenerDatosXLogin(String userId) {
 		
-		Cajero cajero=cajeroRepository.findByUserId(userId);
+        User userBean = new User();
+        userBean.setId(userId);  
+ 
 		String jsonData="";
+		 
 		
-		if(cajero==null){
-			jsonData = "{\"Result\":\"ERROR\",\"codmsg\":\"01\",\"msg\":\"Cajero no Existe\"}";
-
-			return jsonData;
-		} 
-		
-		AsignacionCaja datosAsignacion = asignacionCajaRepository.findByCajeroAndEstado(cajero, "01");
+		AsignacionCaja datosAsignacion = asignacionCajaRepository.findByUserAndEstado(userBean, "01");
 		
 		if(datosAsignacion==null){
 			jsonData = "{\"Result\":\"ERROR\",\"codmsg\":\"02\",\"msg\":\"Empleado no tiene caja asignada\"}";
@@ -340,14 +329,14 @@ public class AsignacionCajaServiceImpl implements AsignacionCajaService {
 	}
 
 	@Override
-	public String findByUsuarioAsignadoAndAndEstado(String login,String cod_estado) {
+	public String findByUsuarioAsignadoAndAndEstado(String userId,String cod_estado) {
 
 		try {
-		Cajero cajeroBean = new Cajero();
-		String jsonData="";
-		cajeroBean = cajeroRepository.findByUserId(login);
-
-		AsignacionCaja asignacionCaja = asignacionCajaRepository.findByCajeroAndEstado(cajeroBean,cod_estado);
+			User userBean = new User();
+			userBean.setId(userId);  
+	 
+			String jsonData="";
+		AsignacionCaja asignacionCaja = asignacionCajaRepository.findByUserAndEstado(userBean,cod_estado);
 
 			String listadisplayString = gson.toJson(asignacionCaja);
 			jsonData = "{\"Result\":\"OK\",\"datosAsignacion\":" + listadisplayString + "}";

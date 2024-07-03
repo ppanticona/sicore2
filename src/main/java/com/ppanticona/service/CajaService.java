@@ -2,8 +2,7 @@ package com.ppanticona.service;
 
 import java.util.Map;
 
-public interface CajaService {
-    public String aperturarCaja(Map datosMap, String login);
+public interface CajaService { 
 
     public String cerrarCaja(Map datosMap, String login);
     
